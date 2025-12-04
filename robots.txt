@@ -1,0 +1,27 @@
+User-agent: *
+Disallow: /assets/
+Disallow: /controller/
+Disallow: /css/
+Disallow: /dompdf/
+Disallow: /fonts/
+Disallow: /img/
+Disallow: /js/
+Disallow: /testimages/
+Disallow: /vendor/
+Disallow: /checkout.php
+Disallow: /cooming-soon.php
+Disallow: /first.php
+Disallow: /logout.php
+Disallow: /orderview.php
+Disallow: /over18.php
+Disallow: /over18error.php
+Disallow: /redirectlogin.php
+Disallow: /restorepassword.php
+Disallow: /transaction.php
+Disallow: /validateregistration.php
+Disallow: /xml-config.php
+Disallow: /xml-sitemap.xsl
+
+Sitemap: https://hempleaf.es/xml-sitemap.php
+
+# Agregado el 07/05/2021
