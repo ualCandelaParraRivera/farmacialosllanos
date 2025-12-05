@@ -6,7 +6,7 @@ Class Db{
    private $servidor='cuberty.ddns.net:3306';
    private $usuario='llanosfarmacia';
    private $password='Llanos25!Ual';
-   private $base_datos='hempleaf';
+   private $base_datos='losllanos';
    private $link;
    private $res;
    private $array;
