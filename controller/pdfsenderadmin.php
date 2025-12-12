@@ -83,12 +83,12 @@ function rellenarInfoPDF($db, $orderid, $type, $trans, $lang) {
     $guidorder = $row['guidorder'];
 
     if($type==1){
-    $path = "../img/logo/logo-2.jpg";
+    $path = "../img/logo/logof.jpg";
     $tipo = pathinfo($path, PATHINFO_EXTENSION);
     $data = file_get_contents($path);
     $logo = 'data:image/' . $tipo . ';base64,' . base64_encode($data);
     }else{
-        $path = "./img/logo/logo-2.jpg";
+        $path = "./img/logo/logof.jpg";
         $tipo = pathinfo($path, PATHINFO_EXTENSION);
         $data = file_get_contents($path);
         $logo = 'data:image/' . $tipo . ';base64,' . base64_encode($data);

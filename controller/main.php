@@ -181,7 +181,7 @@ function sectiontopbar($trans){
                 <div class="col d-none d-md-block">
                     <div class="topbar-menu">
                         <ul>
-                            <li><a href="https://goo.gl/maps/4WMm7jaz9AuMA81WA" target="_blank"><i class="fa fa-map-marker-alt"></i>'.$trans['top_store'].'</a></li>
+                            <li><a href="https://maps.app.goo.gl/oUg9AVoB9mbK26Pe7" target="_blank"><i class="fa fa-map-marker-alt"></i>'.$trans['top_store'].'</a></li>
                             <!--<li><a href="myaccount#orders"><i class="fa fa-truck"></i>'.$trans['top_status'].'</a></li>-->
                         </ul>
                     </div>
@@ -230,7 +230,7 @@ foreach($products as $product){
                 <!-- Header Logo Start -->
                 <div class="col">
                     <div class="header-logo">
-                        <a href="index"><img src="img/logo/logo-2.png" alt="Hempleaf Logo"></a>
+                        <a href="index"><img src="img/logo/logof.png" alt="Hempleaf Logo"></a>
                     </div>
                 </div>
                 <!-- Header Logo End -->
@@ -289,7 +289,7 @@ foreach($products as $product){
                 <!-- Header Logo Start -->
                 <div class="col">
                     <div class="header-logo">
-                        <a href="index"><img src="img/logo/logo-2.png" alt="Hempleaf Logo"></a>
+                        <a href="index"><img src="img/logo/logof.png" alt="Hempleaf Logo"></a>
                     </div>
                 </div>
                 <!-- Header Logo End -->
@@ -357,7 +357,7 @@ foreach($products as $product){
                 <!-- Header Logo Start -->
                 <div class="col">
                     <div class="header-logo">
-                        <a href="index"><img src="img/logo/logo-2.png" alt="Hempleaf Logo"></a>
+                        <a href="index"><img src="img/logo/logof.png" alt="Hempleaf Logo"></a>
                     </div>
                 </div>
                 <!-- Header Logo End -->
@@ -610,7 +610,7 @@ function sectionfooter($trans) {
                     <h4 class="widget-title">'.$trans['footer_about'].'</h4>
                     <ul class="widget-list">
                         <li><a href="aboutus">'.$trans['footer_aboutus'].'</a></li>
-                        <li><a href="https://goo.gl/maps/4WMm7jaz9AuMA81WA" target="_blank">'.$trans['footer_store'].'</a></li>
+                        <li><a href="https://maps.app.goo.gl/oUg9AVoB9mbK26Pe7" target="_blank">'.$trans['footer_store'].'</a></li>
                         <li><a href="faq">'.$trans['footer_faq'].'</a></li>
                         <li><a href="xml-sitemap">'.$trans['footer_sitemap'].'</a></li>
                     </ul>
@@ -636,7 +636,7 @@ function sectionfooter($trans) {
             <div class="row align-items-end learts-mb-n40 learts-mt-40">
                 <div class="col-md-4 col-12 learts-mb-40 order-md-2">
                     <div class="widget-about text-center">
-                        <img src="img/logo/logo.png" alt="">
+                        <img src="img/logo/logof.png" alt="">
                     </div>
                 </div>
 

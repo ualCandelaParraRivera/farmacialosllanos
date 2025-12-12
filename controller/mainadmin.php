@@ -91,7 +91,7 @@ function sectiontopbar($trans){
                 <div class="col d-none d-md-block">
                     <div class="topbar-menu">
                         <ul>
-                            <li><a href="https://goo.gl/maps/4WMm7jaz9AuMA81WA" target="_blank"><i class="fa fa-map-marker-alt"></i>'.$trans['top_store'].'</a></li>
+                            <li><a href="https://maps.app.goo.gl/oUg9AVoB9mbK26Pe7" target="_blank"><i class="fa fa-map-marker-alt"></i>'.$trans['top_store'].'</a></li>
                             <li><a href="myaccount#orders"><i class="fa fa-truck"></i>'.$trans['top_status'].'</a></li>
                         </ul>
                     </div>
