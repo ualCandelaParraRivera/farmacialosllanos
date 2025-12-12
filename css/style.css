@@ -1658,7 +1658,7 @@ body.homepage-bg1.offcanvas-open {
     display: flex;
     padding: 25px;
     text-transform: uppercase;
-    color: #7E7E7E;
+    color: #fff;
 }
 
 .site-main-menu>ul>li>a>.menu-text {
@@ -1935,7 +1935,7 @@ body.homepage-bg1.offcanvas-open {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    color: #333333;
+    color: #fff;
 }
 
 .header-tools>div a span {
@@ -8876,4 +8876,16 @@ main#cart-main .justify-content-between {
 
 main#cart-main .text-red {
     color: #ef476f;
+}
+
+.bg-white {
+    background-color: #30716a !important;
+}
+
+.breadcrumb a {
+    color: white !important;
+}
+
+.breadcrumb .breadcrumb-item.active {
+    color: rgb(202, 202, 202) !important;
 }

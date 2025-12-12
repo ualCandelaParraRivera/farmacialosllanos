@@ -186,9 +186,9 @@ GROUP BY p.id, title, guidproduct, price, discount, summary, content, firstname,
                                         <td class="label"><span><?=$trans['productsdetails_quantity']?></span></td>
                                         <td class="value">
                                             <div class="product-quantity">
-                                                <span class="qty-btn minuss"><i class="ti-minus"></i></span>
-                                                <input type="text" class="input-qty" step="1" min="1" max="<?=$quantity?>" value="1" pattern="[0-9]*" inputmode="numeric">
-                                                <span class="qty-btn pluss"><i class="ti-plus"></i></span>
+                                                <span class="qty-btn minuss" <?php if($quantity <= 0){ echo 'style="pointer-events: none; opacity: 0.5;"'; } ?>><i class="ti-minus"></i></span>
+                                                <input type="text" class="input-qty" step="1" min="1" max="<?=$quantity?>" value="<?php echo $quantity > 0 ? '1' : '0'; ?>" pattern="[0-9]*" inputmode="numeric" <?php if($quantity <= 0){ echo 'disabled'; } ?>>
+                                                <span class="qty-btn pluss" <?php if($quantity <= 0){ echo 'style="pointer-events: none; opacity: 0.5;"'; } ?>><i class="ti-plus"></i></span>
                                             </div>
                                         </td>
                                     </tr>
@@ -196,7 +196,7 @@ GROUP BY p.id, title, guidproduct, price, discount, summary, content, firstname,
                             </table>
                         </div>
                         <div class="product-buttons">
-                            <button class="btn btn-dark btn-outline-hover-dark" id="addToCartDetails" data-id="<?=$guidproduct?>"><i class="fal fa-shopping-cart"></i> <?=$trans['productsdetails_addtocart']?></button>
+                            <button class="btn btn-dark btn-outline-hover-dark" id="addToCartDetails" data-id="<?=$guidproduct?>" <?php if($quantity <= 0){ echo 'disabled style="pointer-events: none; opacity: 0.5; cursor: not-allowed;"'; } ?>><i class="fal fa-shopping-cart"></i> <?=$trans['productsdetails_addtocart']?></button>
                         </div>
                         <div class="product-brands">
                             <span class="title"><?=$trans['productsdetails_brands']?></span>

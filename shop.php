@@ -349,7 +349,7 @@
                                             <span class="product-badges">
                                                 <?php if($isdiscount > 0){?><span class="onsale">-<?=$discountlabel?></span><?php } ?>
                                                 <?php if($ishot > 0){?><span class="hot">hot</span><?php } ?>
-                                                <?php if($isoutofstock > 0){?><span class="outofstock"><i class="fal fa-frown"></i></span><?php } ?>
+                                                <?php if($isoutofstock > 0){?><span class="outofstock"><i class="fal fa-exclamation-triangle"></i></span><?php } ?>
                                             </span>
                                         <?php } ?>
                                             <img src="img/product/<?=$imagename?>-328.<?=$extension?>" alt="Product Image">

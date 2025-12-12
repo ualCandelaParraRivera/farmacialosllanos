@@ -87,7 +87,7 @@
     <!-- Feature Section End -->
 
     <!-- Team Section Start -->
-    <!-- <div class="section section-padding">
+    <div class="section section-padding">
         <div class="container">
 
             <div class="section-title2 text-center">
@@ -99,11 +99,7 @@
                 <div class="col learts-mb-30">
                     <div class="team">
                         <div class="image">
-                            <img src="img/team/victor.png" alt="">
-                            <div class="social">
-                                <a href="https://www.linkedin.com/in/victor-manuel-manrique-morales-027279203" target="_blank"><i class="fab fa-linkedin"></i></a>
-                                <a href="https://www.instagram.com/hempleafspain/" target="_blank"><i class="fab fa-instagram"></i></a>
-                            </div>
+                            <img src="img/team/2.jpg" alt="">
                         </div>
                         <div class="content">
                             <h6 class="name"><?=$trans['aboutus_team1name']?></h6>
@@ -115,11 +111,7 @@
                 <div class="col learts-mb-30">
                     <div class="team">
                         <div class="image">
-                            <img src="img/team/izabel.png" alt="">
-                            <div class="social">
-                                <a href="https://www.linkedin.com/in/izabele-lever" target="_blank"><i class="fab fa-linkedin"></i></a>
-                                <a href="https://www.instagram.com/hempleafspain/" target="_blank"><i class="fab fa-instagram"></i></a>
-                            </div>
+                            <img src="img/team/1.jpg" alt="">
                         </div>
                         <div class="content">
                             <h6 class="name"><?=$trans['aboutus_team2name']?></h6>
@@ -131,11 +123,7 @@
                 <div class="col learts-mb-30">
                     <div class="team">
                         <div class="image">
-                            <img src="img/team/sergio.png" alt="">
-                            <div class="social">
-                                <a href="https://www.linkedin.com/in/cheikh-tidiane-diallo-sow-65a490110" target="_blank"><i class="fab fa-linkedin"></i></a>
-                                <a href="https://www.instagram.com/hempleafspain/" target="_blank"><i class="fab fa-instagram"></i></a>
-                            </div>
+                            <img src="img/team/6.jpg" alt="">
                         </div>
                         <div class="content">
                             <h6 class="name"><?=$trans['aboutus_team3name']?></h6>
@@ -143,10 +131,32 @@
                         </div>
                     </div>
                 </div>
+                <div class="col learts-mb-30">
+                    <div class="team">
+                        <div class="image">
+                            <img src="img/team/4.jpg" alt="">
+                        </div>
+                        <div class="content">
+                            <h6 class="name"><?=$trans['aboutus_team4name']?></h6>
+                            <span class="title"><?=$trans['aboutus_team4title']?></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col learts-mb-30">
+                    <div class="team">
+                        <div class="image">
+                            <img src="img/team/3.jpg" alt="">
+                        </div>
+                        <div class="content">
+                            <h6 class="name"><?=$trans['aboutus_team5name']?></h6>
+                            <span class="title"><?=$trans['aboutus_team5title']?></span>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>
-    </div> -->
+    </div>
     <!-- Team Section End -->
 
     <!-- Instagram Section Start -->

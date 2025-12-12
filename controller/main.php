@@ -594,7 +594,7 @@ function sectionfooter($trans) {
                 <div class="col-lg-4 col-sm-6 col-12 learts-mb-40">
                     <h4 class="widget-title">'.$trans['footer_contactanos'].'</h4>
                     <div class="widget-contact2">
-                        <p>C/ Chillida, N4, Planta 1, Oficina 6 <br> Roquetas de Mar, Almería <br> info@hempleaf.es <br> <span>(+34) 950 01 32 66</span> <br> <span class="text-primary">www.hempleaf.es</span></p>
+                        <p>C/ Potasio, 7<br> Loma Cabrera, Almería <br> info@farmacialosllanos.org <br> <span>(+34) 950 33 70 53</span> <br> <span class="text-primary">www.farmacialosllanos.org</span></p>
                     </div>
                 </div>
                 <div class="col-lg-2 col-sm-6 col-12 learts-mb-40">
