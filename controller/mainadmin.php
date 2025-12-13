@@ -474,7 +474,7 @@ function sectionfooter($trans) {
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            &copy; <script>document.write(new Date().getFullYear());</script>  Hempleaf. Todos los derechos reservados.
+                            &copy; <script>document.write(new Date().getFullYear());</script>  farmacialosllanos. Todos los derechos reservados.
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="text-md-right footer-links d-none d-sm-block">

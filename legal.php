@@ -171,7 +171,6 @@
                 <p><strong>XVI. QUEJAS Y RECLAMACIONES</strong></p>
                 <p>El Usuario puede hacer llegar a Farmacia los llanos sus quejas, reclamaciones o todo otro comentario que desee realizar a trav&eacute;s de los datos de contacto que se facilitan al principio de estas Condiciones (Informaci&oacute;n General).</p>
                 <p>Adem&aacute;s, Farmacia los llanos dispone de hojas oficiales de reclamaci&oacute;n a disposici&oacute;n de los consumidores y usuarios, y que estos pueden solicitar a Farmacia los llanos en cualquier momento, utilizando los datos de contacto que se facilitan al principio de estas Condiciones (Informaci&oacute;n General).</p>
-                <p>Asimismo, si de la celebraci&oacute;n de este contrato de compra entre Farmacia los llanos y el Usuario emanara una controversia, el Usuario como consumidor puede solicitar una soluci&oacute;n extrajudicial de controversias, de acuerdo con el Reglamento (UE) 524/2013 del Parlamento Europeo y del Consejo, de 21 de mayo de 2013, sobre resoluci&oacute;n de litigios en l&iacute;nea en materia de consumo y por el que se modifica el Reglamento (CE) 2006/2004 y la Directiva 2009/22/CE. Puede acceder a este m&eacute;todo a trav&eacute;s del siguiente sitio web: <a href="http://ec.europa.eu/consumers/odr/">http://ec.europa.eu/consumers/odr/</a>.</p>
                 
                 <p>&Uacute;ltima modificaci&oacute;n: 3 de mayo 2021</p>
             </div>
