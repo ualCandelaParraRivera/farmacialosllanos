@@ -19,7 +19,7 @@
             <div class="section-title3">
                 <p><strong>&iquest;QU&Eacute; ES UNA COOKIE?</strong></p>
                 <p>Una cookie es un fichero que se descarga en su ordenador al acceder a determinadas p&aacute;ginas web. Las cookies permiten a una p&aacute;gina web, entre otras cosas, almacenar y recuperar informaci&oacute;n sobre los h&aacute;bitos de navegaci&oacute;n de un usuario o de su equipo y, dependiendo de la informaci&oacute;n que contengan y de la forma en que utilice su equipo, pueden utilizarse para reconocer al usuario.</p>
-                <p><strong>&iquest;Qu&eacute; tipos de cookies utiliza hempleaf.es?</strong></p>
+                <p><strong>&iquest;Qu&eacute; tipos de cookies utiliza farmacialosllanos.org?</strong></p>
                 <p>Seg&uacute;n el plazo de tiempo que permanecen activas las cookies pueden ser:</p>
                 <ul>
                     <li><em>Cookies de sesi&oacute;n:</em> dise&ntilde;adas para recabar y almacenar datos mientras el usuario accede a una p&aacute;gina web. Se suelen emplear para almacenar informaci&oacute;n que s&oacute;lo interesa conservar para la prestaci&oacute;n del servicio solicitado por el usuario en una sola ocasi&oacute;n (por ejemplo, una lista de productos adquiridos).</li>
@@ -30,7 +30,7 @@
                     <li><em>Cookies propias:</em>&nbsp;Son aquellas que se env&iacute;an al dispositivo del usuario gestionadas exclusivamente por nosotros para el mejor funcionamiento del sitio.</li>
                     <li><em>Cookies de terceros:</em>&nbsp;Son aquellas que se env&iacute;an al dispositivo del usuario desde un equipo o dominio que no es gestionado por nosotros sino por otra entidad, que tratar&aacute; los datos obtenidos.</li>
                 </ul>
-                <p>Cuando navegues por hempleaf.es se pueden instalar en tu dispositivo las siguientes cookies:</p>
+                <p>Cuando navegues por farmacialosllanos.org se pueden instalar en tu dispositivo las siguientes cookies:</p>
                 <ul>
                     <li><em>Cookies de registro:</em> Cuando el usuario entra en nuestra web e inicia sesi&oacute;n se instala una cookie propia y temporal para que pueda navegar por su zona de usuario sin tener que introducir sus datos continuamente. Esta cookie desaparecer&aacute; cuando cierre sesi&oacute;n.</li>
                     <li><em>Cookies de an&aacute;lisis:</em> Sirven para estudiar el comportamiento de los usuarios de forma an&oacute;nima al navegar por nuestra web. As&iacute; podremos conocer los contenidos m&aacute;s vistos, el n&uacute;mero de visitantes, etc. Una informaci&oacute;n que utilizaremos para mejorar la experiencia de navegaci&oacute;n y optimizar nuestros servicios. Pueden ser propias pero tambi&eacute;n de terceros.</li>
@@ -52,9 +52,9 @@
                 </ul>
                 <p>Si decide deshabilitar las Cookies no podremos ofrecerle algunos de nuestros servicios como, por ejemplo, permanecer identificado o mantener las compras en su carrito.</p>
                 <p>Actualizaci&oacute;n de cookies</p>
-                <p>Las cookies de <strong><a href="https://hempleaf.es/">https://hempleaf.es</a></strong>&nbsp;pueden ser actualizadas por lo que aconsejamos que revisen nuestra pol&iacute;tica de forma peri&oacute;dica.</p>
+                <p>Las cookies de <strong><a href="https://farmacialosllanos.org/">https://farmacialosllanos.org/</a></strong>&nbsp;pueden ser actualizadas por lo que aconsejamos que revisen nuestra pol&iacute;tica de forma peri&oacute;dica.</p>
 
-                <p>Ultima modificaci&oacute;n: 3 de mayo 2021</p>
+                <p>Ultima modificaci&oacute;n: 10 de diciembre 2025</p>
             </div>
             <!-- Section Title End -->
         </div>
