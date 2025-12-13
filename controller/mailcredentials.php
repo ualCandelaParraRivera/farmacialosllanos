@@ -1,7 +1,7 @@
 <?php
-$infomail = 'info@hempleaf.es';
-$infopass = '#fhoLZK0^g%@';
-$hostmail = 'mail.hempleaf.es';
-$contactmail = 'izabel@hempleaf.es';
-$contactname = 'Izabel Lever';
+$infomail = 'info@farmacialosllanos.org';
+$infopass = '35*n3Rbe4';
+$hostmail = 'mail.farmacialosllanos.org';
+$contactmail = 'contacto@farmacialosllanos.org';
+$contactname = 'Farmacia Los Llanos';
 ?>
