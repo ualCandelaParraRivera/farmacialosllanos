@@ -91,7 +91,7 @@ if($lang != "en"){
     ,ROUND(oi.price * oi.quantity,2) as subtotal
     ,ltrim(replace(substring(substring_index(pi.image, '.', 1), length(substring_index(pi.image, '.', 1 - 1)) + 1), '.', '')) AS imagename
     ,ltrim(replace(substring(substring_index(pi.image, '.', 2), length(substring_index(pi.image, '.', 2 - 1)) + 1), '.', '')) AS extension     
-    FROM hempleaf.order_item oi
+    FROM order_item oi
     LEFT JOIN product p ON oi.productId = p.id
     LEFT JOIN product_translation pt ON p.id = pt.productId
     LEFT JOIN (SELECT pi.productId, pi.image FROM product_image pi WHERE pi.isdeleted = 0 GROUP BY productId) pi ON p.id = pi.productId
@@ -108,7 +108,7 @@ if($lang != "en"){
     <?php
 
     $query = "SELECT guidorder    
-    FROM hempleaf.order
+    FROM `order`
     WHERE id = ?";
 
         $res=$db->prepare($query, array($orderid));
@@ -179,7 +179,7 @@ if($lang != "en"){
                             ,o.tax
                             ,o.shipping
                             ,ROUND(o.grandTotal,2) as grandTotal
-                            FROM hempleaf.order o
+                            FROM order o
                             WHERE id = ?";
                             
                             $res=$db->prepare($query, array($orderid));

@@ -200,7 +200,7 @@ function generarpresupuesto($db, $guidorder){
                         <table>
                             <tr>
                                 <td class="title">
-                                <a href="index"><img src="'.$logo.'" alt="Hempleaf Logo"></a>
+                                <a href="index"><img src="'.$logo.'" alt="Los Llanos Logo"></a>
                                 </td>
                                 
                                 <td style="text-align: right;">
@@ -216,11 +216,11 @@ function generarpresupuesto($db, $guidorder){
                         <table>
                             <tr>
                                 <td>
-                                    Hempleaf S.L.<br>
+                                    Farmacia Los Llanos S.L.<br>
                                     B-02910669<br>
-                                    C/ Chillida, 4, Planta 1, Oficina 6<br>
-                                    Email: info@hempleaf.es<br>
-                                    Teléfono: (+34) 671 39 39 24
+                                    C/ Potasio, 7<br>
+                                    Email: info@farmacialosllanos.org<br>
+                                    Teléfono: (+34) 950 33 70 53
                                 </td>
                                 
                                 <td style="text-align: right;">

@@ -23,14 +23,14 @@ if($_SERVER['HTTP_HOST'] == "hempleaf.ddns.net" || $_SERVER['HTTP_HOST'] == "loc
     $webroot = $_SERVER['HTTP_HOST']."/";
 }
 
-$session_name = "hempleaf"; // nombre de la sesion
+$session_name = "losllanos"; // nombre de la sesion
 
 if (is_null($location_accessdenied))
 $location_accessdenied = $location_accessdenied_default;
 
 $db=Db::getInstance();
 
-session_name("hempleaf");  
+session_name("losllanos");  
 session_start();
 if(!isset($_SESSION['cart'])){
     $_SESSION['cart']="";

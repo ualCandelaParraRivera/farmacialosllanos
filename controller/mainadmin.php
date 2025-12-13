@@ -51,7 +51,7 @@ while($row = mysqli_fetch_array($res)){
 function sectionhead($text){
     echo '    <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Hempleaf - '.$text.'</title>
+    <title>Los Llanos - '.$text.'</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -159,7 +159,7 @@ function sectionheader($db, $active) {
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
                 <div class="col">
                     <div class="header-logo">
-                      <a href="index"><img src="assets/images/logo-2.png" alt="Hempleaf Logo"></a>
+                      <a href="index"><img src="assets/images/logo-2.png" alt="Los Llanos Logo"></a>
                     </div>
                   </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

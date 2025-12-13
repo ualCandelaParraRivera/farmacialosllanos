@@ -18,7 +18,7 @@
         <div class="container">
             <div class="coming-soon-content">
                 <div class="logo">
-                    <a href="index"><img src="img/logo/logof.png" alt="Hempleaf Logo"></a>
+                    <a href="index"><img src="img/logo/logof.png" alt="Los Llanos Logo"></a>
                 </div>
                 <h2 class="title"><?=$trans['comingsoon_title']?></h2>
                 <div class="countdown3" data-countdown="2021/05/15"></div>

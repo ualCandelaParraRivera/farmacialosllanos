@@ -62,7 +62,7 @@ $grandtotal = $row['grandtotal'];
                         <div class="offset-xl-2 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="card">
                                 <div class="card-header p-4" style="display: block;">
-                                    <a class="pt-2 d-inline-block" href="index">Hempleaf</a>
+                                    <a class="pt-2 d-inline-block" href="index">Farmacia Los Llanos</a>
                                     <div class="float-right">
                                         <h3 class="mb-0">Factura #<?=$invoiceid?></h3>
                                         Fecha: <?=$date?>
@@ -72,11 +72,11 @@ $grandtotal = $row['grandtotal'];
                                     <div class="row mb-4">
                                         <div class="col-sm-6">
                                             <h5 class="mb-3">De:</h5>                                            
-                                            <h3 class="text-dark mb-1">Hempleaf S.L.</h3>
+                                            <h3 class="text-dark mb-1">Farmacia Los Llanos S.L.</h3>
                                             <div>B-02910669</div>
-                                            <div>C/ Chillida, 4, Planta 1, Oficina 6</div>
-                                            <div>Email: info@hempleaf.es</div>
-                                            <div>Teléfono: (+34) 671 39 39 24</div>
+                                            <div>C/ Potasio, 7</div>
+                                            <div>Email: info@farmacialosllanos.org</div>
+                                            <div>Teléfono: (+34) 950 33 70 53</div>
                                         </div>
                                         <div class="col-sm-6">
                                             <h5 class="mb-3">A:</h5>
@@ -172,7 +172,7 @@ $grandtotal = $row['grandtotal'];
                                     </div>
                                 </div>
                                 <div class="card-footer bg-white">
-                                    <p class="mb-0">Hempleaf S.L., B-02910669, C/ Chillida, 4, Planta 1, Oficina 6</p>
+                                    <p class="mb-0">Farmacia Los Llanos S.L., B-02910669, C/ Potasio, 7</p>
                                 </div>
                             </div>
                         </div>

@@ -281,7 +281,7 @@ function rellenarInfoPDF($db, $orderid, $type, $trans, $lang) {
                 ,oi.quantity
                 ,ROUND(oi.price*(1-oi.discount) * oi.quantity,2) as subtotal
                 ,oi.sku   
-                FROM hempleaf.order_item oi
+                FROM order_item oi
                 LEFT JOIN product p ON oi.productId = p.id
                 LEFT JOIN product_translation pt ON p.id = pt.productId
                 WHERE oi.orderId = ?  AND pt.lang = ? ";

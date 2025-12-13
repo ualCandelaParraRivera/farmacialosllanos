@@ -137,8 +137,8 @@
                                             WHEN 7 THEN '".$trans['myaccount_orderstatus7']."' END as status
                                             ,grandtotal as total
                                             ,guidorder
-                                            FROM `hempleaf`.`user` u
-                                            LEFT JOIN `hempleaf`.`order` o ON u.id = o.userId
+                                            FROM user u
+                                            LEFT JOIN order o ON u.id = o.userId
                                             WHERE u.isdeleted = 0 and u.isvalid = 1 AND o.isdeleted = 0 AND u.id = ?";
                                             $res=$db->prepare($query, array($_SESSION['usercode']));
                                             $i=1;
