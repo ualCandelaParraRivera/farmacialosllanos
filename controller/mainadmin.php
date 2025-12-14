@@ -242,9 +242,7 @@ function sectionheader($db, $active) {
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
                                             <a href="https://www.facebook.com/FarmaciaLosLlanos/" target="_blank" class="connection-item"><img src="assets/images/facebook256.png" alt="" ><span>Facebook</span></a>
                                         </div>
-                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="https://www.linkedin.com/company/hempleaf/" target="_blank" class="connection-item"><img src="assets/images/linkedin256.png" alt="" > <span>LinkedIn</span></a>
-                                        </div>
+                                        
                                     </div>
                                 </li>
                             </ul>

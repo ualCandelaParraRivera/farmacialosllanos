@@ -18,7 +18,7 @@
     ,u.guiduser
     ,ltrim(replace(substring(substring_index(u.image, '.', 1), length(substring_index(u.image, '.', 1 - 1)) + 1), '.', '')) AS userimage
     ,ltrim(replace(substring(substring_index(u.image, '.', 2), length(substring_index(u.image, '.', 2 - 1)) + 1), '.', '')) AS userextension 
-    ,u.linkedin
+    
     ,u.instagram
     FROM post p
     LEFT JOIN user u ON p.userid = u.id
@@ -41,7 +41,6 @@
         $intro = $row['intro'];
         $guidpost = $row['guidpost'];
         $guiduser = $row['guiduser'];
-        $linkedin = $row['linkedin'];
         $instagram = $row['instagram'];
     }
 
@@ -132,7 +131,7 @@
                             <a href="blog?guiduser=<?=$guiduser?>" class="name"><?=$firstname?> <?=$middlename?></a>
                             <p><?=$intro?></p>
                             <div class="social">
-                                <a href="<?=$linkedin?>"><i class="fab fa-linkedin"></i></a>
+                                
                                 <a href="<?=$instagram?>"><i class="fab fa-instagram"></i></a>
                             </div>
                         </div>

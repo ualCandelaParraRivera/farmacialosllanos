@@ -497,10 +497,7 @@ foreach($products as $product){
                     </div>
                 </div>
             </div>
-            <div class="offcanvas-social">
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            </div>
+           
         </div>
     </div>
     <!-- OffCanvas Search End -->
@@ -628,7 +625,7 @@ function sectionfooter($trans) {
                     <h4 class="widget-title">'.$trans['footer_social'].'</h4>
                     <ul class="widget-list">
                         <li> <i class="fab fa-instagram"></i> <a href="https://www.instagram.com/farmacialosllanosalmeria/" target="_blank">Instagram</a></li>
-                        <li> <i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/company/hempleaf/" target="_blank">LinkedIn</a></li>
+                        
                         <li> <i class="fab fa-facebook"></i> <a href="https://www.facebook.com/FarmaciaLosLlanos/" target="_blank">Facebook</a></li>
                     </ul>
                 </div>
