@@ -5,7 +5,7 @@
 function enviarEmail($email, $link, $nombre){
     include("mailcredentials.php");
     $fromAddress = $infomail;
-    $fromName = "Hempleaf";
+    $fromName = "Farmacialosllanos";
     $toAddress = $email;
     $toName = $nombre;
     $mail = new PHPMailer;
@@ -34,7 +34,7 @@ function enviarEmail($email, $link, $nombre){
         ]
     ]);
     
-    $mail->Subject = 'Recuperar contraseña Hempleaf';
+    $mail->Subject = 'Recuperar contraseña Farmacia Los Llanos';
     $mail->msgHTML($mensaje);
     return $mail->send();
 }
@@ -163,7 +163,7 @@ function generarMensaje($link, $nombre){
                       <td align="left" style="padding:0;Margin:0;width:280px"> 
                        <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                          <tr style="border-collapse:collapse"> 
-                          <td class="es-infoblock es-m-txt-c" align="left" style="padding:0;Margin:0;line-height:14px;font-size:12px;color:#CCCCCC"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:14px;color:#CCCCCC;font-size:12px">Hempleaf S.L.</p></td> 
+                          <td class="es-infoblock es-m-txt-c" align="left" style="padding:0;Margin:0;line-height:14px;font-size:12px;color:#CCCCCC"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:14px;color:#CCCCCC;font-size:12px">FARMACIA LOS LLANOS</p></td> 
                          </tr> 
                        </table></td> 
                      </tr> 
@@ -293,7 +293,7 @@ function generarMensaje($link, $nombre){
                           <td align="center" style="padding:0;Margin:0;padding-bottom:15px;font-size:0px"><a target="_blank" href="'.$webroot.'" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#999999;font-size:12px"><img src="'.imageToBase64("img/email/68601618315015577.png").'" alt="Logo Hempleaf" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" title="Logo Hempleaf" width="135"></a></td> 
                          </tr> 
                          <tr style="border-collapse:collapse"> 
-                          <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:18px;color:#999999;font-size:12px;text-align:center">info<a target="_blank" href="mailto:info@hempleaf.es" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#999999;font-size:12px">@hempleaf.es</a></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:18px;color:#999999;font-size:12px;text-align:center">© 2021&nbsp;Hempleaf</p></td> 
+                          <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:18px;color:#999999;font-size:12px;text-align:center">info<a target="_blank" href="mailto:info@farmacialosllanos.org" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#999999;font-size:12px">@farmacialosllanos.org</a></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:18px;color:#999999;font-size:12px;text-align:center">© 2021&nbsp;Farmacia Los Llanos</p></td> 
                          </tr> 
                        </table></td> 
                      </tr> 
@@ -314,7 +314,7 @@ function generarMensaje($link, $nombre){
                            </table></td> 
                          </tr> 
                          <tr style="border-collapse:collapse"> 
-                          <td style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:18px;color:#999999;font-size:12px;text-align:justify">Recibió este correo electrónico porque visitó nuestro&nbsp;sitio o nos preguntó acerca del boletín. Puede darse de baja enviando un correo a info@hempleaf.es o&nbsp;actualizando sus preferencias de suscripción.</p></td> 
+                          <td style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:18px;color:#999999;font-size:12px;text-align:justify">Recibió este correo electrónico porque visitó nuestro&nbsp;sitio o nos preguntó acerca del boletín. Puede darse de baja enviando un correo a info@farmacialosllanos.org o&nbsp;actualizando sus preferencias de suscripción.</p></td> 
                          </tr> 
                        </table></td> 
                      </tr> 
@@ -335,7 +335,7 @@ function generarMensaje($link, $nombre){
                       <td align="center" valign="top" style="padding:0;Margin:0;width:560px"> 
                        <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                          <tr style="border-collapse:collapse"> 
-                          <td style="padding:0;Margin:0;padding-left:5px;padding-right:5px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:18px;color:#999999;font-size:12px;text-align:justify">Este mensaje y, en su caso, cualquier fichero adjunto al mismo, puede contener información confidencial cuya divulgación está prohibida por la ley. Si usted no es el destinatario del mensaje, le rogamos que nos lo notifique inmediatamente y proceda a su borrado sin reenviarlo, copiar o difundir su contenido por ningún medio. El correo electrónico vía Internet no permite asegurar la confidencialidad de los mensajes que se transmiten ni su integridad o correcta recepción. HEMPLEAF&nbsp;no asume responsabilidad por estas circunstancias. Si el destinatario de este mensaje no consintiera la utilización del correo electrónico vía Internet y la grabación de los mensajes, rogamos lo ponga en nuestro conocimiento de forma inmediata.<br><br>HEMPLEAF se reserva las acciones legales que le correspondan contra todo tercero que acceda de forma ilegítima al contenido de cualquier mensaje externo procedente del mismo.</p></td> 
+                          <td style="padding:0;Margin:0;padding-left:5px;padding-right:5px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:18px;color:#999999;font-size:12px;text-align:justify">Este mensaje y, en su caso, cualquier fichero adjunto al mismo, puede contener información confidencial cuya divulgación está prohibida por la ley. Si usted no es el destinatario del mensaje, le rogamos que nos lo notifique inmediatamente y proceda a su borrado sin reenviarlo, copiar o difundir su contenido por ningún medio. El correo electrónico vía Internet no permite asegurar la confidencialidad de los mensajes que se transmiten ni su integridad o correcta recepción. FARMACIA LOS LLANOS&nbsp;no asume responsabilidad por estas circunstancias. Si el destinatario de este mensaje no consintiera la utilización del correo electrónico vía Internet y la grabación de los mensajes, rogamos lo ponga en nuestro conocimiento de forma inmediata.<br><br>FARMACIA LOS LLANOS se reserva las acciones legales que le correspondan contra todo tercero que acceda de forma ilegítima al contenido de cualquier mensaje externo procedente del mismo.</p></td> 
                          </tr> 
                        </table></td> 
                      </tr> 

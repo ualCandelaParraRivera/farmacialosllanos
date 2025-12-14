@@ -338,7 +338,7 @@ function rellenarInfoPDF($db, $orderid, $type, $trans, $lang) {
                         '.$trans['pdf_checkout_bank'].': XXXX XXXX XXXX XXXX<br>
                         ESXX XXXX XXXX XXXX XXXX XXXX<br>
                         '.$trans['pdf_checkout_concept'].': '.($type==1?''.$trans['pdf_budget_invoice'].'':''.$trans['pdf_budget_order'].'').' Nº: '.$id.'<br>
-                        '.$trans['pdf_checkout_beneficiary'].': Hempleaf S.L  
+                        '.$trans['pdf_checkout_beneficiary'].': FARMACIA LOS LLANOS<br> 
                     </tr>
                 </table>';
                 }

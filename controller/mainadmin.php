@@ -57,7 +57,7 @@ function sectionhead($text){
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./HL-Icon-White.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
     <link rel="manifest" href="./site.webmanifest">
@@ -226,7 +226,7 @@ function sectionheader($db, $active) {
                                 <li class="connection-list">
                                     <div class="row">
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="index" target="_blank" class="connection-item"><img src="assets/images/hempleaf256.png" alt="" > <span>Hempleaf</span></a>
+                                            <a href="index" target="_blank" class="connection-item"><img src="assets/images/hempleaf256.png" alt="" > <span>Farmacialosllanos</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
                                             <a href="https://webmail.hempleaf.es/" target="_blank" class="connection-item"><img src="assets/images/mail256.png" alt="" > <span>Correo</span></a>

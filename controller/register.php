@@ -4,7 +4,7 @@ include("phpmailer/PHPMailerAutoload.php");
 function enviarEmail($email, $nombre, $asunto, $mensaje){
     include("mailcredentials.php");
     $fromAddress = $infomail;
-    $fromName = "Hempleaf";
+    $fromName = "Los Llanos";
     $toAddress = $email;
     $toName = $nombre;
     $mail = new PHPMailer;
@@ -61,7 +61,7 @@ function generarMensaje($email, $nombre, $asunto, $mensaje){
       <meta name="x-apple-disable-message-reformatting"> 
       <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
       <meta content="telephone=no" name="format-detection"> 
-      <title>Bienvenido a Hempleaf</title> 
+      <title>Bienvenido a Farmacia Los Llanos</title> 
       <!--[if (mso 16)]>
         <style type="text/css">
         a {text-decoration: none;}
@@ -140,7 +140,7 @@ function generarMensaje($email, $nombre, $asunto, $mensaje){
                       <td align="left" style="padding:0;Margin:0;width:280px"> 
                        <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                          <tr style="border-collapse:collapse"> 
-                          <td class="es-infoblock es-m-txt-c" align="left" style="padding:0;Margin:0;line-height:14px;font-size:12px;color:#CCCCCC"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:14px;color:#CCCCCC;font-size:12px">Hempleaf S.L.</p></td> 
+                          <td class="es-infoblock es-m-txt-c" align="left" style="padding:0;Margin:0;line-height:14px;font-size:12px;color:#CCCCCC"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:14px;color:#CCCCCC;font-size:12px">FARMACIA LOS LLANOS</p></td> 
                          </tr> 
                        </table></td> 
                      </tr> 
@@ -335,7 +335,7 @@ function generarMensaje($email, $nombre, $asunto, $mensaje){
                           <td align="center" style="padding:0;Margin:0;padding-bottom:15px;font-size:0px"><a target="_blank" href="'.$webroot.'" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#999999;font-size:12px"><img src="'.imageToBase64('img/email/68601618315015577.png').'" alt="Logo Hempleaf" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" title="Logo Hempleaf" width="135"></a></td> 
                          </tr> 
                          <tr style="border-collapse:collapse"> 
-                          <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:18px;color:#999999;font-size:12px;text-align:center">info<a target="_blank" href="mailto:info@hempleaf.es" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#999999;font-size:12px">@hempleaf.es</a></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:18px;color:#999999;font-size:12px;text-align:center">© 2021&nbsp;Hempleaf</p></td> 
+                          <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:18px;color:#999999;font-size:12px;text-align:center">info<a target="_blank" href="mailto:info@hempleaf.es" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#999999;font-size:12px">@hempleaf.es</a></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:18px;color:#999999;font-size:12px;text-align:center">© 2021&nbsp;Farmacialosllanos</p></td> 
                          </tr> 
                        </table></td> 
                      </tr> 
@@ -356,7 +356,7 @@ function generarMensaje($email, $nombre, $asunto, $mensaje){
                            </table></td> 
                          </tr> 
                          <tr style="border-collapse:collapse"> 
-                          <td style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:18px;color:#999999;font-size:12px;text-align:justify">Recibió este correo electrónico porque visitó nuestro&nbsp;sitio o nos preguntó acerca del boletín. Puede darse de baja enviando un correo a info@hempleaf.es o actualizando sus preferencias de suscripción.</p></td> 
+                          <td style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:18px;color:#999999;font-size:12px;text-align:justify">Recibió este correo electrónico porque visitó nuestro&nbsp;sitio o nos preguntó acerca del boletín. Puede darse de baja enviando un correo a info@farmacialosllanos.org o actualizando sus preferencias de suscripción.</p></td> 
                          </tr> 
                        </table></td> 
                      </tr> 
@@ -452,7 +452,7 @@ if (!empty($errors)) {
     if($db->numRows($res) > 0){
         $row = mysqli_fetch_array($res);
         $guiduser = $row['guiduser'];
-        $issended = enviarEmail($email, $firstname, "Bienvenido a Hempleaf", $guiduser);
+        $issended = enviarEmail($email, $firstname, "Bienvenido a Farmacia Los Llanos", $guiduser);
     }
     $data['success'] = true;
     $data['errors']  = $errors;

@@ -216,7 +216,7 @@ function generarpresupuesto($db, $guidorder){
                         <table>
                             <tr>
                                 <td>
-                                    Farmacia Los Llanos S.L.<br>
+                                    Farmacia Los Llanos<br>
                                     B-02910669<br>
                                     C/ Potasio, 7<br>
                                     Email: info@farmacialosllanos.org<br>

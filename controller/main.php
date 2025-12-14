@@ -107,7 +107,7 @@ function getMeta($db, $page=""){
     $parts = explode('/', $_SERVER['SCRIPT_NAME']);
     $page = explode('.', array_pop($parts))[0];
     $qs = $_SERVER['QUERY_STRING'];
-    $title = "Hempleaf - ";
+    $title = "Los Llanos - ";
     $robots = "index, follow";
     $description = "";
     $viewport = "width=device-width, initial-scale=1, shrink-to-fit=no";
@@ -648,7 +648,7 @@ function sectionfooter($trans) {
 
                 <div class="col-md-4 col-12 learts-mb-40 order-md-1">
                     <div class="widget-copyright">
-                        <p class="copyright text-center text-md-left">&copy; <script>document.write(new Date().getFullYear());</script>  Hempleaf. '.$trans['footer_copy'].'</a></p>
+                        <p class="copyright text-center text-md-left">&copy; <script>document.write(new Date().getFullYear());</script>  Farmacialosllanos. '.$trans['footer_copy'].'</a></p>
                     </div>
                 </div>
 
