@@ -627,9 +627,9 @@ function sectionfooter($trans) {
                 <div class="col-lg-2 col-sm-6 col-12 learts-mb-40">
                     <h4 class="widget-title">'.$trans['footer_social'].'</h4>
                     <ul class="widget-list">
-                        <li> <i class="fab fa-instagram"></i> <a href="https://www.instagram.com/hempleafspain/" target="_blank">Instagram</a></li>
+                        <li> <i class="fab fa-instagram"></i> <a href="https://www.instagram.com/farmacialosllanosalmeria/" target="_blank">Instagram</a></li>
                         <li> <i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/company/hempleaf/" target="_blank">LinkedIn</a></li>
-                        <li> <i class="fab fa-facebook"></i> <a href="https://www.facebook.com/Hempleaf-105464741603213/" target="_blank">Facebook</a></li>
+                        <li> <i class="fab fa-facebook"></i> <a href="https://www.facebook.com/FarmaciaLosLlanos/" target="_blank">Facebook</a></li>
                     </ul>
                 </div>
             </div>

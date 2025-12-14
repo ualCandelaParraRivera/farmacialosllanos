@@ -237,10 +237,10 @@ function sectionheader($db, $active) {
                                     </div>
                                     <div class="row">
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="https://www.instagram.com/hempleafspain/" target="_blank" class="connection-item"><img src="assets/images/instagram256.png" alt=""> <span>Instagram</span></a>
+                                            <a href="https://www.instagram.com/farmacialosllanosalmeria/" target="_blank" class="connection-item"><img src="assets/images/instagram256.png" alt=""> <span>Instagram</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="https://www.facebook.com/Hempleaf-105464741603213/" target="_blank" class="connection-item"><img src="assets/images/facebook256.png" alt="" ><span>Facebook</span></a>
+                                            <a href="https://www.facebook.com/FarmaciaLosLlanos/" target="_blank" class="connection-item"><img src="assets/images/facebook256.png" alt="" ><span>Facebook</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
                                             <a href="https://www.linkedin.com/company/hempleaf/" target="_blank" class="connection-item"><img src="assets/images/linkedin256.png" alt="" > <span>LinkedIn</span></a>
