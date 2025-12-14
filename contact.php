@@ -53,8 +53,8 @@
                 <p><?=$trans['contact_text']?></p>
             </div>
             <!-- Section Title End -->
-
             <!-- Contact Information Start -->
+             <!--
             <div class="row learts-mb-n30">
                 <div class="col-lg-4 col-md-6 col-12 learts-mb-30">
                     <div class="contact-info">
@@ -76,6 +76,7 @@
                     </div>
                 </div>
             </div>
+            -->
             <!-- Contact Information End -->
             <!-- Contact Information Start -->
             <div class="row learts-mt-30">

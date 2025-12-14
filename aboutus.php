@@ -166,7 +166,7 @@
             <!-- Section Title Start -->
             <div class="section-title2 text-center">
                 <h3 class="sub-title"><?=$trans['aboutus_instagram']?></h3>
-                <h2 class="title">@farmacialosllanos</h2>
+                <h2 class="title">@farmacialosllanosalmeria</h2>
             </div>
             <!-- Section Title End -->
 
