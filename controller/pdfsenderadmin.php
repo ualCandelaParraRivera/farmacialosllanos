@@ -8,23 +8,17 @@ function sendAttatchment($db, $orderid, $type, $trans, $lang){
 
 function generarPDF($db, $orderid, $type, $trans, $lang){
    
-    // include ("../dompdf/src/Dompdf.php");
     if($type==1){
         require_once '../dompdf/autoload.inc.php'; 
     }else{
         require_once './dompdf/autoload.inc.php'; 
     }
     
-    // Instantiate and use the dompdf class 
     $dompdf = new Dompdf();
     $html = rellenarInfoPDF($db, $orderid, $type, $trans, $lang);
-    // (Optional) Setup the paper size and orientation 
     $dompdf->setPaper('A4', 'portrait');
     $dompdf->loadHtml($html); 
-    // Render the HTML as PDF 
     $dompdf->render(); 
-    // Output the generated PDF (1 = download and 0 = preview) 
-    // $dompdf->stream("hempleaf", array("Attachment" => 0));
     enviarPDF($db, $orderid, $type, $dompdf, $trans, $lang);
 }
 
@@ -412,19 +406,19 @@ function enviarEmail($email, $nombre, $asunto, $mensaje, $orderid, $db, $dompdf,
     $toName = $nombre;
     $mail = new PHPMailer;
     $mail->CharSet = "UTF-8";
-    $mail->isSMTP();                            // Set mailer to use SMTP
-    $mail->Host = $hostmail;             // Specify main and backup SMTP servers
-    $mail->SMTPAuth = true;                     // Enable SMTP authentication
+    $mail->isSMTP();
+    $mail->Host = $hostmail;
+    $mail->SMTPAuth = true;
     $mail->SMTPDebug = 0;
     $mail->Debugoutput = 'html';
-    $mail->Username = $infomail;            // SMTP username
-    $mail->Password = $infopass;            // SMTP password
-    $mail->SMTPSecure = 'tls';                  // Enable TLS encryption, `ssl` also accepted
-    $mail->Port = 587;                          // TCP port to connect to
+    $mail->Username = $infomail;
+    $mail->Password = $infopass;
+    $mail->SMTPSecure = 'tls';
+    $mail->Port = 587;
     $mail->addReplyTo($fromAddress, $fromName);
     $mail->setFrom($fromAddress, $fromName);
-    $mail->addAddress($toAddress,$toName);   // Add a recipient
-    $mail->isHTML(true);  // Set email format to HTML
+    $mail->addAddress($toAddress,$toName);
+    $mail->isHTML(true);
     $mail->AddAttachment($file_name);  
 
     $mensaje = generarMensaje($email, $nombre, $asunto, $mensaje, $type, $lang, $trans);

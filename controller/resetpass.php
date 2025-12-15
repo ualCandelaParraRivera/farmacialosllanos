@@ -10,19 +10,19 @@ function enviarEmail($email, $link, $nombre){
     $toName = $nombre;
     $mail = new PHPMailer;
     $mail->CharSet = "UTF-8";
-    $mail->isSMTP();                            // Set mailer to use SMTP
-    $mail->Host = $hostmail;             // Specify main and backup SMTP servers
-    $mail->SMTPAuth = true;                     // Enable SMTP authentication
+    $mail->isSMTP();
+    $mail->Host = $hostmail;
+    $mail->SMTPAuth = true;
     $mail->SMTPDebug = 0;
     $mail->Debugoutput = 'html';
-    $mail->Username = $infomail;            // SMTP username
-    $mail->Password = $infopass;            // SMTP password
-    $mail->SMTPSecure = 'tls';                  // Enable TLS encryption, `ssl` also accepted
-    $mail->Port = 587;                          // TCP port to connect to
+    $mail->Username = $infomail;
+    $mail->Password = $infopass;
+    $mail->SMTPSecure = 'tls';
+    $mail->Port = 587;
     $mail->addReplyTo($fromAddress, $fromName);
     $mail->setFrom($fromAddress, $fromName);
-    $mail->addAddress($toAddress,$toName);          // Add a recipient
-    $mail->isHTML(true);                        // Set email format to HTML
+    $mail->addAddress($toAddress,$toName);
+    $mail->isHTML(true);
 
     $mensaje = generarMensaje($link, $nombre);
 
@@ -355,8 +355,8 @@ function generarMensaje($link, $nombre){
 }
 
 
-$errors = array(); // array con los errores producidos
-$data = array(); // array para devolver información
+$errors = array();
+$data = array();
 
 $email = $_POST['email'];
 
@@ -373,17 +373,17 @@ if(emailValidation($email)){
             if($issended){
 
             }else{
-                $errors['pass']=$trans['control_resetpass_error1']; //No se ha enviado un correo
+                $errors['pass']=$trans['control_resetpass_error1'];
             }
             
         }else{
-            $errors['pass']=$trans['control_resetpass_error2']; //No se ha generado link temporal
+            $errors['pass']=$trans['control_resetpass_error2'];
         }
     }else{
         $errors['pass']=$trans['control_resetpass_error3'];
     }
 }else{
-    $errors['pass']=$trans['control_resetpass_error4']; //Ha introducido un correo inválido
+    $errors['pass']=$trans['control_resetpass_error4'];
 }
 
 if (!empty($errors)) {

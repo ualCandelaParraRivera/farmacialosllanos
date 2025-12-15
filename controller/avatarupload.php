@@ -1,7 +1,7 @@
 <?php include ("mainadmin.php");
 
 $errors = array();
-$data = array(); // array para devolver información
+$data = array();
 $guid = guid();
 $allowed = array('jpeg', 'png', 'jpg');
 $target_dir = "../img/team/";
@@ -36,14 +36,6 @@ if($check == false) {
 }
 
 
-
-
-
-
-//header("location: ../areaperfil.php");
-
-// Devuelve una respuesta ===========================================================
-	// Si hay algun error en el array de errores, devuelve un valor de success a false
     if (!empty($errors)) {
 		$data['success'] = false;
         $data['errors']  = $errors;

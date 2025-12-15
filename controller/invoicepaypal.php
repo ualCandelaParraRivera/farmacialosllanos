@@ -1,8 +1,6 @@
 <?php include ("pdfsender.php");
-
-// Tipo de pago para generar la factura
+¡
 $type = '1';
-// Paypal
 $ppidtransaction = NULL;
 $ppname= NULL;
 $ppsurname = NULL;
@@ -20,7 +18,6 @@ $ppcreatetime = NULL;
 $ppupdate_time = NULL;
 $ppguidorder = NULL;
 
-// Order
 $orderid = NULL;
 $ouserId = NULL;
 $osessionId = NULL;
@@ -59,9 +56,6 @@ $ocreatedAt = NULL;
 $oupdatedAt = NULL;
 $ocontent = NULL;
 $oisdeleted = NULL;
-
-
-// Order_item
 
 $oiid = NULL;
 $oiproductId = NULL;

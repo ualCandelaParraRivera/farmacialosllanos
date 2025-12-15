@@ -10,20 +10,19 @@ function enviarEmail($email, $nombre, $asunto, $mensaje){
     $toName = $nombre;
     $mail = new PHPMailer;
     $mail->CharSet = "UTF-8";
-    $mail->isSMTP();                            // Set mailer to use SMTP
-    $mail->Host = $hostmail;             // Specify main and backup SMTP servers
-    $mail->SMTPAuth = true;                     // Enable SMTP authentication
+    $mail->isSMTP();
+    $mail->Host = $hostmail;
+    $mail->SMTPAuth = true;
     $mail->SMTPDebug = 0;
     $mail->Debugoutput = 'html';
-    $mail->Username = $infomail;            // SMTP username
-    $mail->Password = $infopass;            // SMTP password
-    $mail->SMTPSecure = 'tls';                  // Enable TLS encryption, `ssl` also accepted
-    $mail->Port = 587;                          // TCP port to connect to
+    $mail->Username = $infomail;
+    $mail->Password = $infopass;
+    $mail->SMTPSecure = 'tls';
+    $mail->Port = 587;
     $mail->addReplyTo($fromAddress, $fromName);
     $mail->setFrom($fromAddress, $fromName);
-    $mail->addAddress($toAddress,$toName);   // Add a recipient
-    $mail->isHTML(true);  // Set email format to HTML
-
+    $mail->addAddress($toAddress,$toName);
+    $mail->isHTML(true);
     $mensaje = generarMensaje($email, $nombre, "Asunto", "Mensaje");
 
     $mail->smtpConnect([
@@ -36,20 +35,6 @@ function enviarEmail($email, $nombre, $asunto, $mensaje){
     $mail->Subject = 'Asunto de prueba';
     $mail->msgHTML($mensaje);
     return $mail->send();
-
-    // $mail->SMTPOptions = array(
-    //     'ssl' => array(
-    //         'verify_peer' => false,
-    //         'verify_peer_name' => false,
-    //         'allow_self_signed' => true
-    //     )
-    // );
-
-    // $mail->Host = gethostbyname('tls://smtp.gmail.com');
-
-    // $mail->Subject = $asunto;
-    // $mail->msgHTML($mensaje);
-    // return $mail->send();
 }
 
 function imageToBase64($relativepath){
@@ -80,7 +65,6 @@ foreach($products as $product){
     $quantity += $product->count;
     $subtotal += $product->total;
     $taxes += $product->totaltax;
-    // $weight += $product->count * $product->weight;
 }
 if($quantity == 0){
     redirect($location_404);
@@ -273,12 +257,6 @@ if(!isset($_POST['shipmentprice']) || empty($_POST['shipmentprice'])){
     $shipping = $_POST['shipmentprice'];
 }
 
-// if(!isset($_POST['weight']) || empty($_POST['weight'])){
-//     $errors['weight'] = $trans['control_placeorder_error16'];
-// }else{
-//     $weight = $_POST['weight'];
-// }
-
 $createaccount = false;
 if(isset($_POST['accountCheck'])){
     if(!isset($_POST['password1']) || empty($_POST['password1'])){
@@ -310,13 +288,12 @@ if(isset($_SESSION['usercode'])){
 }
 
 $idpromo = NULL;
-// Devuelve una respuesta ===========================================================
-	// Si hay algun error en el array de errores, devuelve un valor de success a false
+
     if (!empty($errors)) {
 		$data['success'] = false;
         $data['errors']  = $errors;
         $data['message'] = $trans['control_placeorder_errormessage'];
-	} else { //Si todo el formulario es correcto, se guarda el pedido
+	} else {
         $sessionId = session_id();
         $token = sha1($sessionId);
         $status = 0;
@@ -340,7 +317,7 @@ $idpromo = NULL;
         $grandtotal = $total - $descuento;
         $line = $street.($street2==NULL? '' : ', '.$street2);
         $lineship = $streetship.($street2ship==NULL? '' : ', '.$street2ship);
-        //Si crear cuenta, guarda un nuevo usuario con los datos proporcionados en el formulario y se hayan validado
+ 
         if($createaccount){           
             $query = "INSERT INTO `user` (`firstName`, `middleName`, `lastName`, `mobile`, `email`, `password`, `image`, `admin`, `vendor`, `registeredAt`, `lastLogin`, `intro`, `isdeleted`, `isvalid`, `billfirstName`, `billmiddleName`, `billlastName`, `billmobile`, `billline1`, `billpostalcode`, `billcity`, `billprovince`, `billcountry`, `shipfirstName`, `shipmiddleName`, `shiplastName`, `shipmobile`, `shipline`, `shippostalcode`, `shipcity`, `shipprovince`, `shipcountry`, `guiduser`) VALUES 
             (?, ?, ?, ?, ?, ?, 'user1.jpg', 0, 0, NOW(), NOW(), '', 0, 1, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, UUID());";
@@ -348,13 +325,11 @@ $idpromo = NULL;
             $db->prepare($query,$args);
             $userId = $db->lastId();
         }
-        //Se guarda el pedido
         $args = array($userId,$sessionId,$token,$status,$subtotal,$itemDiscount,$taxes,$shipping,$shippingtype,$weight,$total,$idpromo,$descuento,$grandtotal,$email,$billfirstname,$billmiddlename,$billlastname,$billmobile,$line,$billpostalcode,$billcity,$billdistrict,$billcountry,$shipfirstname,$shipmiddlename,$shiplastname,$shipmobile,$lineship,$shippostalcode,$shipcity,$shipdistrict,$shipcountry,$ordernotes);
         $query = "INSERT INTO `order` (userId, sessionId, token, status, subTotal, itemDiscount, tax, shipping, shippingtype, weight, total, promoId, discount, grandTotal, email, billfirstName, billmiddleName, billlastName, billmobile, billline1, billpostalcode, billcity, billprovince, billcountry, shipfirstName, shipmiddleName, shiplastName, shipmobile, shipline, shippostalcode, shipcity, shipprovince, shipcountry, createdAt, updatedAt, content, isdeleted, guidorder) VALUES 
          (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW(), ?, 0, UUID())";
         $db->prepare($query,$args);
         $lastId = $db->lastId();
-        //Se guardan los items del pedido
         $query = "INSERT INTO `order_item` (`productId`, `orderId`, `sku`, `price`, `discount`, `quantity`, `createdAt`, `updatedAt`, `content`, `isdeleted`, `guidorderitem`) VALUES 
         (?, ?, ?, ?, ?, ?, NOW(), NOW(), ?, 0, UUID());";
         foreach($products as $product){

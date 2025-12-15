@@ -62,13 +62,11 @@ if(isset($_POST['create'])){
         $description = $_POST['description'];
     }
 
-    // Devuelve una respuesta ===========================================================
-	// Si hay algun error en el array de errores, devuelve un valor de success a false
     if (!empty($errors)) {
 		$data['success'] = false;
         $data['errors']  = $errors;
         $data['message'] = "Existen errores en el formulario";
-	} else { //Si todo el formulario es correcto, se guarda el pedido
+	} else {
         if($newwholesale==1){
             $query = "INSERT INTO wholesale (image, sku, isdeleted, guidwholesale) VALUES 
             ('wholesale1.jpg', ?, 0, UUID())";
@@ -78,11 +76,11 @@ if(isset($_POST['create'])){
             $res = $db->prepare($query, array($id));
             $row = mysqli_fetch_array($res);
             $guidwholesale = $row['guidwholesale'];
-            //ES
+
             $query = "INSERT INTO wholesale_translation (wholesaleId, title, metaTitle, summary, content, lang) VALUES 
             (?, ?, ?, ?, ?, 'es')";
             $db->prepare($query, array($id,$nombre, $metadatos, $resumen, $descripcion));
-            //EN
+
             $query = "INSERT INTO wholesale_translation (wholesaleId, title, metaTitle, summary, content, lang) VALUES 
             (?, ?, ?, ?, ?, 'en')";
             $db->prepare($query, array($id,$imagename, $metadata, $summary, $description));
@@ -92,14 +90,14 @@ if(isset($_POST['create'])){
             $res = $db->prepare($query, array($guidwholesale));
             $row = mysqli_fetch_array($res);
             $id = $row['id'];
-            //ES
+
             $query = "SELECT id FROM wholesale_translation WHERE wholesaleId = ? AND lang = 'es'";
             $res = $db->prepare($query, array($id));
             $row = mysqli_fetch_array($res);
             $transid = $row['id'];
             $query = "UPDATE wholesale_translation SET title = ?, metaTitle = ?, summary = ?, content = ? WHERE id = ?";
             $db->prepare($query, array($nombre, $metadatos, $resumen, $descripcion, $transid));
-            //EN
+
             $query = "SELECT id FROM wholesale_translation WHERE wholesaleId = ? AND lang = 'en'";
             $res = $db->prepare($query, array($id));
             $row = mysqli_fetch_array($res);
@@ -117,7 +115,7 @@ if(isset($_POST['create'])){
 }else if(isset($_POST['edit'])){
     
     $errors = array();
-    $data = array(); // array para devolver información
+    $data = array();
     $guid = guid();
     $allowed = array('jpeg', 'png', 'jpg');
     $target_dir = "../img/wholesale/";
@@ -152,8 +150,6 @@ if(isset($_POST['create'])){
     }
     }   
 
-    // Devuelve una respuesta ===========================================================
-	// Si hay algun error en el array de errores, devuelve un valor de success a false
     if (!empty($errors)) {
 		$data['success'] = false;
         $data['errors']  = $errors;

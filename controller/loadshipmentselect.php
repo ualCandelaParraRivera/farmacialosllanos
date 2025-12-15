@@ -65,41 +65,4 @@ echo json_encode(array("glseco" => $glseco,
             "glsislasdisabled" => $glsislasdisabled
             )
         );
-
-// echo '<div class="card text-center" style="width: 18rem;">
-// <div class="card-body">
-//     <h5 class="card-title">GLS Economy</h5>
-//     <p class="card-text">'.$trans['checkout_shipping_eco'].'</p>
-//     <input type="radio" class="radio-custom input-group-field" name="options" id="option1" autocomplete="off" style="display: none;" value="'.$glseco.'"'.$ecodisabled.'><label class="btn btn-secondary radio-custom input-group-field" for="option1"><i class="fa fa-truck"></i></label>
-// </div>
-// </div>
-// <div class="card text-center" style="width: 18rem;">
-// <div class="card-body">
-//     <h5 class="card-title">GLS 24</h5>
-//     <p class="card-text">'.$trans['checkout_shipping_gls24'].'</p>
-//     <input type="radio" class="radio-custom input-group-field" name="options" id="option2" autocomplete="off" style="display: none;" value="'.$gls24.'"'.$gls24disabled.'><label class="btn btn-secondary radio-custom input-group-field" for="option2"><i class="fa fa-truck"></i></label>
-// </div>
-// </div>
-// <div class="card text-center" style="width: 18rem;">
-// <div class="card-body">
-//     <h5 class="card-title">GLS 14</h5>
-//     <p class="card-text">'.$trans['checkout_shipping_gls14'].'</p>
-//     <input type="radio" class="radio-custom input-group-field" name="options" id="option3" autocomplete="off" style="display: none;" value="'.$gls14.'"'.$gls14disabled.'><label class="btn btn-secondary radio-custom input-group-field" for="option3"><i class="fa fa-truck"></i></label>
-// </div>
-// </div>
-// <div class="card text-center" style="width: 18rem;">
-// <div class="card-body">
-//     <h5 class="card-title">GLS 10</h5>
-//     <p class="card-text">'.$trans['checkout_shipping_gls10'].'</p>
-//     <input type="radio" class="radio-custom input-group-field" name="options" id="option4" autocomplete="off" style="display: none;" value="'.$gls10.'"'.$gls10disabled.'><label class="btn btn-secondary radio-custom input-group-field" for="option4"><i class="fa fa-truck"></i></label>
-// </div>
-// </div>
-// <div class="card text-center" style="width: 18rem;">
-// <div class="card-body">
-//     <h5 class="card-title">GLS Islas</h5>
-//     <p class="card-text">'.$trans['checkout_shipping_glsislas'].'</p>
-//     <input type="radio" class="radio-custom input-group-field" name="options" id="option5" autocomplete="off" style="display: none;" value="'.$glsislas.'"'.$glsislasdisabled.'><label class="btn btn-secondary radio-custom input-group-field" for="option5"><i class="fa fa-truck"></i></label>
-// </div>
-// </div>';
-
 ?>

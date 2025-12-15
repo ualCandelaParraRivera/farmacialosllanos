@@ -9,19 +9,19 @@ function enviarEmail($email, $nombre, $asunto, $mensaje){
     $toName = $contactname;
     $mail = new PHPMailer;
     $mail->CharSet = "UTF-8";
-    $mail->isSMTP();                            // Set mailer to use SMTP
-    $mail->Host = $hostmail;             // Specify main and backup SMTP servers
-    $mail->SMTPAuth = true;                     // Enable SMTP authentication
+    $mail->isSMTP();
+    $mail->Host = $hostmail;
+    $mail->SMTPAuth = true;
     $mail->SMTPDebug = 0;
     $mail->Debugoutput = 'html';
-    $mail->Username = $infomail;            // SMTP username
-    $mail->Password = $infopass;            // SMTP password
-    $mail->SMTPSecure = 'tls';                  // Enable TLS encryption, `ssl` also accepted
-    $mail->Port = 587;                          // TCP port to connect to
+    $mail->Username = $infomail;
+    $mail->Password = $infopass;
+    $mail->SMTPSecure = 'tls';
+    $mail->Port = 587; 
     $mail->addReplyTo($fromAddress, $fromName);
     $mail->setFrom($fromAddress, $fromName);
-    $mail->addAddress($toAddress,$toName);   // Add a recipient
-    $mail->isHTML(true);  // Set email format to HTML
+    $mail->addAddress($toAddress,$toName);
+    $mail->isHTML(true);
 
     $mensaje = generarMensaje($email, $nombre, $asunto, $mensaje);
 
@@ -146,7 +146,7 @@ function generarMensaje($email, $nombre, $asunto, $mensaje){
                       <td valign="top" align="center" style="padding:0;Margin:0;width:560px"> 
                        <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                          <tr style="border-collapse:collapse"> 
-                          <td align="center" style="padding:0;Margin:0;font-size:0px"><a target="_blank" href="'.$webroot.'" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#2CB543;font-size:14px"><img src="'.imageToBase64("img/email/32041618330052727.png").'" alt="Hempleaf Logo" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="189" title="Hempleaf Logo"></a></td> 
+                          <td align="center" style="padding:0;Margin:0;font-size:0px"><a target="_blank" href="'.$webroot.'" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#2CB543;font-size:14px"><img src="'.imageToBase64("img/email/32041618330052727.png").'" alt="Los Llanos Logo" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="189" title="Los Llanos Logo"></a></td> 
                          </tr> 
                        </table></td> 
                      </tr> 
@@ -233,13 +233,9 @@ function generarMensaje($email, $nombre, $asunto, $mensaje){
 
 }
 
-
-
 $errors = array();
-$data = array(); // array para devolver información
+$data = array(); 
 
-// validar las variables ======================================================
-    // si alguna de las variables no existe, se agrega un error al array de errores
     if (empty($_POST['name'])){
         $errors['name'] = $trans['control_contactmail_error1'];
     }else{
@@ -271,7 +267,7 @@ $data = array(); // array para devolver información
     if(empty($errors)){
         $issended = enviarEmail($email, $name, $subject, $message);
         if(!$issended){
-            $errors['pass']=$trans['control_contactmail_error7']; //No se ha enviado un correo
+            $errors['pass']=$trans['control_contactmail_error7'];
         }
     }
 

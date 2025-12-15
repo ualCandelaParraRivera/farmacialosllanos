@@ -224,43 +224,12 @@ if(!isset($_POST['ostatus']) || intval($_POST['ostatus']) == -1){
     $ostatus = $_POST['ostatus'];
 }
 
-// $query = "SELECT id as orderid,
-//     sessionId
-//     ,token
-//     ,itemDiscount
-//     ,createdAt
-//     ,updatedAt
-//     ,content
-//     ,isdeleted
-//     FROM `order` WHERE guidorder = ? AND isdeleted = 0";
-
-// $res=$db->prepare($query, array($guidorder));
-// $row = mysqli_fetch_array($res);
-// $orderid = $row['orderid'];
-// $sessionId = $row['sessionId'];
-// $token = $row['token'];
-// $itemDiscount = $row['itemDiscount'];
-// $createdAt = $row['createdAt'];
-// $updatedAt = $row['updatedAt'];
-// $content = $row['content'];
-// $isdeleted = $row['isdeleted'];
-
-        
-
-
-
-// Devuelve una respuesta ===========================================================
-// Si hay algun error en el array de errores, devuelve un valor de success a false
 if (!empty($errors)) {
     $data['success'] = false;
     $data['errors']  = $errors;
     $data['message'] = "Existen errores en el formulario";
 } else {
     if(($neworder == 1)){
-        // $query = "SELECT MAX(id)+1 as id FROM `order`";
-        // $res = $db->query($query);
-        // $row = mysqli_fetch_array($res);
-        // $id = $row['id'];
         $sessionId = session_id();
         $token = sha1($sessionId);
         $query = "INSERT INTO `order` (userId, sessionId, token, status, subTotal, itemDiscount, tax, shipping, shippingtype, weight, total, promoId, discount, grandTotal, email, billfirstName, billmiddleName, billlastName, billmobile, billline1, billpostalcode, billcity, billprovince, billcountry, shipfirstName, shipmiddleName, shiplastName, shipmobile, shipline, shippostalcode, shipcity, shipdistrict, shipcountry, createdAt, updatedAt, content, isdeleted, guidorder) VALUES 
@@ -291,13 +260,12 @@ if (!empty($errors)) {
         }
         $s = '';
     }else{
-        // Obtener el estado ANTERIOR del pedido ANTES de actualizarlo
         $query = "SELECT status FROM `order` WHERE guidorder = ? AND isdeleted = 0";
         $res = $db->prepare($query, array($guidorder));
         $oldStatusId = 0;
         if($db->numRows($res) > 0){
             $row = mysqli_fetch_array($res);
-            $oldStatusId = $row['status']; // Guardar el estado anterior numérico
+            $oldStatusId = $row['status'];
         }
         
         $query = "SELECT id FROM `order` WHERE guidorder = ?";
@@ -307,12 +275,10 @@ if (!empty($errors)) {
             $row = mysqli_fetch_array($res);
             $id = $row['id'];
             
-            // Actualizar el pedido
             $query = "UPDATE `order` SET status = ?, subTotal = ?, tax = ?, shipping = ?, shippingtype = ?, weight = ?,total = ?, promoId = ?, discount = ?, grandTotal = ?, email = ?, billfirstName = ?, billmiddleName = ?, billlastName = ?, billmobile = ?, billline1 = ?, billpostalcode = ?, billcity = ?, billprovince = ?, billcountry = ?, shipfirstName = ?, shipmiddleName = ?, shiplastName = ?, shipmobile = ?, shipline = ?, shippostalcode = ?, shipcity = ?, shipprovince = ?, shipcountry = ?, updatedAt = NOW(), content = ? WHERE id = ?";
             $args = array($statusid, $subtotal, $tax, $shipping, $shipmentplan, $peso, $total, $promocode, $discount, $grandtotal, $email, $billfirstname, $billmiddlename, $billlastname, $billmobile, $billaddress, $billpostalcode, $billcity, $billdistrict, $billcountry, $shipfirstname, $shipmiddlename, $shiplastname, $shipmobile, $shipaddress, $shippostalcode, $shipcity, $shipdistrict, $shipcountry, $notes, $id);
             $db->prepare($query, $args);
 
-            // Actualizar items del pedido
             $query = "SELECT id FROM order_item WHERE orderId = ?";
             $res=$db->prepare($query, array($id));
             while($row = mysqli_fetch_array($res)){
@@ -321,7 +287,6 @@ if (!empty($errors)) {
                 $db->prepare($query, array($oiid));
             }
             
-            // Insertar nuevos items
             $query = "INSERT INTO order_item (productId, orderId, sku, price, discount, quantity, createdAt, updatedAt, content, isdeleted, guidorderitem) VALUES
             (?, ?, ?, ?, ?, ?, NOW(), NOW(), ?, 0, UUID())";
             $datas = explode(",", $table);
@@ -344,10 +309,9 @@ if (!empty($errors)) {
                 $db->prepare($query, $args);
             }
             
-            // CORREGIDO: Comparar IDs numéricos y verificar que cambió a estado "Pagado" (2)
+           
             if($oldStatusId != $statusid && $statusid == 2){
-                
-                // Borrado de facturas anteriores si existieran
+            
                 $query = "SELECT idinvoice FROM `invoice` WHERE orderid = ? AND isdeleted = 0";
                 $res=$db->prepare($query, array($id));
                 
@@ -368,7 +332,6 @@ if (!empty($errors)) {
                     }
                 }
 
-                // Crear nueva factura
                 $type = '1';
                 $query = "SELECT id, userId, sessionId, token, `status`, subTotal, itemDiscount, tax, shipping, shippingtype, 
                 `weight`, total, promoId, discount, grandTotal, email, billfirstName, billmiddleName, billlastName, billmobile, 
@@ -377,7 +340,6 @@ if (!empty($errors)) {
                 FROM `order` WHERE id = ? AND isdeleted = 0";
                 $res=$db->prepare($query, array($id));
                 
-                // Verificar que se obtuvo el pedido
                 if($db->numRows($res) == 0){
                     error_log("ERROR: No se encontró el pedido con ID: " . $id);
                     $data['success'] = false;
@@ -426,11 +388,9 @@ if (!empty($errors)) {
                 $content = $row['content'];
                 $guidorder = $row['guidorder'];
                 
-                // Log de debug
                 error_log("Creando factura para pedido ID: " . $orderid);
                 
-                // Cambiar NULL por cadena vacía si el campo no acepta NULL
-                $ppidtransaction = ''; // Cadena vacía en lugar de NULL
+                $ppidtransaction = ''; 
                         
                 $args = array($orderid,$userid,$sessionId,$token,$status,$subtotal,$itemDiscount,$tax,$shipping,$shippingtype,
                 $weight,$total,$promoId,$discount,$grandTotal,$email,$billfirstName,$billmiddleName,$billlastName,$billmobile,
@@ -452,7 +412,6 @@ if (!empty($errors)) {
                 $lastId = $db->lastID();
                 error_log("Factura creada con ID: " . $lastId);
                 
-                // Verificar que se obtuvo el ID de la factura
                 if(!$lastId || $lastId == 0){
                     error_log("ERROR: No se obtuvo el ID de la factura creada");
                     $data['success'] = false;
@@ -461,7 +420,6 @@ if (!empty($errors)) {
                     exit();
                 }
                     
-                // Insertar items de la factura
                 $query = "SELECT id as orderitemid
                 ,productId
                 ,sku
@@ -474,7 +432,6 @@ if (!empty($errors)) {
                 FROM `order_item` WHERE orderid = ? AND isdeleted = 0";
                 $res=$db->prepare($query, array($orderid));
                 
-                // Verificar que hay items
                 if($db->numRows($res) == 0){
                     error_log("ADVERTENCIA: No se encontraron items para el pedido: " . $orderid);
                 }
@@ -506,12 +463,11 @@ if (!empty($errors)) {
                 
                 error_log("Items de factura insertados: " . $itemCount);
                 
-                // Enviar email con la factura - Capturar errores y continuar
                 error_log("=== INICIO ENVÍO EMAIL ===");
                 try {
-                    ob_start(); // Capturar cualquier salida
+                    ob_start();
                     $emailSent = sendAttatchment($db, $orderid, $type, $trans, $lang);
-                    $emailOutput = ob_get_clean(); // Obtener y limpiar el buffer
+                    $emailOutput = ob_get_clean();
                     
                     if($emailOutput) {
                         error_log("Salida capturada del email: " . $emailOutput);
@@ -523,11 +479,11 @@ if (!empty($errors)) {
                         error_log("El email no se pudo enviar pero el proceso continúa");
                     }
                 } catch (Exception $e) {
-                    ob_end_clean(); // Limpiar el buffer en caso de excepción
+                    ob_end_clean();
                     error_log("Excepción al enviar email: " . $e->getMessage());
                     error_log("Stack trace: " . $e->getTraceAsString());
                 } catch (Error $e) {
-                    ob_end_clean(); // Limpiar el buffer en caso de error fatal
+                    ob_end_clean();
                     error_log("Error fatal al enviar email: " . $e->getMessage());
                     error_log("Stack trace: " . $e->getTraceAsString());
                 }
@@ -542,7 +498,6 @@ if (!empty($errors)) {
     $data['message'] = "Pedido guardado correctamente";
 }
 
-// Limpiar cualquier salida previa antes de enviar JSON
 if (ob_get_level()) {
     ob_end_clean();
 }

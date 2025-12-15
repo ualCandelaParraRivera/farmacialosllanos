@@ -1,8 +1,8 @@
 <?php include ("main.php");
  
 
-$errors = array(); // array con los errores producidos
-$data = array(); // array para devolver información
+$errors = array();
+$data = array();
 
 if(!isset($_POST['registeremail']) || empty($_POST['registeremail'])){
     $errors['registeremail'] = $trans['control_registeremail_error1'];

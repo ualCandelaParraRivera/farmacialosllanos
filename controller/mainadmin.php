@@ -2,7 +2,6 @@
 include_once("config.php");
 include_once("expire.php");
 
-//Maneja las traducciones mediante etiquetas
 $lang = "es";
 if(isset($_COOKIE['language'])){
     $lang = $_COOKIE['language'];
@@ -19,34 +18,12 @@ if(!isset($_SESSION['usertype']) || $_SESSION['usertype'] <> 1){
     }
 }
 
-/* $products = $db->getCart();
-$quantity = 0;
-foreach($products as $product){
-    $quantity += $product->count;
-} */
-/* foreach($products as $product){
-    echo $product->guidproduct;
-    echo "<br>";
-    echo $product->title;
-    echo "<br>";
-    echo $product->imagename;
-    echo "<br>";
-    echo $product->extension;
-    echo "<br>";
-    echo $product->price;
-    echo "<br>";
-    echo $product->count;
-    echo "<br>";
-    echo $product->total;
-    echo "<br>";
-} */
-
  $trans = array();
 $res=$db->query("SELECT tag, texto FROM etiqueta WHERE idioma = '$lang'");
 while($row = mysqli_fetch_array($res)){
     $trans[$row['tag']] = $row['texto'];
 }
-//Fin de traducciones
+
 
 function sectionhead($text){
     echo '    <meta charset="utf-8">
@@ -580,15 +557,15 @@ function clearAuthCookie() {
 function cryptoRandSecure($min, $max){
     $range = $max - $min;
     if ($range < 1) {
-        return $min; // not so random...
+        return $min;
     }
     $log = ceil(log($range, 2));
-    $bytes = (int) ($log / 8) + 1; // length in bytes
-    $bits = (int) $log + 1; // length in bits
-    $filter = (int) (1 << $bits) - 1; // set all lower bits to 1
+    $bytes = (int) ($log / 8) + 1;
+    $bits = (int) $log + 1;
+    $filter = (int) (1 << $bits) - 1;
     do {
         $rnd = hexdec(bin2hex(openssl_random_pseudo_bytes($bytes)));
-        $rnd = $rnd & $filter; // discard irrelevant bits
+        $rnd = $rnd & $filter;
     } while ($rnd >= $range);
     return $min + $rnd;
 }

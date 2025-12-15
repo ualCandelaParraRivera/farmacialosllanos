@@ -84,12 +84,10 @@ $remember = isset($_POST['remember']) ? $_POST['remember'] : '';
 $user = new user;
 $error = "";
 
-// Get Current date, time
 $current_time = time();
 $current_date = date("Y-m-d H:i:s", $current_time);
 
-// Set Cookie expiration for 1 month
-$cookie_expiration_time = $current_time + (30 * 24 * 60 * 60);  // for 1 month
+$cookie_expiration_time = $current_time + (30 * 24 * 60 * 60);
 
 if ($user->verifylogin($db,$login,$pwd)){
     $_SESSION["usercode"] = $user->usercode;
@@ -101,7 +99,6 @@ if ($user->verifylogin($db,$login,$pwd)){
         $_SESSION["lastlogin"] = $row['lastlogin'];
         $query = "UPDATE user SET lastlogin=NOW() WHERE id=".$_SESSION["usercode"];
         $db->query($query);
-        //REMEMBER
         if(!empty($remember)){
             setcookie("member_login", $login, $cookie_expiration_time,"/",true);
             $_COOKIE['member_login'] = $login;
@@ -112,12 +109,10 @@ if ($user->verifylogin($db,$login,$pwd)){
             $random_password_hash = password_hash($random_password, PASSWORD_DEFAULT);
             $random_selector_hash = password_hash($random_selector, PASSWORD_DEFAULT);
             $expiry_date = date("Y-m-d H:i:s", $cookie_expiration_time);
-            // mark existing token as expired
             $userToken = $user->getTokenByUsername($db, $login, 0);
             if (! empty($userToken[0]["id"])) {
                 $user->markAsExpired($db,$userToken[0]["id"]);
             }
-            // Insert new token
             $user->insertToken($db, $login, $random_password_hash, $random_selector_hash, $expiry_date);
         } else {
             clearAuthCookie();
@@ -128,41 +123,31 @@ if ($user->verifylogin($db,$login,$pwd)){
         header("location: ../".$location_loginerror);
     }
 }else if(! empty($_COOKIE["member_login"]) && ! empty($_COOKIE["random_password"]) && ! empty($_COOKIE["random_selector"])){
-    // Initiate auth token verification diirective to false
+
     $isPasswordVerified = false;
     $isSelectorVerified = false;
     $isExpiryDateVerified = false;
     
-    // Get token for username
     $userToken = $user->getTokenByUsername($db,$_COOKIE["member_login"],0);
     
-    /* echo $userToken[0]["password_hash"];
-    echo $_COOKIE["random_password"];
-    echo password_hash($_COOKIE["random_password"], PASSWORD_DEFAULT); */
-    // Validate random password cookie with database
     if (password_verify($_COOKIE["random_password"], $userToken[0]["password_hash"])) {
         $isPasswordVerified = true;
         echo "SI";
     }
     
-    // Validate random selector cookie with database
     if (password_verify($_COOKIE["random_selector"], $userToken[0]["selector_hash"])) {
         $isSelectorVerified = true;
     }
     
-    // check cookie expiration by date
     if($userToken[0]["expiry_date"] >= $current_date) {
         $isExpiryDareVerified = true;
     } 
-    // Redirect if all cookie based validation retuens true
-    // Else, mark the token as expired and clear cookies
     if (!empty($userToken[0]["id"]) && $isPasswordVerified && $isSelectorVerified && $isExpiryDareVerified) {
         header("location: ../".$location_userarea);
     } else {
         if(!empty($userToken[0]["id"])) {
             $user->markAsExpired($db,$userToken[0]["id"]);
         }
-        // clear cookies
         clearAuthCookie();
         header("location: ../".$location_loginerror);
     }
@@ -170,7 +155,5 @@ if ($user->verifylogin($db,$login,$pwd)){
 }else{
     header("location: ../".$location_loginerror);
 }
-
-
 
 ?>

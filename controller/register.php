@@ -9,19 +9,19 @@ function enviarEmail($email, $nombre, $asunto, $mensaje){
     $toName = $nombre;
     $mail = new PHPMailer;
     $mail->CharSet = "UTF-8";
-    $mail->isSMTP();                            // Set mailer to use SMTP
-    $mail->Host = $hostmail;             // Specify main and backup SMTP servers
-    $mail->SMTPAuth = true;                     // Enable SMTP authentication
+    $mail->isSMTP();
+    $mail->Host = $hostmail;
+    $mail->SMTPAuth = true;
     $mail->SMTPDebug = 0;
     $mail->Debugoutput = 'html';
-    $mail->Username = $infomail;            // SMTP username
-    $mail->Password = $infopass;            // SMTP password
-    $mail->SMTPSecure = 'tls';                  // Enable TLS encryption, `ssl` also accepted
-    $mail->Port = 587;                          // TCP port to connect to
+    $mail->Username = $infomail;
+    $mail->Password = $infopass;
+    $mail->SMTPSecure = 'tls';
+    $mail->Port = 587;
     $mail->addReplyTo($fromAddress, $fromName);
     $mail->setFrom($fromAddress, $fromName);
-    $mail->addAddress($toAddress,$toName);   // Add a recipient
-    $mail->isHTML(true);  // Set email format to HTML
+    $mail->addAddress($toAddress,$toName);
+    $mail->isHTML(true);
 
     $mensaje = generarMensaje($email, $nombre, $asunto, $mensaje);
 
@@ -375,8 +375,8 @@ function generarMensaje($email, $nombre, $asunto, $mensaje){
 
 }
 
-$errors = array(); // array con los errores producidos
-$data = array(); // array para devolver información
+$errors = array();
+$data = array();
 
 if(!isset($_POST['firstname']) || empty($_POST['firstname'])){
     $errors['firstname'] = $trans['control_register_error1'];

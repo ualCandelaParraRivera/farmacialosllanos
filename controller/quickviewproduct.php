@@ -3,7 +3,6 @@
 $guidproduct = $_POST['guidproduct'];
 
 ?>
-        <!-- Product Images Start -->
         <div class="col-lg-6 col-12 learts-mb-30">
             <div class="product-images">
                 <div class="product-gallery-slider-quickview">
@@ -26,9 +25,6 @@ $guidproduct = $_POST['guidproduct'];
                 </div> 
             </div>
         </div>
-        <!-- Product Images End -->
-
-        <!-- Product Summery Start -->
         <div class="col-lg-6 col-12 overflow-hidden learts-mb-30">
             <div class="product-summery customScroll">
             <?php 
@@ -128,7 +124,4 @@ $guidproduct = $_POST['guidproduct'];
                 
             </div>
         </div>
-        <!-- Product Summery End -->
-
-
 <?php ?>
