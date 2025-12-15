@@ -37,92 +37,125 @@ $(document).ready(function() {
         })
             // devuelve el resultado
             .done(function(data) {
-                console.log(data);
-                // Manejo de errores
+                console.log('Respuesta completa:', data);
+                
                 if (!data.success) {
-                    if (data.errors.statusid) {
-                        $('#statusid').addClass('is-invalid'); // add the error class to show red input
-                        $('#statusid-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.statusid + '</div>'); // add the actual error message under our input
+                    // Verificar que data.errors existe antes de acceder a sus propiedades
+                    if (data.errors) {
+                       
+                        if (data.errors.email) {
+                            $('#email').addClass('is-invalid');
+                            $('#email-group').append('<div class="help-block">' + data.errors.email + '</div>');
+                        }
+                        if (data.errors.table) {
+                            $('#table').addClass('is-invalid'); // add the error class to show red input
+                            $('#table-group').append('<div class="help-block" style="color:#dc3545" style="color:#dc3545">' + data.errors.table + '</div>'); // add the actual error message under our input
+                        }
+                        if (data.errors.billfirstname) {
+                            $('#billfirstname').addClass('is-invalid'); // add the error class to show red input
+                            $('#billfirstname-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.billfirstname + '</div>'); // add the actual error message under our input
+                        }
+                        if (data.errors.billmiddlename) {
+                            $('#billmiddlename').addClass('is-invalid'); // add the error class to show red input
+                            $('#billmiddlename-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.billmiddlename + '</div>'); // add the actual error message under our input
+                        }
+                        if (data.errors.billmobile) {
+                            $('#billmobile').addClass('is-invalid'); // add the error class to show red input
+                            $('#billmobile-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.billmobile + '</div>'); // add the actual error message under our input
+                        }
+                        if (data.errors.billcountry) {
+                            $('#billcountry').addClass('is-invalid'); // add the error class to show red input
+                            $('#billcountry-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.billcountry + '</div>'); // add the actual error message under our input
+                        }
+                        if (data.errors.billdistrict) {
+                            $('#billdistrict').addClass('is-invalid'); // add the error class to show red input
+                            $('#billdistrict-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.billdistrict + '</div>'); // add the actual error message under our input
+                        }
+                        if (data.errors.billcity) {
+                            $('#billcity').addClass('is-invalid'); // add the error class to show red input
+                            $('#billcity-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.billcity + '</div>'); // add the actual error message under our input
+                        }
+                        if (data.errors.billaddress) {
+                            $('#billaddress').addClass('is-invalid'); // add the error class to show red input
+                            $('#billaddress-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.billaddress + '</div>'); // add the actual error message under our input
+                        }
+                        if (data.errors.shipfirstname) {
+                            $('#shipfirstname').addClass('is-invalid'); // add the error class to show red input
+                            $('#shipfirstname-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.shipfirstname + '</div>'); // add the actual error message under our input
+                        }
+                        if (data.errors.shipmiddlename) {
+                            $('#shipmiddlename').addClass('is-invalid'); // add the error class to show red input
+                            $('#shipmiddlename-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.shipmiddlename + '</div>'); // add the actual error message under our input
+                        }
+                        if (data.errors.shipmobile) {
+                            $('#shipmobile').addClass('is-invalid'); // add the error class to show red input
+                            $('#shipmobile-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.shipmobile + '</div>'); // add the actual error message under our input
+                        }
+                        if (data.errors.shipcountry) {
+                            $('#shipcountry').addClass('is-invalid'); // add the error class to show red input
+                            $('#shipcountry-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.shipcountry + '</div>'); // add the actual error message under our input
+                        }
+                        if (data.errors.shipdistrict) {
+                            $('#shipdistrict').addClass('is-invalid'); // add the error class to show red input
+                            $('#shipdistrict-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.shipdistrict + '</div>'); // add the actual error message under our input
+                        }
+                        if (data.errors.shipcity) {
+                            $('#shipcity').addClass('is-invalid'); // add the error class to show red input
+                            $('#shipcity-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.shipcity + '</div>'); // add the actual error message under our input
+                        }
+                        if (data.errors.shipaddress) {
+                            $('#shipaddress').addClass('is-invalid'); // add the error class to show red input
+                            $('#shipaddress-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.shipaddress + '</div>'); // add the actual error message under our input
+                        }
+                        if (data.errors.shipmentplan) {
+                            $('#shipmentplan').addClass('is-invalid'); // add the error class to show red input
+                            $('#shipmentplan-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.shipmentplan + '</div>'); // add the actual error message under our input
+                        }
+                        if (data.errors.peso) {
+                            $('#peso').addClass('is-invalid'); // add the error class to show red input
+                            $('#peso-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.peso + '</div>'); // add the actual error message under our input
+                        }
+                        
+    
+                        // Mostrar mensaje de error
+                        if (data.message) {
+                            $('#placeordergroup').append('<div class="mt-3 alert alert-danger">' + data.message + '</div>');
+                        }
+                    } else {
+                        // Si no hay errores específicos, mostrar mensaje genérico
+                        $('#placeordergroup').append('<div class="mt-3 alert alert-danger">Ocurrió un error. Por favor, intenta nuevamente.</div>');
                     }
-                    if (data.errors.email) {
-                        $('#email').addClass('is-invalid'); // add the error class to show red input
-                        $('#email-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.email + '</div>'); // add the actual error message under our input
-                    }
-                    if (data.errors.table) {
-                        $('#table').addClass('is-invalid'); // add the error class to show red input
-                        $('#table-group').append('<div class="help-block" style="color:#dc3545" style="color:#dc3545">' + data.errors.table + '</div>'); // add the actual error message under our input
-                    }
-                    if (data.errors.billfirstname) {
-                        $('#billfirstname').addClass('is-invalid'); // add the error class to show red input
-                        $('#billfirstname-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.billfirstname + '</div>'); // add the actual error message under our input
-                    }
-                    if (data.errors.billmiddlename) {
-                        $('#billmiddlename').addClass('is-invalid'); // add the error class to show red input
-                        $('#billmiddlename-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.billmiddlename + '</div>'); // add the actual error message under our input
-                    }
-                    if (data.errors.billmobile) {
-                        $('#billmobile').addClass('is-invalid'); // add the error class to show red input
-                        $('#billmobile-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.billmobile + '</div>'); // add the actual error message under our input
-                    }
-                    if (data.errors.billcountry) {
-                        $('#billcountry').addClass('is-invalid'); // add the error class to show red input
-                        $('#billcountry-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.billcountry + '</div>'); // add the actual error message under our input
-                    }
-                    if (data.errors.billdistrict) {
-                        $('#billdistrict').addClass('is-invalid'); // add the error class to show red input
-                        $('#billdistrict-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.billdistrict + '</div>'); // add the actual error message under our input
-                    }
-                    if (data.errors.billcity) {
-                        $('#billcity').addClass('is-invalid'); // add the error class to show red input
-                        $('#billcity-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.billcity + '</div>'); // add the actual error message under our input
-                    }
-                    if (data.errors.billaddress) {
-                        $('#billaddress').addClass('is-invalid'); // add the error class to show red input
-                        $('#billaddress-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.billaddress + '</div>'); // add the actual error message under our input
-                    }
-                    if (data.errors.shipfirstname) {
-                        $('#shipfirstname').addClass('is-invalid'); // add the error class to show red input
-                        $('#shipfirstname-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.shipfirstname + '</div>'); // add the actual error message under our input
-                    }
-                    if (data.errors.shipmiddlename) {
-                        $('#shipmiddlename').addClass('is-invalid'); // add the error class to show red input
-                        $('#shipmiddlename-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.shipmiddlename + '</div>'); // add the actual error message under our input
-                    }
-                    if (data.errors.shipmobile) {
-                        $('#shipmobile').addClass('is-invalid'); // add the error class to show red input
-                        $('#shipmobile-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.shipmobile + '</div>'); // add the actual error message under our input
-                    }
-                    if (data.errors.shipcountry) {
-                        $('#shipcountry').addClass('is-invalid'); // add the error class to show red input
-                        $('#shipcountry-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.shipcountry + '</div>'); // add the actual error message under our input
-                    }
-                    if (data.errors.shipdistrict) {
-                        $('#shipdistrict').addClass('is-invalid'); // add the error class to show red input
-                        $('#shipdistrict-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.shipdistrict + '</div>'); // add the actual error message under our input
-                    }
-                    if (data.errors.shipcity) {
-                        $('#shipcity').addClass('is-invalid'); // add the error class to show red input
-                        $('#shipcity-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.shipcity + '</div>'); // add the actual error message under our input
-                    }
-                    if (data.errors.shipaddress) {
-                        $('#shipaddress').addClass('is-invalid'); // add the error class to show red input
-                        $('#shipaddress-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.shipaddress + '</div>'); // add the actual error message under our input
-                    }
-                    if (data.errors.shipmentplan) {
-                        $('#shipmentplan').addClass('is-invalid'); // add the error class to show red input
-                        $('#shipmentplan-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.shipmentplan + '</div>'); // add the actual error message under our input
-                    }
-                    if (data.errors.peso) {
-                        $('#peso').addClass('is-invalid'); // add the error class to show red input
-                        $('#peso-group').append('<div class="help-block" style="color:#dc3545">' + data.errors.peso + '</div>'); // add the actual error message under our input
-                    }
-                    
-
-                    $('form#datospedido').append('<div class="mt-3 alert alert-danger">' + data.message + '</div>');
-
                 } else {
-                    window.location.replace("adminorders");
+                    console.log("Pedido guardado correctamente");
+                     window.location.replace("adminorders");
+                    // Verificar si debe redirigir
+                    // if (data.redirect) {
+                    //     window.location.replace("adminorders");
+                    // } else {
+                    //     // Mostrar mensaje de éxito
+                    //     $('#placeordergroup').html('<div class="mt-3 alert alert-success">' + data.message + '</div>');
+                        
+                    //     // Opcional: recargar la página después de 2 segundos
+                    //     setTimeout(function() {
+                    //         location.reload();
+                    //     }, 2000);
+                    // }
                 }
+            })
+            .fail(function(xhr, status, error) {
+                console.error('Error AJAX:', error);
+                console.error('Status:', status);
+                console.error('Response Text:', xhr.responseText);
+                
+                // Intentar parsear la respuesta como JSON
+                try {
+                    var response = JSON.parse(xhr.responseText);
+                    console.error('Response JSON:', response);
+                } catch(e) {
+                    console.error('La respuesta no es JSON válido');
+                }
+                
+                $('#placeordergroup').html('<div class="mt-3 alert alert-danger">Error al procesar la solicitud. Revisa la consola para más detalles.</div>');
             });
             
     });
