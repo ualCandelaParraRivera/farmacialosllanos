@@ -234,21 +234,7 @@
         </div>
     </div>
     <!-- Feature Section End -->
-  
-    <!-- Video Banner Section Start -->
-    <!-- <div class="section section-fluid">
-        <div class="container">
-            <div class="video-banner" data-bg-image="img/banner/video/video-banner-1.jpg">
-                <div class="content">
-                    <h2 class="title"><?=$trans['index_videotitle']?></h2>
-                    <a href="https://www.youtube.com/watch?v=Ga1We7dU8ik" class="video-popup">
-                        <img src="img/icons/button-play.png" alt="play icon">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- Video Banner Section End -->
+
 
     <!-- About2 Section Start -->
     <div class="section section-padding pb-0">

@@ -481,14 +481,6 @@
                         </div>
                         <!-- Categories End -->
 
-                        <!-- Price Range Start -->
-                        <!-- <div class="single-widget learts-mb-40">
-                            <h3 class="widget-title product-filter-widget-title">Filters by price</h3>
-                            <div class="widget-price-range">
-                                <input class="range-slider" type="text" data-min="0" data-max="350" data-from="0" data-to="350" />
-                            </div>
-                        </div> -->
-                        <!-- Price Range End -->
 
                         <!-- List Product Widget Start -->
                         <div class="single-widget learts-mb-40">

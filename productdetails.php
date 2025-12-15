@@ -94,7 +94,6 @@ GROUP BY p.id, title, guidproduct, price, discount, summary, content, firstname,
                                         echo '<a href="'.$row['content'].'" class="product-video-popup video-popup hintT-left" data-hint="'.$trans['productsdetails_imageenlarge'].'"><i class="fal fa-play"></i></a>';
                                      }
                                 ?>
-                        <!-- <a href="https://www.youtube.com/watch?v=1jSsy7DtYgc" class="product-video-popup video-popup hintT-left" data-hint="Click to see video"><i class="fal fa-play"></i></a> -->
                         <div class="product-gallery-slider">
                             <?php
                                 $query = "SELECT ltrim(replace(substring(substring_index(image, '.', 1), length(substring_index(image, '.', 1 - 1)) + 1), '.', '')) AS imagename
