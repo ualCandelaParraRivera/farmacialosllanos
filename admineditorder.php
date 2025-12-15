@@ -5,40 +5,6 @@ $id = "";
 $userid = "";
 $registereduser = "";
 $orderid = "";
-// $statusid = "";
-// $status = "";
-// $subtotal = "";
-// $tax = "";
-// $shipping = "";
-// $shippingtype = "";
-// $weight = "";
-// $total = "";
-// $discount = "";
-// $grandtotal = "";
-// $promoid = "";
-// $promocode = "";
-// $email = "";
-// $billfirstname = "";
-// $billmiddlename = "";
-// $billlastname = "";
-// $billmobile = "";
-// $billline1 = "";
-// $billpostalcode = "";
-// $billcity = "";
-// $billprovince = "";
-// $billcountry = "";
-// $shipfirstname = "";
-// $shipmiddlename = "";
-// $shiplastname = "";
-// $shipmobile = "";
-// $shipline = "";
-// $shippostalcode = "";
-// $shipcity = "";
-// $shipprovince = "";
-// $shipcountry = "";
-// $fecha = "";
-// $notes = "";
-// $guidorder = "";
 $statusid = 0;
 $ostatus = 'Nuevo';
 $osubtotal = 0;
@@ -74,7 +40,6 @@ $fecha = '';
 $notes = '';
 $guidorder = ''; 
 
-// $type = '0';
 
 if (isset($_GET['guidorder'])) {
     $guidorder = $_GET['guidorder'];
@@ -728,7 +693,6 @@ if (isset($_GET['guidorder'])) {
             });
         } else {
             $('#billdistrict').html('<option value="">Selecciona un pais...</option>');
-            // $('#billdistrict').niceSelect('update');
         }
     });
 

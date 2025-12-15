@@ -12,10 +12,8 @@
 
     <?php sectionbreadcrumb('|privacy', $trans);?>
 
-    <!-- Contact Information & Map Section Start -->
     <div class="section section-padding">
         <div class="container">
-            <!-- Section Title Start -->
             <div class="section-title3">
                 <p><strong>I. POL&Iacute;TICA DE PRIVACIDAD Y PROTECCI&Oacute;N DE DATOS</strong></p>
                 <p> Respetando lo establecido en la legislaci&oacute;n vigente, Farmacia los llanos (en adelante, tambi&eacute;n Sitio Web) se compromete a adoptar las medidas t&eacute;cnicas y organizativas necesarias, seg&uacute;n el nivel de seguridad adecuado al riesgo de los datos recogidos.</p>
@@ -127,10 +125,8 @@
                 <p>Farmacia los llanos se reserva el derecho a modificar su Pol&iacute;tica de Privacidad y de Cookies, de acuerdo a su propio criterio, o motivado por un cambio legislativo, jurisprudencial o doctrinal de la Agencia Espa&ntilde;ola de Protecci&oacute;n de Datos. Los cambios o actualizaciones de esta Pol&iacute;tica de Privacidad y de Cookies no ser&aacute;n notificados de forma expl&iacute;cita al Usuario. Se recomienda al Usuario consultar esta p&aacute;gina de forma peri&oacute;dica para estar al tanto de los &uacute;ltimos cambios o actualizaciones.</p>
                 <p>Esta Pol&iacute;tica de Privacidad y de Cookies fue actualizada el d&iacute;a 3 de mayo 2021 para adaptarse al Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&oacute;n de las personas f&iacute;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&oacute;n de estos datos (RGPD) y a la Ley Org&aacute;nica 3/2018, de 5 de diciembre, de Protecci&oacute;n de Datos Personales y garant&iacute;a de los derechos digitales.</p>
             </div>
-            <!-- Section Title End -->
         </div>
     </div>
-    <!-- Contact Information & Map Section End -->
 
     <?php sectioncookies($trans);?>
     <?php sectionfooter($trans);?>

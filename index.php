@@ -12,7 +12,6 @@
 
     <?php sectionheader($db, 0, $trans); ?>
 
-    <!-- Slider main container Start -->
     <div class="home7-slider swiper-container section">
         <div class="swiper-wrapper">
             <div class="home7-slide-item swiper-slide" data-swiper-autoplay="5000" data-bg-image="img/slider/slide3-1<?php if($lang!='es') echo '_en'; ?>.png">
@@ -26,14 +25,10 @@
         <div class="home7-slider-next swiper-button-next"><i class="ti-angle-right"></i></div>
     </div>
 
-    <!-- Slider main container End -->
-
-    <!-- About Section Start -->
     <div class="section section-padding">
         <div class="container">
             <div class="row learts-mb-n30">
 
-                <!-- About Us Content Start -->
                 <div class="col-lg-5 col-md-6 col-12 ml-lg-auto align-self-center learts-mb-30">
                     <div class="about-us">
                         <div class="inner">
@@ -43,22 +38,15 @@
                         </div>
                     </div>
                 </div>
-                <!-- About Us Content End -->
-
-                <!-- About Us Image Start -->
                 <div class="col-md-6 col-12 ml-lg-auto learts-mb-30">
                     <div class="about-us-image">
                         <img src="img/about/about-2<?php if($lang!='es') echo '_en'; ?>.png" alt="About Image">
                     </div>
                 </div>
-                <!-- About Us Image End -->
 
             </div>
         </div>
     </div>
-    <!-- About Section End -->
-
-    <!-- Product Section Start -->
     <div class="section section-padding pt-0">
         <div class="container">
             <div class="row learts-mb-n30">
@@ -68,9 +56,7 @@
                         <div class="inner">
                             <img src="img/banner/sale/sale-banner10-1.png" alt="Sale Banner Image">
                             <div class="content">
-                                <!-- <span class="sub-title"><?=$trans['index_productbannersubtitle']?></span>
-                                <h2 class="title"><?=$trans['index_productbannertitle']?></h2> -->
-                                <!--<img src="img/banner/sale/sale-banner4-1.1.png" alt="">-->
+                                
                             </div>
                         </div>
                     </div>
@@ -192,9 +178,6 @@
             </div>
         </div>
     </div>
-    <!-- Product Section End -->
-
-    <!-- Feature Section Start -->
     <div class="section section-padding pt-0 pb-0">
         <div class="container">
 
@@ -233,23 +216,15 @@
 
         </div>
     </div>
-    <!-- Feature Section End -->
-
-
-    <!-- About2 Section Start -->
     <div class="section section-padding pb-0">
         <div class="container">
             <div class="row learts-mb-n30">
 
-                <!-- About Us Image Start -->
                 <div class="col-md-6 col-12 learts-mb-30">
                     <div class="about-us-image text-center">
                         <img src="img/about/about-3<?php if($lang!='es') echo '_en'; ?>.png" alt="About Image">
                     </div>
                 </div>
-                <!-- About Us Image End -->
-
-                <!-- About Us Content Start -->
                 <div class="col-md-6 col-12 align-self-center learts-mb-30">
                     <div class="row justify-content-center">
                         <div class="col-lg-10 col-12">
@@ -257,7 +232,6 @@
                                 <div class="inner">
                                     <span class="special-title"><?=$trans['index_secondabout1']?></span>
                                     <h2 class="title no-shape learts-mb-20"><?=$trans['index_secondabout2']?></h2>
-                                    <!-- <img class="learts-mb-30 " src="img/about/about-4.png" alt=""> -->
                                     <p><?=$trans['index_secondabout3']?></p>
                                     <a href="contact" class="btn btn-primary2 btn-hover-black"><?=$trans['index_secondabout4']?></a>
                                 </div>
@@ -265,12 +239,10 @@
                         </div>
                     </div>
                 </div>
-                <!-- About Us Content End -->
 
             </div>
         </div>
     </div>
-    <!-- About2 Section End -->
 
     <?php sectioncookies($trans);?>
     <?php sectionfooter($trans);?>

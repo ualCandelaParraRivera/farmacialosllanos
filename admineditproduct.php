@@ -95,11 +95,6 @@ if (isset($_GET['guidproduct'])) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"></script>
     <script src="js/editproduct.js"></script>
 
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous"> -->
-    <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
-    
-    <!-- <script src="assets/libs/js/multipleimage.js"></script> -->
-    <!-- <script src="js/editproduct.js"></script> -->
 </head>
 
 <body>
@@ -440,7 +435,6 @@ if (isset($_GET['guidproduct'])) {
 
     <script src="./js/multitags.js"></script>
     <script>
-        // pureScriptSelect('#select');
         pureScriptSelect('#multimetatags');
         pureScriptSelect('#multicategories');
         pureScriptSelect('#multitags');
@@ -473,7 +467,6 @@ if (isset($_GET['guidproduct'])) {
             images(this, '#previews');
         });
             
-            //clear the file list when image is clicked
          $('#files').on('click',function(){
             $('#files').val("");
             $('#previews').html("");
@@ -487,19 +480,13 @@ if (isset($_GET['guidproduct'])) {
     <script>
         var data = CKEDITOR.instances.descripcion.getData();
         CKEDITOR.instances.descripcion.on('change', function() { CKEDITOR.instances.descripcion.updateElement() });
-        // Your code to save "data", usually through Ajax.
     </script>
     <script>CKEDITOR.replace( 'description', {customConfig: 'config.js'});</script>
     
     <script>
         var data = CKEDITOR.instances.description.getData();
         CKEDITOR.instances.description.on('change', function() { CKEDITOR.instances.description.updateElement() });
-        // Your code to save "data", usually through Ajax.
     </script>
-
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
-    <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>                                                   -->
 </body>
 
 </html>

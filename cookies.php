@@ -12,10 +12,8 @@
 
     <?php sectionbreadcrumb('|cookies', $trans);?>
 
-    <!-- Contact Information & Map Section Start -->
     <div class="section section-padding">
         <div class="container">
-            <!-- Section Title Start -->
             <div class="section-title3">
                 <p><strong>&iquest;QU&Eacute; ES UNA COOKIE?</strong></p>
                 <p>Una cookie es un fichero que se descarga en su ordenador al acceder a determinadas p&aacute;ginas web. Las cookies permiten a una p&aacute;gina web, entre otras cosas, almacenar y recuperar informaci&oacute;n sobre los h&aacute;bitos de navegaci&oacute;n de un usuario o de su equipo y, dependiendo de la informaci&oacute;n que contengan y de la forma en que utilice su equipo, pueden utilizarse para reconocer al usuario.</p>
@@ -56,10 +54,8 @@
 
                 <p>Ultima modificaci&oacute;n: 10 de diciembre 2025</p>
             </div>
-            <!-- Section Title End -->
         </div>
     </div>
-    <!-- Contact Information & Map Section End -->
 
     <?php sectioncookies($trans);?>
     <?php sectionfooter($trans);?>

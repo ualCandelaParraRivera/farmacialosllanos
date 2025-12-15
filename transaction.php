@@ -22,7 +22,6 @@ if (isset($_SESSION['orderdata']['orderid'])){
 
 $orderid = $_SESSION['orderdata']['orderid'];
 $paymethod = $_SESSION['orderdata']['paymethod'];
-// Tipo de pago para generar la factura
 $type = '0';
 $products = $db->getCart($lang);
 $quantity = 0;
@@ -33,7 +32,6 @@ foreach($products as $product){
     $quantity += $product->count;
     $subtotal += $product->total;
     $taxes += $product->totaltax;
-    // $weight += $product->count * $product->weight;
 }
 
 
@@ -121,7 +119,6 @@ if($lang != "en"){
     }
     ?> 
 
-    <!-- Shopping Cart Section Start -->
     <div class="section section-padding pb-0">
         <div class="container">
         <?php
@@ -156,7 +153,6 @@ if($lang != "en"){
                             <td class="name"> <a href="productdetails?guidproduct=<?=$guidproduct?>"><?=$title?></a></td>
                             <td class="price"><span><?=$price?>€</span></td>
 
-                            <!-- Hay que centrar este quantity en la tabla pero no se como :( ) -->
                             <td class="quantity"><span><?=$quantityitem?></span></td>
                             <td class="subtotal"><span><?php echo ($price*$quantityitem);?>€</span></td>
                         </tr>
@@ -277,12 +273,10 @@ if($lang != "en"){
             <?php } ?>
         </div>
     </div>
-    <!-- Shopping Cart Section End -->
     <?php sectioncookies($trans);?>
     <?php sectionfooter($trans);?>
 
     <?php sectionjs(); ?>
-    <!-- Add the checkout buttons, set up the order and approve the order -->
     <script>
       paypal.Buttons({
         style : {
@@ -302,7 +296,6 @@ if($lang != "en"){
         onApprove: function(data, actions) {
             return actions.order.capture().then(function(details) {
                 guidorder = $("#guidorder").val();
-            // alert('Transaction completed by ' + details.payer.name.given_name);
                 $.ajax({
                     type: 'POST',
                     url: 'controller/invoicepaypal',
@@ -327,11 +320,10 @@ if($lang != "en"){
                     success: function(html) {
                         var x = JSON.parse(html);
                         
-                        $('.help-block').remove(); // elimina el texto de error
-                        $('.alert').remove(); // elimina el texto de alerta
+                        $('.help-block').remove();
+                        $('.alert').remove();
                         $('#paypal-button-container').remove();
                         $('#payment-box').append('<div class="col-12 learts-mb-20 mt-3 alert alert-success">'+x.html+'</div>');
-                        // $('#payment-box').append('<div class="btn btn-dark btn-outline-hover-dark" type="submit" form="checkoutForm" href="index">'.$trans['modal_confirm'].'</div>');
 
 
                     },
@@ -340,13 +332,13 @@ if($lang != "en"){
             });
         },
         onCancel: function(data, actions){
-            $('.help-block').remove(); // elimina el texto de error
-            $('.alert').remove(); // elimina el texto de alerta
+            $('.help-block').remove();
+            $('.alert').remove();
             $('#payment-box').append('<div class="col-12 learts-mb-20 mt-3 alert alert-danger">La operación ha sido cancelada.</div>');
             
         },
 
-    }).render('#paypal-button-container'); // Display payment options on your web page
+    }).render('#paypal-button-container'); 
 </script>
 
 </body>

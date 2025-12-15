@@ -10,7 +10,6 @@
         $quantity += $product->count;
         $subtotal += $product->total;
         $taxes += $product->totaltax;
-        // $weight += $product->count * $product->weight;
     }
     if($quantity == 0){
         redirect($location_404);
@@ -130,7 +129,6 @@
 
     <?php sectionbreadcrumb("|checkout", $trans);?> 
 
-    <!-- Checkout Section Start -->
     <div class="section section-padding pb-0">
         <div class="container">
             <form action="controller/placeorder" method="post" id="checkoutForm" class="checkout-form learts-mb-50" form="checkoutForm">
@@ -491,34 +489,10 @@
             <div class="learts-mb-n30" id="placeordergroup"></div>
         </div>
     </div>
-    <!-- Checkout Section End -->
     <?php sectioncookies($trans);?>
     <?php sectionfooter($trans);?>
 
     <?php sectionjs();?>
     <script src="js/placeorder.js"></script>
-    <!-- Add the checkout buttons, set up the order and approve the order -->
-    <!-- <script>
-      paypal.Buttons({
-        style : {
-        color: 'blue',
-        shape: 'pill'
     
-    },
-        createOrder: function(data, actions) {
-          return actions.order.create({
-            purchase_units: [{
-              amount: {
-                value: <?=$grandtotal?>
-              }
-            }]
-          });
-        },
-        onApprove: function(data, actions) {
-          return actions.order.capture().then(function(details) {
-            alert('Transaction completed by ' + details.payer.name.given_name);
-          });
-        }
-      }).render('#paypal-button-container'); // Display payment options on your web page
-    </script> -->
 </body>

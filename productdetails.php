@@ -2,7 +2,6 @@
 <?php include ("./controller/main.php");?>
 <?php 
 if(!isset($_GET['guidproduct'])){
-    // header("location: ".$location_404);
 }
 $guidproduct = $_GET['guidproduct'];
 $query = "SELECT p.id as productid
@@ -25,11 +24,9 @@ LEFT JOIN product_translation pt ON p.id = pt.productId
 LEFT JOIN product_review pr ON p.id = pr.productId
 LEFT JOIN user u ON p.userid = u.id
 WHERE guidproduct = ? AND lang = ?
--- AND startsAt < NOW() AND (endsAt IS NULL OR endsAt > NOW())
 GROUP BY p.id, title, guidproduct, price, discount, summary, content, firstname, image, sku, quantity, profile";
     $res=$db->prepare($query, array($guidproduct, $lang));
     if($db->numRows($res) == 0){
-        // header("location: ".$location_404);
     }
     $row = mysqli_fetch_array($res);
     $productid = $row['productid'];
@@ -61,12 +58,10 @@ GROUP BY p.id, title, guidproduct, price, discount, summary, content, firstname,
 
     <?php sectionbreadcrumb("|shop|productdetails", $trans);?>
 
-    <!-- Single Products Section Start -->
     <div class="section section-padding border-bottom">
         <div class="container">
             <div class="row learts-mb-n40">
 
-                <!-- Product Images Start -->
                 <div class="col-lg-6 col-12 learts-mb-40">
                     <div class="product-images">
                         <?php 
@@ -130,9 +125,7 @@ GROUP BY p.id, title, guidproduct, price, discount, summary, content, firstname,
                         </div>
                     </div>
                 </div>
-                <!-- Product Images End -->
 
-                <!-- Product Summery Start -->
                 <div class="col-lg-6 col-12 learts-mb-40">
                     <div class="product-summery">
                         <div class="product-nav">
@@ -166,12 +159,6 @@ GROUP BY p.id, title, guidproduct, price, discount, summary, content, firstname,
                                      while($row = mysqli_fetch_array($res)){
                                          $key = ucfirst($row['key']);
                                          $content = $row['content'];
-                                         /* if($key == 'Color'){
-                                             $text = '<div class="product-colors"><a href="#" data-bg-color="'.$content.'"></a></div>';
-                                         }else{
-                                            $text = '<div class="product-sizes"><a href="#">'.$content.'</a></div>';
-                                         } */
-                                        
                                 ?>
                                     <tr>
                                         <td class="label"><span><?=$key?></span></td>
@@ -276,15 +263,12 @@ GROUP BY p.id, title, guidproduct, price, discount, summary, content, firstname,
                         </div>
                     </div>
                 </div>
-                <!-- Product Summery End -->
                 
             </div>
         </div>
 
     </div>
-    <!-- Single Products Section End -->
 
-    <!-- Single Products Infomation Section Start -->
     <div class="section section-padding border-bottom">
         <div class="container">
 
@@ -358,19 +342,13 @@ GROUP BY p.id, title, guidproduct, price, discount, summary, content, firstname,
 
         </div>
     </div>
-    <!-- Single Products Infomation Section End -->
 
-    <!-- Recommended Products Section Start -->
     <div class="section section-padding pb-0">
         <div class="container">
 
-            <!-- Section Title Start -->
             <div class="section-title2 text-center">
                 <h2 class="title"><?=$trans['productsdetails_mightalsolike']?></h2>
             </div>
-            <!-- Section Title End -->
-
-            <!-- Products Start -->
             <div class="product-carousel">
                 <?php
                     $query = "SELECT p.id, pt.title
@@ -479,15 +457,12 @@ GROUP BY p.id, title, guidproduct, price, discount, summary, content, firstname,
                 </div>
                 <?php } ?>
             </div>
-            <!-- Products End -->
 
         </div>
     </div>
-    <!-- Recommended Products Section End -->
 
     <?php sectionfooter($trans);?>
 
-    <!-- Modal -->
     <div class="quickViewModal modal fade" id="quickViewModal">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">

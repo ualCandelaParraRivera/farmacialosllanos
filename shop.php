@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <?php include ("./controller/main.php");?>
 <?php 
-    //$acceptedIps = array("86.127.253.50", "95.60.8.51");
-    // $acceptedIps = array("86.127.236.178", "213.194.151.141", "160.178.138.178");
-
-    // if(!isAcceptedIp($acceptedIps)){
-    //     redirect("shop-soon");
-    // }
-    //  redirect("shop-soon");
 ?>
 <?php 
     $getpage = isset($_GET['page']) ? 'page='.$_GET['page'] : '';
@@ -89,11 +82,6 @@
         $sqlsearch = ' AND (pt.title LIKE \'%'.$seval.'%\' OR pt.summary LIKE \'%'.$seval.'%\' OR pt.content LIKE \'%'.$seval.'%\') ';
     }
 
-    //echo url($arr,-1,'');
-
-
-
-
     $rowsperpage = $productsperpage;
     $query = "SELECT count(id) as allcount 
     FROM product p
@@ -117,15 +105,12 @@
 
     <?php sectionbreadcrumb("|shop", $trans);?>
 
-    <!-- Shop Products Section Start -->
     <div class="section section-padding pt-0 pb-0">
 
-        <!-- Shop Toolbar Start -->
         <div class="shop-toolbar border-bottom">
             <div class="container">
                 <div class="row learts-mb-n20">
 
-                    <!-- Isotop Filter Start -->
                     <div class="col-md col-12 align-self-center learts-mb-20">
                         <div class="isotope-filter shop-product-filter" data-target="#shop-products">
                             <button class="active" data-filter="*"><?=$trans['products_groupfilter1']?></button>
@@ -134,7 +119,6 @@
                             <button data-filter=".sales"><?=$trans['products_groupfilter4']?></button>
                         </div>
                     </div>
-                    <!-- Isotop Filter End -->
 
                     <div class="col-md-auto col-12 learts-mb-20">
                         <ul class="shop-toolbar-controls">
@@ -167,14 +151,10 @@
                 </div>
             </div>
         </div>
-        <!-- Shop Toolbar End -->
-
-        <!-- Product Filter Start -->
         <div id="product-filter" class="product-filter bg-light">
             <div class="container">
                 <div class="row row-cols-lg-5 row-cols-md-3 row-cols-sm-2 row-cols-1 learts-mb-n30">
 
-                    <!-- Sort by Start -->
                     <div class="col learts-mb-30">
                         <h3 class="widget-title product-filter-widget-title"><?=$trans['products_filter1']?></h3>
                         <ul class="widget-list product-filter-widget customScroll">
@@ -185,9 +165,6 @@
                             <li><a href="shop<?=url($arr,1,'sort=4')?>"><?=$trans['products_filter1_5']?></a></li>
                         </ul>
                     </div>
-                    <!-- Sort by End -->
-
-                    <!-- Price filter Start -->
                     <div class="col learts-mb-30">
                         <h3 class="widget-title product-filter-widget-title"><?=$trans['products_filter2']?></h3>
                         <ul class="widget-list product-filter-widget customScroll">
@@ -211,9 +188,6 @@
                             <li> <a href="shop<?=url($arr,2,'price=5')?>"><?=$row['price05']?></a></li>
                         </ul>
                     </div>
-                    <!-- Price filter End -->
-
-                    <!-- Categories Start -->
                     <div class="col learts-mb-30">
                         <h3 class="widget-title product-filter-widget-title"><?=$trans['products_filter3']?></h3>
                         <ul class="widget-list product-filter-widget customScroll">
@@ -236,9 +210,6 @@
                             <?php } ?>
                         </ul>
                     </div>
-                    <!-- Categories End -->
-
-                    <!-- Filters by colors Start -->
                     <div class="col learts-mb-30">
                         <h3 class="widget-title product-filter-widget-title"><?=$trans['products_filter4']?></h3>
                         <ul class="widget-colors product-filter-widget customScroll">
@@ -254,9 +225,6 @@
                             <?php } ?>
                         </ul>
                     </div>
-                    <!-- Filters by colors End -->
-
-                    <!-- Brands Start -->
                     <div class="col learts-mb-30">
                         <h3 class="widget-title product-filter-widget-title"><?=$trans['products_filter5']?></h3>
                         <ul class="widget-list product-filter-widget customScroll">
@@ -276,21 +244,17 @@
                             <?php } ?>
                         </ul>
                     </div>
-                    <!-- Brands End -->
 
                 </div>
             </div>
         </div>
-        <!-- Product Filter End -->
 
         <div class="section learts-mt-70">
             <div class="container">
                 <div class="row learts-mb-n50">
 
                     <div class="col-lg-9 col-12 learts-mb-50 order-lg-2">
-                        <!-- Products Start -->
                         <div id="shop-products" class="products row row-cols-xl-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
-                            <!-- <div class="grid-sizer col-1"></div> -->
                             <?php
                                 $query = "SELECT p.id, pt.title
                                 ,ltrim(replace(substring(substring_index(pi.image, '.', 1), length(substring_index(pi.image, '.', 1 - 1)) + 1), '.', '')) AS imagename
@@ -401,7 +365,6 @@
                             
 
                         </div>
-                        <!-- Products End -->
                         <?php 
                             if($rowsperpage < $allcount){
                         ?>
@@ -412,40 +375,11 @@
                             <input type="hidden" id="all" value="<?=$allcount?>">
                         </div>
                         <?php } ?>
-
-                        <!-- <div class="text-center learts-mt-70">
-                            <div class="pagination">
-                                <div class="pagination-container">
-                                    <div class="pagination-hover-overlay"></div>
-                                    <a href="#0" class="pagination-prev">
-                                        <span class="icon-pagination icon-pagination-prev">
-                                            <i class="icon material-icons">
-                                                keyboard_arrow_left
-                                            </i>
-                                        </span>
-                                    </a>
-
-                                    <a href="#0" class="pagination-page-number">1</a>
-                                    <a href="#0" class="pagination-page-number">2</a>
-                                    <a href="#0" class="pagination-page-number">3</a>
-                                    <a href="#0" class="pagination-page-number">4</a>
-
-                                    <a href="#0" class="pagination-next">
-                                        <span class="icon-pagination icon-pagination-next">
-                                            <i class="icon material-icons">
-                                                keyboard_arrow_left
-                                            </i>
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                         
 
                     <div class="col-lg-3 col-12 learts-mb-10 order-lg-1">
 
-                        <!-- Search Start -->
                         <div class="single-widget learts-mb-40">
                             <div class="widget-search">
                                 <form action="shop" method="get">
@@ -454,9 +388,7 @@
                                 </form>
                             </div>
                         </div>
-                        <!-- Search End -->
 
-                        <!-- Categories Start -->
                         <div class="single-widget learts-mb-40">
                             <h3 class="widget-title product-filter-widget-title"><?=$trans['products_categories']?></h3>
                             <ul class="widget-list">
@@ -479,10 +411,7 @@
                                 <?php } ?>
                             </ul>
                         </div>
-                        <!-- Categories End -->
 
-
-                        <!-- List Product Widget Start -->
                         <div class="single-widget learts-mb-40">
                             <h3 class="widget-title product-filter-widget-title"><?=$trans['products_new']?></h3>
                             <ul class="widget-products">
@@ -527,9 +456,7 @@
                             <?php } ?>
                             </ul>
                         </div>
-                        <!-- List Product Widget End -->
 
-                        <!-- Tags Start -->
                         <div class="single-widget learts-mb-40">
                             <h3 class="widget-title product-filter-widget-title"><?=$trans['products_tags']?></h3>
                             <div class="widget-tags">
@@ -550,7 +477,6 @@
                             <?php } ?>
                             </div>
                         </div>
-                        <!-- Tags End -->
 
                     </div>
 
@@ -559,11 +485,9 @@
         </div>
 
     </div>
-    <!-- Shop Products Section End -->
     <?php sectioncookies($trans);?>
     <?php sectionfooter($trans);?>
 
-    <!-- Modal -->
     <div class="quickViewModal modal fade" id="quickViewModal">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">

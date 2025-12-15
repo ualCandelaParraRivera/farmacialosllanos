@@ -19,7 +19,6 @@ header( "refresh:5;url=myaccount" );
 
     <?php sectionbreadcrumb("|redirectlogin", $trans);?>
 
-    <!-- Lost Password Section Start -->
     <div class="section section-padding">
         <div class="container">
 
@@ -44,7 +43,6 @@ header( "refresh:5;url=myaccount" );
         </div>
 
     </div>
-    <!-- Lost Password Section End -->
     <?php sectioncookies($trans);?>
     <?php sectionfooter($trans);?>
 

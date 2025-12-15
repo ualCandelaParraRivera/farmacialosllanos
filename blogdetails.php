@@ -60,7 +60,6 @@
 
     <?php sectionbreadcrumb("|blog|blogdetails", $trans);?>
 
-    <!-- Portfolio Section Start -->
     <div class="section section-padding pb-0">
         <div class="container">
             <div class="row learts-mb-n50">
@@ -199,27 +198,13 @@
                                 </div>
                             </div>
                             <?php } ?>
-                            <!-- <div class="col-md-6 col-12 learts-mb-40">
-                                <div class="blog">
-                                    <div class="image">
-                                        <a href="blogdetails"><img src="img/blog/s370/blog-2.jpg" alt="Blog Image"></a>
-                                    </div>
-                                    <div class="content">
-                                        <ul class="meta">
-                                            <li><i class="far fa-calendar"></i><a href="#">22 Enero 2020</a></li>
-                                            <li><i class="far fa-eye"></i> 201 views</li>
-                                        </ul>
-                                        <h5 class="title mb-0"><a href="blogdetails">Vivamus ut nisl consequa</a></h5>
-                                    </div>
-                                </div>
-                            </div> -->
+                            
                         </div>
                     </div>
                 </div>
 
                 <div class="col-xl-3 col-lg-4 col-12 learts-mb-10">
                     
-                    <!-- Blog Post Widget Start -->
                     <div class="single-widget learts-mb-40">
                         <h3 class="widget-title product-filter-widget-title"><?=$trans['blogdetails_recent']?></h3>
                         <ul class="widget-blogs">
@@ -252,17 +237,11 @@
                         <?php } ?>
                         </ul>
                     </div>
-                    <!-- Blog Post Widget End -->
-
-                    <!-- Categories Start -->
                     <div class="single-widget learts-mb-40">
                         <div class="widget-banner">
                             <img src="img/banner/widget-banner.png" alt="">
                         </div>
                     </div>
-                    <!-- Categories End -->
-
-                    <!-- Categories Start -->
                     <div class="single-widget learts-mb-40">
                         <h3 class="widget-title product-filter-widget-title"><?=$trans['blogdetails_categories']?></h3>
                         <ul class="widget-list">
@@ -287,9 +266,6 @@
                         <?php } ?>
                         </ul>
                     </div>
-                    <!-- Categories End -->
-
-                    <!-- Tags Start -->
                     <div class="single-widget learts-mb-40">
                         <h3 class="widget-title product-filter-widget-title"><?=$trans['blogdetails_tags']?></h3>
                         <div class="widget-tags">
@@ -310,14 +286,12 @@
                         <?php } ?>
                         </div>
                     </div>
-                    <!-- Tags End -->
                 </div>
 
             </div>
         </div>
 
     </div>
-    <!-- Portfolio Section End -->
     <?php sectioncookies($trans);?>
     <?php sectionfooter($trans);?>
 

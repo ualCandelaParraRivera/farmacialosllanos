@@ -55,10 +55,6 @@
     $shipcountry = $row['shipcountry'];
 ?>
 <?php 
-    /* $res=$db->query("SELECT name FROM user");
-    while($row = mysqli_fetch_array($res)){
-        echo $row['name'];
-    } */
 ?>
 <html class="no-js" lang="<?=$lang?>">
 
@@ -77,30 +73,24 @@
 
     <?php sectionbreadcrumb("|myaccount", $trans);?>
 
-    <!-- My Account Section Start -->
     <div class="section section-padding pb-0">
         <div class="container">
             <div class="row learts-mb-n30">
 
-                <!-- My Account Tab List Start -->
                 <div class="col-lg-4 col-12 learts-mb-30">
                     <div class="myaccount-tab-list nav">
                         <a href="#dashboard" class="active" data-toggle="tab"><?=$trans['myaccount_tabdashboard']?> <i class="far fa-home"></i></a>
                         <a href="#orders" data-toggle="tab"><?=$trans['myaccount_taborders']?> <i class="far fa-file-alt"></i></a>
-                        <!-- <a href="#download" data-toggle="tab">Invoices <i class="far fa-arrow-to-bottom"></i></a> -->
                         <a href="#address" data-toggle="tab"><?=$trans['myaccount_tabaddress']?> <i class="far fa-map-marker-alt"></i></a>
                         <a href="#account-info" data-toggle="tab"><?=$trans['myaccount_tabaccount']?> <i class="far fa-user"></i></a>
                         <?php if($_SESSION['usertype'] == 1){ ?><a href="admin"><?=$trans['myaccount_tabadmin']?> <i class="far fa-cog"></i></a><?php } ?>
                         <a href="logout"><?=$trans['myaccount_tablogout']?> <i class="far fa-sign-out-alt"></i></a>
                     </div>
                 </div>
-                <!-- My Account Tab List End -->
 
-                <!-- My Account Tab Content Start -->
                 <div class="col-lg-8 col-12 learts-mb-30">
                     <div class="tab-content">
 
-                        <!-- Single Tab Content Start -->
                         <div class="tab-pane fade show active" id="dashboard">
                             <div class="myaccount-content dashboard">
 
@@ -108,9 +98,7 @@
                                 <p><?=$trans['myaccount_dashboardmessage']?></p>
                             </div>
                         </div>
-                        <!-- Single Tab Content End -->
 
-                        <!-- Single Tab Content Start -->
                         <div class="tab-pane fade" id="orders">
                             <div class="myaccount-content order">
                                 <div class="table-responsive">
@@ -161,8 +149,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Single Tab Content End -->
-                        <!-- Single Tab Content Start -->
                         <div class="tab-pane fade" id="address">
                             <div class="myaccount-content address">
                                 <p><?=$trans['myaccount_addresstitle']?></p>
@@ -262,9 +248,7 @@
                                 <div class="address-form">
                                     <p><?=$trans['myaccount_shippingtitle']?></p>
                                     <form id="shipaddrForm" action="#" method="post" class="learts-mb-n10">
-                                        <!-- <input class="learts-mb-10" type="text" placeholder="Coupon code">
-                                        <input class="learts-mb-10" type="text" placeholder="Coupon code">
-                                        <button class="btn btn-dark btn-outline-hover-dark learts-mb-10">apply coupon</button> -->
+                                       
                                         <div class="row" id="shiprow">
                                             <div class="col-md-6 col-12 learts-mb-20 form-group" id="shipFirstName-group">
                                                 <label for="shipFirstName"><?=$trans['myaccount_billingfirstname']?> <abbr class="required">*</abbr></label>
@@ -332,9 +316,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Single Tab Content End -->
-
-                        <!-- Single Tab Content Start -->
                         <div class="tab-pane fade" id="account-info">
                             <div class="myaccount-content account-details">
                                 <div class="account-details-form">
@@ -392,14 +373,13 @@
                                     </form>
                                 </div>
                             </div>
-                        </div> <!-- Single Tab Content End -->
+                        </div>
 
                     </div>
-                </div> <!-- My Account Tab Content End -->
+                </div>
             </div>
         </div>
     </div>
-    <!-- My Account Section End -->
     <?php sectioncookies($trans);?>
     <?php sectionfooter($trans);?>
 

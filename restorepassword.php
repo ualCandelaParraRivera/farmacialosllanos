@@ -26,7 +26,6 @@
 
     <?php sectionbreadcrumb("|login|restorepassword", $trans);?>
 
-    <!-- Lost Password Section Start -->
     <div class="section section-padding">
         <div class="container">
 
@@ -54,7 +53,6 @@
         </div>
 
     </div>
-    <!-- Lost Password Section End -->
     <?php sectioncookies($trans);?>
     <?php sectionfooter($trans);?>
 

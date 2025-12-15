@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <?php include ("./controller/main.php");?>
 <?php 
-    /* $res=$db->query("SELECT name FROM user");
-    while($row = mysqli_fetch_array($res)){
-        echo $row['name'];
-    } */
 ?>
 <html class="no-js" lang="<?=$lang?>">
 
@@ -16,8 +12,6 @@
     <?php sectiontopbar($trans);?>
 
     <?php sectionheader($db, 0, $trans); ?>
-
-    <!-- 404 Section Start -->
     <div class="section-404 section" data-bg-image="img/bg/bg-shopsoon.png">
         <div class="container">
             <div class="content-404">
@@ -31,7 +25,6 @@
             </div>
         </div>
     </div>
-    <!-- 404 Section End -->
 
     <?php sectionjs();?>
 </body>

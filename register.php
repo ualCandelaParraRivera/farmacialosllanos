@@ -5,10 +5,6 @@
         redirect($location_loginuser);
     }
     $email = $_POST['email'];
-    /* $res=$db->query("SELECT name FROM user");
-    while($row = mysqli_fetch_array($res)){
-        echo $row['name'];
-    } */
 ?>
 <html class="no-js" lang="<?=$lang?>">
 
@@ -25,7 +21,6 @@
 
     <?php sectionbreadcrumb("|login|register", $trans);?>
 
-    <!-- Lost Password Section Start -->
     <div class="section section-padding pb-0">
         <div class="container">
 
@@ -92,7 +87,6 @@
         </div>
 
     </div>
-    <!-- Lost Password Section End -->
     <?php sectioncookies($trans);?>
     <?php sectionfooter($trans);?>
 

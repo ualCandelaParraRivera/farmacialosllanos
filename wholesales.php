@@ -10,10 +10,6 @@
     LEFT JOIN wholesale_translation wt ON w.id = wt.wholesaleId
     WHERE wt.lang = '$lang' AND w.isdeleted = 0";
     $res=$db->query($query);
-    /* $res=$db->query("SELECT name FROM user");
-    while($row = mysqli_fetch_array($res)){
-        echo $row['name'];
-    } */
 ?>
 <html class="no-js" lang="<?=$lang?>">
 
@@ -28,7 +24,6 @@
 
     <?php sectionbreadcrumb("|wholesales", $trans);?>
 
-    <!-- Portfolio Section Start -->
     <div class="section section-padding pb-0">
         <div class="container">
             <div class="row row-cols-lg-3 row-cols-sm-2 row-cols-1 learts-mb-n30">
@@ -55,15 +50,9 @@
                 <?php } ?>
             </div>
 
-            <!-- <div class="row learts-mt-50">
-                <div class="col text-center">
-                    <a href="#" class="btn btn-dark btn-outline-hover-dark">Load More</a>
-                </div>
-            </div> -->
         </div>
 
     </div>
-    <!-- Portfolio Section End -->
     <?php sectioncookies($trans);?>
     <?php sectionfooter($trans);?>
 
