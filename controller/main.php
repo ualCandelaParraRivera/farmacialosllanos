@@ -111,8 +111,8 @@ function getMeta($db, $page=""){
     $robots = "index, follow";
     $description = "";
     $viewport = "width=device-width, initial-scale=1, shrink-to-fit=no";
-    $author = "KMDatategy";
-    $replyto = "soporte@hempleaf.es";
+    $author = "Grupo3";
+    $replyto = "info@farmacialosllanos.org";
     $keywords = "";
     $resourcetype = "Document";
     $datecreated = "Mon, 3 May 2021 00:00:00 GMT+1";
@@ -230,7 +230,7 @@ foreach($products as $product){
                 <!-- Header Logo Start -->
                 <div class="col">
                     <div class="header-logo">
-                        <a href="index"><img src="img/logo/logof.png" alt="Hempleaf Logo"></a>
+                        <a href="index"><img src="img/logo/logof.png" alt="Los Llanos Logo"></a>
                     </div>
                 </div>
                 <!-- Header Logo End -->
@@ -366,10 +366,10 @@ foreach($products as $product){
                 <div class="col-auto">
                     <div class="header-tools justify-content-end">
                         <div class="header-login d-none d-sm-block">
-                        <!-- <a href='.(isset($_SESSION['usercode'])?"myaccount":"login").'><i class="fal fa-user"></i></a> -->
+                        <!--<a href='.(isset($_SESSION['usercode'])?"myaccount":"login").'><i class="fal fa-user"></i></a> -->
                         </div>
                         <div class="header-cart">
-                        <!-- <a href="#offcanvas-cart" class="offcanvas-toggle" id="cartcount3">'.($quantity>0 ? '<span class="cart-count">'.$quantity.'</span>' : '').'<i class="fal fa-shopping-cart"></i></a> -->
+                        <!--<a href="#offcanvas-cart" class="offcanvas-toggle" id="cartcount3">'.($quantity>0 ? '<span class="cart-count">'.$quantity.'</span>' : '').'<i class="fal fa-shopping-cart"></i></a> -->
                         </div>
                         <div class="mobile-menu-toggle">
                             <a href="#offcanvas-mobile-menu" class="offcanvas-toggle">
@@ -483,10 +483,10 @@ foreach($products as $product){
                 <div class="row" style="justify-content: space-around;">
                     <div class="header-tools">
                         <div class="header-login">
-                        <!-- <a href='.(isset($_SESSION['usercode'])?"myaccount":"login").'><i class="fal fa-user"></i></a> -->
+                        <a href='.(isset($_SESSION['usercode'])?"myaccount":"login").'><i class="fal fa-user" style="color: #696969;"></i></a>
                         </div>
                         <div class="header-cart">
-                        <!-- <a href="cart" id="cartcount4">'.($quantity>0 ? '<span class="cart-count">'.$quantity.'</span>' : '').'<i class="fal fa-shopping-cart"></i></a> -->
+                        <a href="cart" id="cartcount4">'.($quantity>0 ? '<span class="cart-count">'.$quantity.'</span>' : '').'<i class="fal fa-shopping-cart"  style="color: #696969;"></i></a>
                         </div>
                     </div>
                     <div class="nav-bar">

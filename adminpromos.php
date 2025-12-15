@@ -72,7 +72,7 @@
                                                     <td><?=$row['minimo']?>€</td>
                                                     <td><?=$row['maximo']?>€</td>
                                                     <td><?=$row['fechainicio']?></td>
-                                                    <td><?=$row['fechainicio']?></td>
+                                                    <td><?=$row['fechafin']?></td>
                                                     <td>
                                                         <div class="btn-group ml-auto">
                                                             <a href="admineditpromo?guidpromo=<?=$row['guidpromo']?>" class="btn btn-sm btn-outline-light">

@@ -13,8 +13,6 @@ Disallow: /cooming-soon.php
 Disallow: /first.php
 Disallow: /logout.php
 Disallow: /orderview.php
-Disallow: /over18.php
-Disallow: /over18error.php
 Disallow: /redirectlogin.php
 Disallow: /restorepassword.php
 Disallow: /transaction.php

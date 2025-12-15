@@ -17,7 +17,7 @@ $(document).ready(function(){
                 type: 'post',
                 data: {row:row, type:type, guid:guid},
                 beforeSend:function(){
-                    $(".load-more").text("Loading...");
+                    $(".load-more").text("Cargando...");
                 },
                 success: function(response){
 
@@ -31,17 +31,17 @@ $(document).ready(function(){
                         if(rowno >= allcount){
 
                             // Change the text and background
-                            $('.load-more').text("Hide");
+                            $('.load-more').text("Ocultar");
                             //$('.load-more').css("background","darkorchid");
                         }else{
-                            $(".load-more").text("Load more");
+                            $(".load-more").text("Cargar más");
                         }
                     }, 1000);
 
                 }
             });
         }else{
-            $('.load-more').text("Hiding...");
+            $('.load-more').text("Ocultando...");
 
             // Setting little delay while removing contents
             setTimeout(function() {
@@ -53,7 +53,7 @@ $(document).ready(function(){
                 $("#row").val(0);
 
                 // Change the text and background
-                $('.load-more').text("Load more");
+                $('.load-more').text("Cargar más");
                 //$('.load-more').css("background","#15a9ce");
                 
             }, 1000);

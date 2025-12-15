@@ -138,7 +138,7 @@
                                             ,grandtotal as total
                                             ,guidorder
                                             FROM user u
-                                            LEFT JOIN order o ON u.id = o.userId
+                                            LEFT JOIN `order` o ON u.id = o.userId
                                             WHERE u.isdeleted = 0 and u.isvalid = 1 AND o.isdeleted = 0 AND u.id = ?";
                                             $res=$db->prepare($query, array($_SESSION['usercode']));
                                             $i=1;
@@ -162,40 +162,6 @@
                             </div>
                         </div>
                         <!-- Single Tab Content End -->
-
-                        <!-- Single Tab Content Start -->
-                        <!-- <div class="tab-pane fade" id="download">
-                            <div class="myaccount-content download">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Invoice No.</th>
-                                                <th>Date</th>
-                                                <th>Status</th>
-                                                <th>Download</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>FR019725</td>
-                                                <td>22 Agosto 2018</td>
-                                                <td>Paid</td>
-                                                <td><a href="#"><i class="far fa-arrow-to-bottom mr-1"></i> Download File</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>FR019726</td>
-                                                <td>12 Septiembre 2018</td>
-                                                <td>Denied</td>
-                                                <td><a href="#"><i class="far fa-arrow-to-bottom mr-1"></i> Download File</a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- Single Tab Content End -->
-
                         <!-- Single Tab Content Start -->
                         <div class="tab-pane fade" id="address">
                             <div class="myaccount-content address">

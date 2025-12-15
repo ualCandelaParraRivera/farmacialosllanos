@@ -33,7 +33,6 @@ function enviarEmail($email, $nombre, $asunto, $mensaje){
         'allow_self_signed' => true
         ]
     ]);
-    $mail->Host = gethostbyname('tls://smtp.gmail.com');
     $mail->Subject = 'Asunto de prueba';
     $mail->msgHTML($mensaje);
     return $mail->send();
@@ -76,12 +75,12 @@ $products = $db->getCart($lang);
 $quantity = 0;
 $subtotal = 0;
 $taxes = 0;
-$weight = 0;
+$weight = 1;
 foreach($products as $product){
     $quantity += $product->count;
     $subtotal += $product->total;
     $taxes += $product->totaltax;
-    $weight += $product->count * $product->weight;
+    // $weight += $product->count * $product->weight;
 }
 if($quantity == 0){
     redirect($location_404);
@@ -274,11 +273,11 @@ if(!isset($_POST['shipmentprice']) || empty($_POST['shipmentprice'])){
     $shipping = $_POST['shipmentprice'];
 }
 
-if(!isset($_POST['weight']) || empty($_POST['weight'])){
-    $errors['weight'] = $trans['control_placeorder_error16'];
-}else{
-    $weight = $_POST['weight'];
-}
+// if(!isset($_POST['weight']) || empty($_POST['weight'])){
+//     $errors['weight'] = $trans['control_placeorder_error16'];
+// }else{
+//     $weight = $_POST['weight'];
+// }
 
 $createaccount = false;
 if(isset($_POST['accountCheck'])){

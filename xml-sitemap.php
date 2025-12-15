@@ -52,8 +52,6 @@ function parse_dir( $dir, $url ) {
 			case 'logout.php': $specificprior = 0.1; break;
 			case 'lostpassword.php': $specificprior = 0.4; break;
 			case 'myaccount.php': $specificprior = 0.6; break;
-			case 'over18.php': $specificprior = 0.75; break;
-			case 'over18error.php': $specificprior = 0.4; break;
 			case 'shop.php': $specificprior = 0.8; break;
 			case 'productdetails.php': $specificprior = 0.7; break;
 			case 'register.php': $specificprior = 0.7; break;

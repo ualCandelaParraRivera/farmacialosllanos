@@ -33,7 +33,7 @@ foreach($products as $product){
     $quantity += $product->count;
     $subtotal += $product->total;
     $taxes += $product->totaltax;
-    $weight += $product->count * $product->weight;
+    // $weight += $product->count * $product->weight;
 }
 
 
@@ -179,7 +179,7 @@ if($lang != "en"){
                             ,o.tax
                             ,o.shipping
                             ,ROUND(o.grandTotal,2) as grandTotal
-                            FROM order o
+                            FROM `order` o
                             WHERE id = ?";
                             
                             $res=$db->prepare($query, array($orderid));

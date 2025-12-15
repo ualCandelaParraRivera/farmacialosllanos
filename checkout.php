@@ -10,7 +10,7 @@
         $quantity += $product->count;
         $subtotal += $product->total;
         $taxes += $product->totaltax;
-        $weight += $product->count * $product->weight;
+        // $weight += $product->count * $product->weight;
     }
     if($quantity == 0){
         redirect($location_404);
@@ -119,7 +119,7 @@
 <head>
     <?php sectionhead($db)?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"></script>
-    <script src="js/placeorder.js"></script>
+   
     <script src="https://www.paypal.com/sdk/js?client-id=ASluQE8pQPTJA9GtfFMg3I3EdXssslkTsEhC7WP86lX7ifgcEg-OYKyh9aLtmoZJ68gfJw2k1GpuFS1K&disable-funding=card,sofort&currency=EUR&locale=<?=$locale?>"></script>
 </head>
 
@@ -133,7 +133,7 @@
     <!-- Checkout Section Start -->
     <div class="section section-padding pb-0">
         <div class="container">
-            <form action="controller/placeorder" method="post" id="checkoutForm" class="checkout-form learts-mb-50">
+            <form action="controller/placeorder" method="post" id="checkoutForm" class="checkout-form learts-mb-50" form="checkoutForm">
                 <div class="section-title2">
                     <h2 class="title"><?=$trans['checkout_title']?></h2>
                 </div>
@@ -484,8 +484,7 @@
                         </div>
                         <div class="text-center">
                             <p class="payment-note"><?=$trans['checkout_creditcondition']?></p>
-                            <button class="btn btn-dark btn-outline-hover-dark" type="submit" form="checkoutForm"><?=$trans['checkout_placeorder']?></button>
-                        </div>
+<button class="btn btn-dark btn-outline-hover-dark" type="submit" form="checkoutForm"><?=$trans['checkout_placeorder']?></button>                        </div>
                     </div>
                 </div>
             </div>
@@ -497,6 +496,7 @@
     <?php sectionfooter($trans);?>
 
     <?php sectionjs();?>
+    <script src="js/placeorder.js"></script>
     <!-- Add the checkout buttons, set up the order and approve the order -->
     <!-- <script>
       paypal.Buttons({

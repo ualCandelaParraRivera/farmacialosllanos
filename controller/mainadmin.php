@@ -322,9 +322,6 @@ function sectionmenu($db, $active){
                                 <li class="nav-item">
                                     <a class="nav-link '.($active==7 ? 'active' : '').'" href="adminbrands">Marcas</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link '.($active==8 ? 'active' : '').'" href="adminwholesales">Wholesales</a>
-                                </li>
                             </ul>
                         </div>
                     </li>

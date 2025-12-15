@@ -21,7 +21,7 @@
 		// }
 		// echo getcurrentpath().'<br>';
 		// echo $count;
-		if($age && $eightteen && $age <= $eightteen){
+		// if($age && $eightteen && $age <= $eightteen){
 			
 			if(isset($_POST['rememberme']) && $_POST['rememberme'] == 'remember-me'){
 				setcookie ( 'over18', $age, time() + 60*60*24*30, '/', ''.$server.'');
@@ -31,11 +31,11 @@
 			header("location: ../index");
 			//redirect($prev."index");
 
-		} else {
-			header("location: ../over18error");
-			//redirect($prev."over18error");
+		// } else {
+		// 	header("location: ../over18error");
+		// 	//redirect($prev."over18error");
 
-		}
+		// }
 
 	}
 

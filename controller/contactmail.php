@@ -286,19 +286,6 @@ $data = array(); // array para devolver información
         
     }
 
-/* $email = "kikemjunior@gmail.com";
-$nombre = "Enrique";
-$apellidos = "Méndez";
-$telefono = "658883191";
-$asunto = "Test de prueba";
-$mensaje = "Mensaje de prueba";
-
-$issended = enviarEmail($email, $nombre, $apellidos, $telefono, $asunto, $mensaje);
-if(!$issended){
-    echo "NO ENVIADO";
-}else{
-    echo "ENVIADO";
-} */
 
 echo json_encode($data);
 

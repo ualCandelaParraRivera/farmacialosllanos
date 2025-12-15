@@ -15,7 +15,7 @@ $(document).ready(function(){
                 type: 'post',
                 data: {row:row},
                 beforeSend:function(){
-                    $(".loadmoreproducts").text("Loading...");
+                    $(".loadmoreproducts").text("Cargando...");
                 },
                 success: function(response){
 
@@ -30,16 +30,16 @@ $(document).ready(function(){
                         if(rowno >= allcount){
 
                             // Change the text and background
-                            $('.loadmoreproducts').html("<i class=\"ti-minus\"></i> Hide");
+                            $('.loadmoreproducts').html("<i class=\"ti-minus\"></i> Ocultar");
                         }else{
-                            $(".loadmoreproducts").html("<i class=\"ti-plus\"></i> More");
+                            $(".loadmoreproducts").html("<i class=\"ti-plus\"></i> Más");
                         }
                     }, 1000);
 
                 }
             });
         }else{
-            $('.loadmoreproducts').text("Hiding...");
+            $('.loadmoreproducts').text("Ocultando...");
 
             // Setting little delay while removing contents
             setTimeout(function() {
@@ -51,7 +51,7 @@ $(document).ready(function(){
                 $("#row").val(0);
 
                 // Change the text and background
-                $('.loadmoreproducts').html("<i class=\"ti-plus\"></i> More");
+                $('.loadmoreproducts').html("<i class=\"ti-plus\"></i> Más");
                 //$('.load-more').css("background","#15a9ce");
                 
             }, 1000);
