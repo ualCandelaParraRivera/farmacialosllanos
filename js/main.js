@@ -334,6 +334,22 @@
             prevEl: '.home12-slider-prev',
         },
     });
+    
+    $("a.addToCart").on("click",function(){
+        var id = $(this).attr("data-id");
+        console.log(id);
+        $.ajax({
+            type: "GET",
+            url: "controller/cart?id="+id+"&action=add"
+        })
+        .done(function(data)
+        {
+            var x = JSON.parse(data);
+            $('#alertmodal').html(x.text);
+            $('#alertmodal').data('id', id).modal('show');
+        });
+    });
+
     $('.product-carousel').slick({
         infinite: true,
         slidesToShow: 4,
@@ -535,7 +551,7 @@
     }
 
     $.instagramFeed({
-        'username': 'hempleafspain',
+        'username': 'farmacialosllanosalmeria',
         'container': ".instagram-feed",
         'display_profile': false,
         'display_biography': false,
@@ -621,50 +637,50 @@
     })
 
     $("a.addToCart").on("click",function(){
-        var id = $(this).attr("data-id");
+		var id = $(this).attr("data-id");
         console.log(id);
-        $.ajax({
-            type: "GET",
-            url: "controller/cart?id="+id+"&action=add"
-        })
-        .done(function(data)
-        {
+		$.ajax({
+			type: "GET",
+			url: "controller/cart?id="+id+"&action=add"
+		})
+		.done(function(data)
+		{
             var x = JSON.parse(data);
             $('#alertmodal').html(x.text);
             $('#alertmodal').data('id', id).modal('show');
-        });
-    });
+		});
+	});
     $("#modalBtnConfirm").on("click",function(){
         location.reload();
-    });
+	});
 
     $("a.removeFromCart").on("click",function(){
-        var id = $(this).attr("data-id");
-        $.ajax({
-            type: "GET",
-            url: "controller/cart?id="+id+"&action=remove"
-        })
-        .done(function(data)
-        {
-            location.reload();
-        });
-    });
+		var id = $(this).attr("data-id");
+		$.ajax({
+			type: "GET",
+			url: "controller/cart?id="+id+"&action=remove"
+		})
+		.done(function(data)
+		{
+			location.reload();
+		});
+	});
 
     $("a.emptyCart").on("click",function(){
-        $.ajax({
-            type: "GET",
-            url: "controller/cart?action=empty"
-        })
-        .done(function(data)
-        {
-            location.reload();
-        });
-    });
+		$.ajax({
+			type: "GET",
+			url: "controller/cart?action=empty"
+		})
+		.done(function(data)
+		{
+			location.reload();
+		});
+	});
 
     $('.qty-btn').on('click', function () {
         var $this = $(this);
         var oldValue = $this.siblings('input').val();
-        var id = $(this).attr("data-id");
+		var id = $(this).attr("data-id");
         if ($this.hasClass('plus')) {
             var newVal = parseFloat(oldValue) + 1;
             $.ajax({
@@ -698,7 +714,7 @@
                 newVal = 1;
             }
         }
-
+        
         $this.siblings('input').val(newVal);
     });
 
@@ -794,7 +810,7 @@
                 },
                 success: function(data) {
                     var x = JSON.parse(data);
-
+                    
                     $("#option1").prop("disabled", x.glsislasdisabled != " disabled");
                     $("#option2").prop("disabled", x.glsislasdisabled != " disabled");
                     $("#option3").prop("disabled", x.glsislasdisabled != " disabled");
@@ -812,7 +828,7 @@
                     $("#option4").prop('checked', false);
                     $("#option5").prop('checked', false);
                     $('#shipmenttype').val("");
-                    $('#shipmentprice').val(-1);
+                    $('#shipmentprice').val(-1);                   
                 }
             });
         }else{
