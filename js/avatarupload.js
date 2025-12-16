@@ -14,19 +14,16 @@ $(document).ready(function() {
         readURL(this);
     });
 
-    // procesa el formulario
     $('form#datosimagen').submit(function(event) {
 
-        // impide que se envie el formulario de forma normal y refresca la página
         event.preventDefault();
         
-        $('.form-control').removeClass('is-invalid'); // elimina la clase is-invalid
-        $('.help-block').remove(); // elimina el texto de error
-        $('.alert').remove(); // elimina el texto de alerta
+        $('.form-control').removeClass('is-invalid');
+        $('.help-block').remove();
+        $('.alert').remove();
 
         var fd = new FormData($(this)[0]);
 
-        // procesa el formulario
         $.ajax({
             type 		: 'POST',
             url 		: './controller/avatarupload',
@@ -36,9 +33,7 @@ $(document).ready(function() {
             contentType: false,
             encode 		: true
         })
-            // devuelve el resultado
             .done(function(data) {
-                // Manejo de errores
                 if (!data.success) {
                     $('form#datosimagen').append('<div class="mt-3 alert alert-danger">' + data.errors.message + '</div>');
 

@@ -1,16 +1,9 @@
 (function ($) {
     "use strict";
 
-    /*--
-        Commons Variables
-    -----------------------------------*/
     var $window = $(window),
         $body = $('body');
 
-    /*--
-        Custom script to call Background
-        Image & Color from html data attribute
-    -----------------------------------*/
     $('[data-bg-image]').each(function () {
         var $this = $(this),
             $image = $this.data('bg-image');
@@ -22,9 +15,6 @@
         $this.css('background-color', $color);
     });
 
-    /*--
-        Header Sticky
-    -----------------------------------*/
     $window.on('scroll', function () {
         if ($window.scrollTop() > 350) {
             $('.sticky-header').addClass('is-sticky');
@@ -33,9 +23,6 @@
         }
     });
 
-    /*--
-        Sub Menu & Mega Menu Alignment
-    -----------------------------------*/
     var subMenuMegaMenuAlignment = () => {
         var $this,
             $subMenu,
@@ -85,9 +72,6 @@
         }
     }
 
-    /*--
-        Off Canvas Function
-    -----------------------------------*/
     (function () {
         var $offCanvasToggle = $('.offcanvas-toggle'),
             $offCanvas = $('.offcanvas'),
@@ -113,17 +97,12 @@
         });
     })();
 
-    /*--
-        Off Canvas Menu
-    -----------------------------------*/
     function mobileOffCanvasMenu() {
         var $offCanvasNav = $('.offcanvas-menu, .overlay-menu'),
             $offCanvasNavSubMenu = $offCanvasNav.find('.sub-menu');
 
-        /*Add Toggle Button With Off Canvas Sub Menu*/
         $offCanvasNavSubMenu.parent().prepend('<span class="menu-expand"></span>');
 
-        /*Category Sub Menu Toggle*/
         $offCanvasNav.on('click', 'li a, .menu-expand', function (e) {
             var $this = $(this);
             if ($this.attr('href') === '#' || $this.hasClass('menu-expand')) {
@@ -144,9 +123,6 @@
     }
     mobileOffCanvasMenu();
 
-    /*--
-        Header Category
-    -----------------------------------*/
     $('.header-categories').on('click', '.category-toggle', function (e) {
         e.preventDefault();
         var $this = $(this);
@@ -157,11 +133,6 @@
         }
     })
 
-    /*--
-        Shop Toolbar
-    -----------------------------------*/
-
-    // Filter Toggle
     $('.product-filter-toggle').on('click', function (e) {
         e.preventDefault();
         var $this = $(this),
@@ -171,7 +142,6 @@
         $('.customScroll').perfectScrollbar('update');
     });
 
-    // Column Toggle
     $('.product-column-toggle').on('click', '.toggle', function (e) {
         e.preventDefault();
         var $this = $(this),
@@ -183,46 +153,19 @@
         $('.isotope-grid').isotope('layout');
     });
 
-    /*--
-        Custom Scrollbar (Perfect Scrollbar)
-    -----------------------------------*/
     $('.customScroll').perfectScrollbar({
         suppressScrollX: !0
     });
 
-    /*--
-        Select2
-    -----------------------------------*/
-
-    // Basic
     $('.select2-basic').select2();
-    // No Search Field
     $('.select2-noSearch').select2({
         minimumResultsForSearch: Infinity
     });
 
-    // Custom Scrollbar For Select2 Result
-    /* $('.select2-basic, .select2-noSearch').on('select2:open', function () {
-        $('.select2-results__options').each(function () {
-            var ps = new PerfectScrollbar($(this)[0], {
-                suppressScrollX: true
-            });
-        });
-    }); */
-
-    /*--
-        Nice Select
-    -----------------------------------*/
     $('.nice-select').niceSelect();
 
-    /*--
-        Match Height
-    -----------------------------------*/
     $('.isotope-grid .product').matchHeight();
 
-    /*--
-        ion Range Slider
-    -----------------------------------*/
     $(".range-slider").ionRangeSlider({
         skin: "learts",
         hide_min_max: true,
@@ -230,9 +173,6 @@
         prefix: "€",
     });
 
-    /*--
-        Add To Wishlist
-    -----------------------------------*/
     (function () {
         if (typeof mojs == 'undefined') {
             return;
@@ -275,16 +215,8 @@
         });
     })();
 
-    /*--
-        Parallax
-    -----------------------------------*/
     $.Scrollax();
 
-    /*--
-        Swipper Slider Activation
-    -----------------------------------*/
-
-    // Home 1 Slider
     var $home1Slider = new Swiper('.home1-slider', {
         loop: true,
         speed: 750,
@@ -296,7 +228,6 @@
         autoplay: {},
     });
 
-    // Home 2 Slider
     var $home2Slider = new Swiper('.home2-slider', {
         loop: true,
         speed: 750,
@@ -317,7 +248,6 @@
         $(this).siblings('.slide-product').toggleClass('active');
     })
 
-    // Home 3 Slider
     var $home3Slider = new Swiper('.home3-slider', {
         loop: true,
         speed: 750,
@@ -329,7 +259,6 @@
         autoplay: {},
     });
 
-    // Home 4 Slider
     var $home4Slider = new Swiper('.home4-slider', {
         loop: true,
         loopedSlides: 2,
@@ -346,7 +275,6 @@
         autoplay: {},
     });
 
-    // Home 5 Slider
     var $home5Slider = new Swiper('.home5-slider', {
         loop: true,
         speed: 750,
@@ -359,10 +287,8 @@
             nextEl: '.home5-slider-next',
             prevEl: '.home5-slider-prev',
         },
-        //autoplay: {},
     });
 
-    // Home 7 Slider
     var $home7Slider = new Swiper('.home7-slider', {
         loop: true,
         speed: 750,
@@ -379,7 +305,6 @@
         autoplay: {},
     });
 
-    // Home 8 Slider
     var $home8Slider = new Swiper('.home8-slider', {
         loop: true,
         speed: 750,
@@ -393,10 +318,8 @@
             nextEl: '.home8-slider-next',
             prevEl: '.home8-slider-prev',
         },
-        //autoplay: {},
     });
 
-    // Home 12 Slider
     var $home12Slider = new Swiper('.home12-slider', {
         loop: true,
         speed: 750,
@@ -410,14 +333,7 @@
             nextEl: '.home12-slider-next',
             prevEl: '.home12-slider-prev',
         },
-        //autoplay: {},
     });
-
-    /*--
-        Slick Slider Activation
-    -----------------------------------*/
-
-    // Product Slider
     $('.product-carousel').slick({
         infinite: true,
         slidesToShow: 4,
@@ -446,14 +362,12 @@
         ]
     });
 
-    // Product List Slider
     $('.product-list-slider').slick({
         rows: 3,
         prevArrow: '<button class="slick-prev"><i class="ti-angle-left"></i></button>',
         nextArrow: '<button class="slick-next"><i class="ti-angle-right"></i></button>'
     });
 
-    // Single Product Slider
     $('.product-gallery-slider').slick({
         dots: true,
         infinite: true,
@@ -483,7 +397,6 @@
         nextArrow: '<button class="slick-next"><i class="ti-angle-down"></i></button>'
     });
 
-    // Blog Carousel
     $('.blog-carousel').slick({
         infinite: true,
         slidesToShow: 3,
@@ -506,7 +419,6 @@
         ]
     });
 
-    // Brand Carousel
     $('.brand-carousel').slick({
         infinite: true,
         slidesToShow: 5,
@@ -537,7 +449,6 @@
         }]
     });
 
-    // Testimonial SLider/Carousel
     $('.testimonial-slider').slick({
         infinite: true,
         slidesToShow: 1,
@@ -566,7 +477,6 @@
         ]
     });
 
-    // Category Banner Slider/Carousel
     $('.category-banner1-carousel').slick({
         infinite: true,
         slidesToShow: 3,
@@ -588,11 +498,6 @@
         ]
     });
 
-
-
-    /*--
-        Isotpe
-    -----------------------------------*/
     var $isotopeGrid = $('.isotope-grid');
     var $isotopeFilter = $('.isotope-filter');
     $isotopeGrid.imagesLoaded(function () {
@@ -613,13 +518,9 @@
         });
     });
 
-    /*--
-        MailChimp
-    -----------------------------------*/
     $('#mc-form').ajaxChimp({
         language: 'en',
         callback: mailChimpResponse,
-        // ADD YOUR MAILCHIMP URL BELOW HERE!
         url: 'http://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef'
 
     });
@@ -633,9 +534,6 @@
         }
     }
 
-    /*--
-        Instagram Feed
-    -----------------------------------*/
     $.instagramFeed({
         'username': 'hempleafspain',
         'container': ".instagram-feed",
@@ -696,9 +594,6 @@
             });
         }
     });
-    /*--
-        CountDown
-    -----------------------------------*/
     $('[data-countdown]').each(function () {
         var $this = $(this),
             $finalDate = $this.data('countdown');
@@ -707,11 +602,6 @@
         });
     });
 
-    /*--
-        Bootstrap
-    -----------------------------------*/
-
-    /* Accordion/Collapse */
     $('.collapse').on('show.bs.collapse', function (e) {
         $(this).closest('.card').addClass('active').siblings().removeClass('active');
     });
@@ -719,7 +609,6 @@
         $(this).closest('.card').removeClass('active');
     });
 
-    /* Modal */
     $('#quickViewModal').on('shown.bs.modal', function (e) {
         $('.product-gallery-slider-quickview').slick({
             dots: true,
@@ -731,70 +620,51 @@
         });
     })
 
-    /*--
-        Product Quantity
-    -----------------------------------*/
-    /* $('.qty-btn').on('click', function () {
-        var $this = $(this);
-        var oldValue = $this.siblings('input').val();
-        if ($this.hasClass('plus')) {
-            var newVal = parseFloat(oldValue) + 1;
-        } else {
-            // Don't allow decrementing below zero
-            if (oldValue > 1) {
-                var newVal = parseFloat(oldValue) - 1;
-            } else {
-                newVal = 1;
-            }
-        }
-        $this.siblings('input').val(newVal);
-    }); */
-
     $("a.addToCart").on("click",function(){
-		var id = $(this).attr("data-id");
+        var id = $(this).attr("data-id");
         console.log(id);
-		$.ajax({
-			type: "GET",
-			url: "controller/cart?id="+id+"&action=add"
-		})
-		.done(function(data)
-		{
+        $.ajax({
+            type: "GET",
+            url: "controller/cart?id="+id+"&action=add"
+        })
+        .done(function(data)
+        {
             var x = JSON.parse(data);
             $('#alertmodal').html(x.text);
             $('#alertmodal').data('id', id).modal('show');
-		});
-	});
+        });
+    });
     $("#modalBtnConfirm").on("click",function(){
         location.reload();
-	});
+    });
 
     $("a.removeFromCart").on("click",function(){
-		var id = $(this).attr("data-id");
-		$.ajax({
-			type: "GET",
-			url: "controller/cart?id="+id+"&action=remove"
-		})
-		.done(function(data)
-		{
-			location.reload();
-		});
-	});
+        var id = $(this).attr("data-id");
+        $.ajax({
+            type: "GET",
+            url: "controller/cart?id="+id+"&action=remove"
+        })
+        .done(function(data)
+        {
+            location.reload();
+        });
+    });
 
     $("a.emptyCart").on("click",function(){
-		$.ajax({
-			type: "GET",
-			url: "controller/cart?action=empty"
-		})
-		.done(function(data)
-		{
-			location.reload();
-		});
-	});
+        $.ajax({
+            type: "GET",
+            url: "controller/cart?action=empty"
+        })
+        .done(function(data)
+        {
+            location.reload();
+        });
+    });
 
     $('.qty-btn').on('click', function () {
         var $this = $(this);
         var oldValue = $this.siblings('input').val();
-		var id = $(this).attr("data-id");
+        var id = $(this).attr("data-id");
         if ($this.hasClass('plus')) {
             var newVal = parseFloat(oldValue) + 1;
             $.ajax({
@@ -806,7 +676,6 @@
                 location.reload();
             });
         } else if($this.hasClass('minus')) {
-            // Don't allow decrementing below zero
             if (oldValue > 1) {
                 var newVal = parseFloat(oldValue) - 1;
             } else {
@@ -823,14 +692,13 @@
         } else if ($this.hasClass('pluss')) {
             var newVal = parseFloat(oldValue) + 1;
         } else if($this.hasClass('minuss')) {
-            // Don't allow decrementing below zero
             if (oldValue > 1) {
                 var newVal = parseFloat(oldValue) - 1;
             } else {
                 newVal = 1;
             }
         }
-        
+
         $this.siblings('input').val(newVal);
     });
 
@@ -863,17 +731,13 @@
             var x = JSON.parse(data);
             console.log(x);
             if (!x.success) {
-                $('.cart-coupon').append('<div class="help-block">' + x.message + '</div>'); // agrega el mensaje de error debajo de la entrada
+                $('.cart-coupon').append('<div class="help-block">' + x.message + '</div>');
             }else{
                 location.reload();
-               
             }
         });
     });
 
-    /*--
-    Comboboxes
-    -----------------------------------*/
     $('#billcountry').on('change', function() {
         console.log($(this).val());
         var country = $(this).val();
@@ -930,7 +794,7 @@
                 },
                 success: function(data) {
                     var x = JSON.parse(data);
-                    
+
                     $("#option1").prop("disabled", x.glsislasdisabled != " disabled");
                     $("#option2").prop("disabled", x.glsislasdisabled != " disabled");
                     $("#option3").prop("disabled", x.glsislasdisabled != " disabled");
@@ -948,7 +812,7 @@
                     $("#option4").prop('checked', false);
                     $("#option5").prop('checked', false);
                     $('#shipmenttype').val("");
-                    $('#shipmentprice').val(-1);                   
+                    $('#shipmentprice').val(-1);
                 }
             });
         }else{
@@ -1018,9 +882,6 @@
         }
     });
 
-    /*--
-        Checkbox
-    -----------------------------------*/
     $('#accountCheck').on('click', function () {
         if ($(this).prop('checked')) {
             $('#accountInput').fadeIn();
@@ -1073,34 +934,20 @@
         }
    });
 
-
-    /*--
-        Post Share
-    -----------------------------------*/
     $('.post-share').on('click', ".toggle", function () {
         var $this = $(this),
             $target = $this.parent();
         $target.hasClass('active') ? $target.removeClass('active') : $target.addClass('active');
     });
 
-    /*--
-        Magnific Popup
-    -----------------------------------*/
     $('.video-popup').magnificPopup({
         type: 'iframe'
     });
 
-    /*--
-        Scroll Up
-    -----------------------------------*/
     $.scrollUp({
         scrollText: '<i class="fal fa-long-arrow-up"></i>',
     });
 
-
-    /*--
-        Single Product Gallery Popup
-    -----------------------------------*/
     var $productPopupGalleryBtn = $('.product-gallery-popup'),
         $productPopupGallery = $productPopupGalleryBtn.data('images'),
         $openPhotoSwipe = function () {
@@ -1125,9 +972,6 @@
         });
     });
 
-    /*--
-        Sticky Sidebar
-    -----------------------------------*/
     $('.sticky-sidebar').stickySidebar({
         topSpacing: 60,
         bottomSpacing: 60,
@@ -1136,36 +980,23 @@
         minWidth: 992
     });
 
-    /*--
-        Ajax Contact Form
-    -----------------------------------*/
     $(function () {
-        // Get the form.
         var form = $('#contact-form');
-        // Get the messages div.
         var formMessages = $('.form-messege');
-        // Set up an event listener for the contact form.
         $(form).submit(function (e) {
-            // Stop the browser from submitting the form.
             e.preventDefault();
-            // Serialize the form data.
             var formData = $(form).serialize();
-            // Submit the form using AJAX.
             $.ajax({
                     type: 'POST',
                     url: $(form).attr('action'),
                     data: formData
                 })
                 .done(function (response) {
-                    // Make sure that the formMessages div has the 'success' class.
                     formMessages.removeClass('error text-danger').addClass('success text-success learts-mt-10').text(response);
-                    // Clear the form.
                     form.find('input:not([type="submit"]), textarea').val('');
                 })
                 .fail(function (data) {
-                    // Make sure that the formMessages div has the 'error' class.
                     formMessages.removeClass('success text-success').addClass('error text-danger mt-3');
-                    // Set the message text.
                     if (data.responseText !== '') {
                         formMessages.text(data.responseText);
                     } else {
@@ -1175,16 +1006,10 @@
         });
     });
 
-    /*--
-        On Load Function
-    -----------------------------------*/
     $window.on('load', function () {
         subMenuMegaMenuAlignment();
     });
 
-    /*--
-        Resize Function
-    -----------------------------------*/
     $window.resize(function () {
         subMenuMegaMenuAlignment();
     });
