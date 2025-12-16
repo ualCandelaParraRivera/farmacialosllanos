@@ -751,22 +751,40 @@
     }); */
 
     $("a.addToCart").on("click",function(){
-		var id = $(this).attr("data-id");
-        console.log(id);
-		$.ajax({
-			type: "GET",
-			url: "controller/cart?id="+id+"&action=add"
-		})
-		.done(function(data)
-		{
+        var id = $(this).attr("data-id");
+        console.log("Adding product:", id);
+        $.ajax({
+            type: "GET",
+            url: "controller/cart?id="+id+"&action=add"
+        })
+        .done(function(data)
+        {
+            console.log("Product added successfully");
             var x = JSON.parse(data);
-            $('#alertmodal').html(x.text);
-            $('#alertmodal').data('id', id).modal('show');
-		});
-	});
-    $("#modalBtnConfirm").on("click",function(){
+            $('#alertModalBody').html(x.text);
+            $('#alertmodal').modal('show');
+            
+            // Actualizar contador del carrito
+            if (typeof window.updateCartCount === 'function') {
+                setTimeout(function() {
+                    window.updateCartCount();
+                }, 100);
+            }
+        })
+        .fail(function(xhr, status, error) {
+            console.error('Error adding to cart:', error);
+        });
+    });
+
+    // Cuando se cierra el modal con "Continuar comprando" o X, recargar la página
+    $('#alertmodal').on('hidden.bs.modal', function () {
         location.reload();
-	});
+    });
+
+    // Botón "Ver carrito" redirige al carrito
+    $("#modalBtnConfirm").on("click",function(){
+        window.location.href = "cart";
+    });
 
     $("a.removeFromCart").on("click",function(){
 		var id = $(this).attr("data-id");
@@ -838,15 +856,27 @@
         var $this = $('.input-qty');
         var value = $this.val();
         var id = $(this).attr("data-id");
+        console.log("Adding product with quantity:", id, value);
         $.ajax({
             type: "GET",
             url: "controller/cart?id="+id+"&action=addqty&val="+value+""
         })
         .done(function(data)
         {
+            console.log("Response:", data);
             var x = JSON.parse(data);
-            $('#alertmodal').html(x.text);
-            $('#alertmodal').data('id', id).modal('show');
+            $('#alertModalBody').html(x.text);
+            $('#alertmodal').modal('show');
+            
+            // Actualizar contador del carrito
+            if (typeof window.updateCartCount === 'function') {
+                setTimeout(function() {
+                    window.updateCartCount();
+                }, 100);
+            }
+        })
+        .fail(function(xhr, status, error) {
+            console.error('Error adding to cart:', error);
         });
     });
 

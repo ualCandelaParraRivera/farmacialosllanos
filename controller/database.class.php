@@ -2,6 +2,7 @@
 
 Class Db{
 
+   // private $servidor='localhost:3306';
    private $servidor='cuberty.ddns.net:3306';
    private $usuario='llanosfarmacia';
    private $password='Llanos25!Ual';
@@ -129,65 +130,82 @@ Class Db{
 	}
 	
 	public function addToCart(){
-		if(isset($_GET["id"])){
-         $guidproduct = $_GET["id"];
-			if($_SESSION['cart'] != ""){
-				$cart = json_decode($_SESSION['cart'], true);
-				$found = false;
-				for($i=0;$i<count($cart);$i++){
-					if($cart[$i]["guidproduct"] == $guidproduct){
-						$cart[$i]["count"] = $cart[$i]["count"]+1;
-						$found = true;
-						break;
-					}
-				}
-				if(!$found){
-					$line = new stdClass;
-					$line->guidproduct = $guidproduct; 
-					$line->count = 1;
-					$cart[] = $line;
-				}
-				$_SESSION['cart'] = json_encode($cart);
-			}else{
-				$line = new stdClass;
-				$line->guidproduct = $guidproduct; 
-				$line->count = 1;
-				$cart[] = $line;
-				$_SESSION['cart'] = json_encode($cart);
-			}
-		}
-	}
+    $data = array();
+    $data['success'] = false;
+    
+    if(isset($_GET["id"])){
+        $guidproduct = $_GET["id"];
+        if($_SESSION['cart'] != ""){
+            $cart = json_decode($_SESSION['cart'], true);
+            $found = false;
+            for($i=0;$i<count($cart);$i++){
+                if($cart[$i]["guidproduct"] == $guidproduct){
+                    $cart[$i]["count"] = $cart[$i]["count"]+1;
+                    $found = true;
+                    break;
+                }
+            }
+            if(!$found){
+                $line = new stdClass;
+                $line->guidproduct = $guidproduct; 
+                $line->count = 1;
+                $cart[] = $line;
+            }
+            $_SESSION['cart'] = json_encode($cart);
+        }else{
+            $line = new stdClass;
+            $line->guidproduct = $guidproduct; 
+            $line->count = 1;
+            $cart[] = $line;
+            $_SESSION['cart'] = json_encode($cart);
+        }
+        
+        $data['success'] = true;
+        $data['text'] = 'Producto añadido al carrito';
+    }
+    
+    return json_encode($data);
+}
 
    public function addToCartQty(){
-		if(isset($_GET["id"]) && isset($_GET["val"])){
-         $guidproduct = $_GET["id"];
-         $count = intval($_GET["val"]);
-			if($_SESSION['cart'] != ""){
-				$cart = json_decode($_SESSION['cart'], true);
-				$found = false;
-				for($i=0;$i<count($cart);$i++){
-					if($cart[$i]["guidproduct"] == $guidproduct){
-						$cart[$i]["count"] = $cart[$i]["count"]+$count;
-						$found = true;
-						break;
-					}
-				}
-				if(!$found){
-					$line = new stdClass;
-					$line->guidproduct = $guidproduct; 
-					$line->count = $count;
-					$cart[] = $line;
-				}
-				$_SESSION['cart'] = json_encode($cart);
-			}else{
-				$line = new stdClass;
-				$line->guidproduct = $guidproduct; 
-				$line->count = $count;
-				$cart[] = $line;
-				$_SESSION['cart'] = json_encode($cart);
-			}
-		}
-	}
+    $data = array();
+    $data['success'] = false;
+    
+    if(isset($_GET["id"]) && isset($_GET["val"])){
+        $guidproduct = $_GET["id"];
+        $count = intval($_GET["val"]);
+        
+        if($_SESSION['cart'] != ""){
+            $cart = json_decode($_SESSION['cart'], true);
+            $found = false;
+            for($i=0;$i<count($cart);$i++){
+                if($cart[$i]["guidproduct"] == $guidproduct){
+                    $cart[$i]["count"] = $cart[$i]["count"]+$count;
+                    $found = true;
+                    break;
+                }
+            }
+            if(!$found){
+                $line = new stdClass;
+                $line->guidproduct = $guidproduct; 
+                $line->count = $count;
+                $cart[] = $line;
+            }
+            $_SESSION['cart'] = json_encode($cart);
+        }else{
+            $line = new stdClass;
+            $line->guidproduct = $guidproduct; 
+            $line->count = $count;
+            $cart[] = $line;
+            $_SESSION['cart'] = json_encode($cart);
+        }
+        
+        $data['success'] = true;
+        $data['text'] = 'Producto añadido al carrito';
+    }
+    
+    return json_encode($data);
+}
 
    public function getPromoCart($trans){
       $errors = array();

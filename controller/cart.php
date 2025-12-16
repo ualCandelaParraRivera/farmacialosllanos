@@ -3,15 +3,15 @@
 	$action = strip_tags($_GET["action"]);
 	switch ($action) {
 		case "add":
-			$data = $db->addToCart($lang,$trans);
+			$data = $db->addToCart();
 			echo $data;
 			break;
 		case "addqty":
-			$data = $db->addToCartQty($lang,$trans);
+			$data = $db->addToCartQty();
 			echo $data;
 			break;
 		case "remove":
-			$db->removeFromCart($lang,$trans);
+			$db->removeFromCart();
 			break;
 		case "set":
 			$db->setToCart();
@@ -21,7 +21,7 @@
 			echo $data;
 			break;
 		case "empty":
-			$db->emptyCart($lang,$trans);
+			$db->emptyCart();
 			break;
 	}
 ?>
