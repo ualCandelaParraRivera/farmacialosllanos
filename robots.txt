@@ -20,6 +20,6 @@ Disallow: /validateregistration.php
 Disallow: /xml-config.php
 Disallow: /xml-sitemap.xsl
 
-Sitemap: https://hempleaf.es/xml-sitemap.php
+Sitemap: https://farmacialosllanos.org/xml-sitemap.php
 
-# Agregado el 07/05/2021
+# Agregado el 16/12/2025

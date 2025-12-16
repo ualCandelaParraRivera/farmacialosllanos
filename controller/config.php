@@ -17,8 +17,8 @@ $postperpage = 6;
 $productsperpage = 10;
 $topnewproducts = 4;
 
-if($_SERVER['HTTP_HOST'] == "hempleaf.ddns.net" || $_SERVER['HTTP_HOST'] == "localhost"){
-    $webroot = $_SERVER['HTTP_HOST']."/hempleaf/";
+if($_SERVER['HTTP_HOST'] == "farmacialosllanos.ddns.net" || $_SERVER['HTTP_HOST'] == "localhost"){
+    $webroot = $_SERVER['HTTP_HOST']."/farmacialosllanos/";
 }else{
     $webroot = $_SERVER['HTTP_HOST']."/";
 }

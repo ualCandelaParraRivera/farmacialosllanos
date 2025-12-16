@@ -458,17 +458,17 @@
                     <div class="order-payment">
                         <div class="payment-method">
                             <div class="accordion" id="paymentMethod">
-                                <div class="card active">
+                                <div class="card">
                                     <div class="card-header">
                                         <button data-toggle="collapse" data-target="#wirePayments" id="wirebtn"><?=$trans['checkout_wiretransfer']?> </button>
                                     </div>
-                                    <div id="wirePayments" class="collapse show" data-parent="#paymentMethod">
+                                    <div id="wirePayments" class="collapse" data-parent="#paymentMethod">
                                         <div class="card-body">
                                             <p><?=$trans['checkout_wiretransfertext']?></p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card">
+                                <!-- <div class="card">
                                     <div class="card-header">
                                         <button data-toggle="collapse" data-target="#cardPayments" id="cardbtn"><?=$trans['checkout_credit']?></button>
                                     </div>
@@ -477,7 +477,7 @@
                                             <p><?=$trans['checkout_credittext']?></p>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="text-center">

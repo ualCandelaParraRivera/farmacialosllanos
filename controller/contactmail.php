@@ -47,8 +47,8 @@ function imageToBase64($relativepath){
 }
 
 function generarMensaje($email, $nombre, $asunto, $mensaje){
-    if($_SERVER['HTTP_HOST'] == "hempleaf.ddns.net" || $_SERVER['HTTP_HOST'] == "localhost"){
-        $webroot = $_SERVER['HTTP_HOST']."/hempleaf/";
+    if($_SERVER['HTTP_HOST'] == "farmacialosllanos.ddns.net" || $_SERVER['HTTP_HOST'] == "localhost"){
+        $webroot = $_SERVER['HTTP_HOST']."/farmacialosllanos/";
     }else{
         $webroot = $_SERVER['HTTP_HOST']."/";
     }

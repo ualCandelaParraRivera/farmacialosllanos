@@ -203,7 +203,7 @@ function rellenarInfoPDF($db, $orderid, $type, $trans, $lang) {
                         <table>
                             <tr>
                                 <td class="title">
-                                    <img src="'.$logo.'" alt="Hempleaf Logo">
+                                    <img src="'.$logo.'" alt="Los Llanos Logo">
                                 </td>
                                 <td></td>
                                 <td></td>
@@ -441,8 +441,8 @@ function enviarEmail($email, $nombre, $asunto, $mensaje, $orderid, $db, $dompdf,
 
 
 function generarMensaje($email, $nombre, $asunto, $mensaje, $type, $lang, $trans){
-    if($_SERVER['HTTP_HOST'] == "hempleaf.ddns.net" || $_SERVER['HTTP_HOST'] == "localhost"){
-        $webroot = $_SERVER['HTTP_HOST']."/hempleaf/";
+    if($_SERVER['HTTP_HOST'] == "farmacialosllanos.ddns.net" || $_SERVER['HTTP_HOST'] == "localhost"){
+        $webroot = $_SERVER['HTTP_HOST']."/farmacialosllanos/";
     }else{
         $webroot = $_SERVER['HTTP_HOST']."/";
     }

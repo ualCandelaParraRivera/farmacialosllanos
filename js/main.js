@@ -637,7 +637,7 @@
         Instagram Feed
     -----------------------------------*/
     $.instagramFeed({
-        'username': 'hempleafspain',
+        'username': 'farmacialosllanos',
         'container': ".instagram-feed",
         'display_profile': false,
         'display_biography': false,

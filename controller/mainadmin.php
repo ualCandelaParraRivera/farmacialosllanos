@@ -203,10 +203,10 @@ function sectionheader($db, $active) {
                                 <li class="connection-list">
                                     <div class="row">
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="index" target="_blank" class="connection-item"><img src="assets/images/hempleaf256.png" alt="" > <span>Farmacialosllanos</span></a>
+                                            <a href="index" target="_blank" class="connection-item"><img src="assets/images/hempleaf256.png" alt="" > <span>Farmacia</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="https://webmail.hempleaf.es/" target="_blank" class="connection-item"><img src="assets/images/mail256.png" alt="" > <span>Correo</span></a>
+                                            <a href="https://webmail.farmacialosllanos.org/roundcube/index.php?_user=contacto%40farmacialosllanos.org" target="_blank" class="connection-item"><img src="assets/images/mail256.png" alt="" > <span>Correo</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
                                             <a href="https://www.gls-spain.es/es/" target="_blank" class="connection-item"><img src="assets/images/gls256.png" alt="" > <span>Transporte</span></a>
@@ -450,7 +450,7 @@ function sectionfooter($trans) {
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="text-md-right footer-links d-none d-sm-block">
-                                <a href="mailto:soporte@hempleaf.es">Soporte</a>
+                                <a href="mailto:soporte@farmacialosllanos.org">Soporte</a>
                             </div>
                         </div>
                     </div>

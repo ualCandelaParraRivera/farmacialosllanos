@@ -28,9 +28,9 @@ while($row = mysqli_fetch_array($res)){
 function getcurrentpath(){
     $relative = "";
     if($_SERVER['HTTP_HOST'] == "localhost"){
-        $relative = str_replace("/hempleaf/","",$_SERVER['REQUEST_URI']);
-    }else if($_SERVER['HTTP_HOST'] == "hempleaf.ddns.net"){
-        $relative = str_replace("/hempleaf/","",$_SERVER['REQUEST_URI']);
+        $relative = str_replace("/farmacialosllanos/","",$_SERVER['REQUEST_URI']);
+    }else if($_SERVER['HTTP_HOST'] == "farmacialosllanos.ddns.net"){
+        $relative = str_replace("/farmacialosllanos/","",$_SERVER['REQUEST_URI']);
     }else{
         $relative = str_replace("/","",$_SERVER['REQUEST_URI']);
     }
@@ -254,7 +254,7 @@ foreach($products as $product){
 
                 <div class="col">
                     <div class="header-logo">
-                        <a href="index"><img src="img/logo/logof.png" alt="Hempleaf Logo"></a>
+                        <a href="index"><img src="img/logo/logof.png" alt="Farmacia Los Llanos Logo"></a>
                     </div>
                 </div>
 
@@ -311,7 +311,7 @@ foreach($products as $product){
 
                 <div class="col">
                     <div class="header-logo">
-                        <a href="index"><img src="img/logo/logof.png" alt="Hempleaf Logo"></a>
+                        <a href="index"><img src="img/logo/logof.png" alt="Los Llanos Logo"></a>
                     </div>
                 </div>
 
@@ -402,7 +402,7 @@ foreach($products as $product){
     <div id="offcanvas-mobile-menu" class="offcanvas offcanvas-mobile-menu">
         <div class="inner customScroll">
             <div class="mobile-logo">
-                <a href="index"><img src="img/logo/HL-Icon-White.png" alt="Hempleaf Logo"></a>
+                <a href="index"><img src="img/logo/HL-Icon-White.png" alt="Los Llanos Logo"></a>
             </div>
             <div class="offcanvas-menu">
                 <ul>

@@ -118,7 +118,7 @@
                                                          FROM order_item oi
                                                         LEFT JOIN `order` o ON oi.orderID = o.id
                                                         LEFT JOIN product_translation pt ON pt.productId = oi.productId 
-                                                        LEFT JOIN (SELECT productId, image FROM product_image GROUP BY productId) pi ON pi.productId = oi.productId
+                                                        LEFT JOIN (SELECT productId, image FROM product_image WHERE isdeleted = 0 GROUP BY productId) pi ON pi.productId = oi.productId
                                                         WHERE pt.lang = 'es'
                                                         ORDER BY createdAt DESC
                                                         LIMIT 6";
