@@ -1,21 +1,18 @@
 $(document).ready(function() {
     
-    // procesa el formulario
     $('form#accountdetailsForm').submit(function(event) {
 
 
-        // impide que se envie el formulario de forma normal y refresca la página
         event.preventDefault();
         
-        $('.form-control').removeClass('is-invalid'); // elimina la clase is-invalid
+        $('.form-control').removeClass('is-invalid');
         $('.form-check-input').removeClass('is-invalid');
-        $('.help-block').remove(); // elimina el texto de error
-        $('.alert').remove(); // elimina el texto de alerta
+        $('.help-block').remove(); 
+        $('.alert').remove(); 
         
 
         var fd = new FormData($(this)[0]);
 
-        // procesa el formulario
          $.ajax({
             type 		: 'POST',
             url 		: './controller/accountdetails',
@@ -25,41 +22,39 @@ $(document).ready(function() {
             contentType: false,
             encode 		: true
         })
-            // devuelve el resultado
             .done(function(data) {
-                // Manejo de errores
                 if (!data.success) {
                     if (data.errors.firstname) {
                         $('#firstname').addClass('is-invalid');
-                        $('#firstname-group').append('<div class="help-block">' + data.errors.firstname + '</div>'); // agrega el mensaje de error debajo de la entrada
+                        $('#firstname-group').append('<div class="help-block">' + data.errors.firstname + '</div>');
                     }
                     if (data.errors.middlename) {
                         $('#middlename').addClass('is-invalid');
-                        $('#middlename-group').append('<div class="help-block">' + data.errors.middlename + '</div>'); // agrega el mensaje de error debajo de la entrada
+                        $('#middlename-group').append('<div class="help-block">' + data.errors.middlename + '</div>');
                     }
                     if (data.errors.lastname) {
                         $('#lastname').addClass('is-invalid');
-                        $('#lastname-group').append('<div class="help-block">' + data.errors.lastname + '</div>'); // agrega el mensaje de error debajo de la entrada
+                        $('#lastname-group').append('<div class="help-block">' + data.errors.lastname + '</div>');
                     }
                     if (data.errors.mobile) {
                         $('#mobile').addClass('is-invalid');
-                        $('#mobile-group').append('<div class="help-block">' + data.errors.mobile + '</div>'); // agrega el mensaje de error debajo de la entrada
+                        $('#mobile-group').append('<div class="help-block">' + data.errors.mobile + '</div>');
                     }
                     if (data.errors.email) {
                         $('#email').addClass('is-invalid');
-                        $('#email-group').append('<div class="help-block">' + data.errors.email + '</div>'); // agrega el mensaje de error debajo de la entrada
+                        $('#email-group').append('<div class="help-block">' + data.errors.email + '</div>');
                     }
                     if (data.errors.currentpwd) {
                         $('#currentpwd').addClass('is-invalid');
-                        $('#currentpwd-group').append('<div class="help-block">' + data.errors.currentpwd + '</div>'); // agrega el mensaje de error debajo de la entrada
+                        $('#currentpwd-group').append('<div class="help-block">' + data.errors.currentpwd + '</div>');
                     }
                     if (data.errors.newpwd) {
                         $('#newpwd').addClass('is-invalid');
-                        $('#newpwd-group').append('<div class="help-block">' + data.errors.newpwd + '</div>'); // agrega el mensaje de error debajo de la entrada
+                        $('#newpwd-group').append('<div class="help-block">' + data.errors.newpwd + '</div>');
                     }
                     if (data.errors.confirmpwd) {
                         $('#confirmpwd').addClass('is-invalid');
-                        $('#confirmpwd-group').append('<div class="help-block">' + data.errors.confirmpwd + '</div>'); // agrega el mensaje de error debajo de la entrada
+                        $('#confirmpwd-group').append('<div class="help-block">' + data.errors.confirmpwd + '</div>');
                     }
                     $('form#accountdetailsForm').append('<div class="mt-3 alert alert-danger">' + data.message + '</div>');
 

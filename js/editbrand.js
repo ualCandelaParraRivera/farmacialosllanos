@@ -1,17 +1,15 @@
 $(document).ready(function() {
     
-    // procesa el formulario
     $('form#datosmarca').submit(function(event) {
 
         event.preventDefault();
-        $('.form-group').removeClass('is-invalid'); // elimina la clase has-error
+        $('.form-group').removeClass('is-invalid');
         $('.form-check-input').removeClass('is-invalid');
-        $('.help-block').remove(); // elimina el texto de error
-        $('.alert').remove(); // elimina el texto de alerta
+        $('.help-block').remove();
+        $('.alert').remove();
 
         var fd = new FormData($(this)[0]);
         
-        // procesa el formulario
         $.ajax({
             type 		: 'POST',
             url 		: './controller/editbrand',
@@ -21,31 +19,29 @@ $(document).ready(function() {
             contentType: false,
             encode 		: true
         })
-            // devuelve el resultado
             .done(function(data) {
 
-                // Manejo de errores
                 if (!data.success) {
                     
                     if (data.errors.nombre) {
-                        $('#nombre').addClass('is-invalid'); // add the error class to show red input
-                        $('#nombre-group').append('<div class="help-block">' + data.errors.nombre + '</div>'); // add the actual error message under our input
+                        $('#nombre').addClass('is-invalid');
+                        $('#nombre-group').append('<div class="help-block">' + data.errors.nombre + '</div>');
                     }
                     if (data.errors.introduccion) {
-                        $('#introduccion').addClass('is-invalid'); // add the error class to show red input
-                        $('#introduccion-group').append('<div class="help-block">' + data.errors.introduccion + '</div>'); // add the actual error message under our input
+                        $('#introduccion').addClass('is-invalid');
+                        $('#introduccion-group').append('<div class="help-block">' + data.errors.introduccion + '</div>');
                     }
                     if (data.errors.descripcion) {
-                        $('#descripcion').addClass('is-invalid'); // add the error class to show red input
-                        $('#descripcion-group').append('<div class="help-block">' + data.errors.descripcion + '</div>'); // add the actual error message under our input
+                        $('#descripcion').addClass('is-invalid');
+                        $('#descripcion-group').append('<div class="help-block">' + data.errors.descripcion + '</div>');
                     }
                     if (data.errors.telefono) {
-                        $('#telefono').addClass('is-invalid'); // add the error class to show red input
-                        $('#telefono-group').append('<div class="help-block">' + data.errors.telefono + '</div>'); // add the actual error message under our input
+                        $('#telefono').addClass('is-invalid');
+                        $('#telefono-group').append('<div class="help-block">' + data.errors.telefono + '</div>');
                     }
                     if (data.errors.email) {
-                        $('#email').addClass('is-invalid'); // add the error class to show red input
-                        $('#email-group').append('<div class="help-block">' + data.errors.email + '</div>'); // add the actual error message under our input
+                        $('#email').addClass('is-invalid');
+                        $('#email-group').append('<div class="help-block">' + data.errors.email + '</div>');
                     }
                     $('form#datosmarca').append('<div class="mt-3 alert alert-danger">' + data.message + '</div>');
 
@@ -71,20 +67,16 @@ $(document).ready(function() {
     $("#imageUpload").change(function() {
         readURL(this);
     });
-
-    // procesa el formulario
     $('form#datosimagen').submit(function(event) {
 
-        // impide que se envie el formulario de forma normal y refresca la página
         event.preventDefault();
         
-        $('.form-control').removeClass('is-invalid'); // elimina la clase is-invalid
-        $('.help-block').remove(); // elimina el texto de error
-        $('.alert').remove(); // elimina el texto de alerta
+        $('.form-control').removeClass('is-invalid');
+        $('.help-block').remove();
+        $('.alert').remove();
 
         var fd = new FormData($(this)[0]);
 
-        // procesa el formulario
         $.ajax({
             type 		: 'POST',
             url 		: './controller/editbrand',
@@ -94,9 +86,7 @@ $(document).ready(function() {
             contentType: false,
             encode 		: true
         })
-            // devuelve el resultado
             .done(function(data) {
-                // Manejo de errores
                 if (!data.success) {
                     $('form#datosimagen').append('<div class="mt-3 alert alert-danger">' + data.errors.message + '</div>');
 

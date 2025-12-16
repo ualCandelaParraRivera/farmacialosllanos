@@ -1,3 +1,4 @@
+
 "use strict";
 const pureScriptSelect = (selector) => {
     let selectors = document.querySelectorAll(selector);

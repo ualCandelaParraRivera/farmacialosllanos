@@ -1,18 +1,15 @@
 $(document).ready(function() {
-    
-    // procesa el formulario
+
     $('form#datospcategoria').submit(function(event) {
 
-        
-        $('.form-group').removeClass('is-invalid'); // elimina la clase has-error
-        $('.form-control').removeClass('is-invalid'); // elimina la clase has-error
+        $('.form-group').removeClass('is-invalid');
+        $('.form-control').removeClass('is-invalid');
         $('.form-check-input').removeClass('is-invalid');
-        $('.help-block').remove(); // elimina el texto de error
-        $('.alert').remove(); // elimina el texto de alerta
+        $('.help-block').remove();
+        $('.alert').remove();
         event.preventDefault();
         var fd = new FormData($(this)[0]);
-        
-        // procesa el formulario
+
         $.ajax({
             type 		: 'POST',
             url 		: './controller/editpcat',
@@ -22,35 +19,33 @@ $(document).ready(function() {
             contentType: false,
             encode 		: true
         })
-            // devuelve el resultado
             .done(function(data) {
 
-                // Manejo de errores
                 if (!data.success) {
-                    
+
                     if (data.errors.nombre) {
-                        $('#nombre').addClass('is-invalid'); // add the error class to show red input
-                        $('#nombre-group').append('<div class="help-block">' + data.errors.nombre + '</div>'); // add the actual error message under our input
+                        $('#nombre').addClass('is-invalid');
+                        $('#nombre-group').append('<div class="help-block">' + data.errors.nombre + '</div>');
                     }
                     if (data.errors.metadatos) {
-                        $('#metadatos').addClass('is-invalid'); // add the error class to show red input
-                        $('#metadatos-group').append('<div class="help-block">' + data.errors.metadatos + '</div>'); // add the actual error message under our input
+                        $('#metadatos').addClass('is-invalid');
+                        $('#metadatos-group').append('<div class="help-block">' + data.errors.metadatos + '</div>');
                     }
                     if (data.errors.descripcion) {
-                        $('#descripcion').addClass('is-invalid'); // add the error class to show red input
-                        $('#descripcion-group').append('<div class="help-block">' + data.errors.descripcion + '</div>'); // add the actual error message under our input
+                        $('#descripcion').addClass('is-invalid');
+                        $('#descripcion-group').append('<div class="help-block">' + data.errors.descripcion + '</div>');
                     }
                     if (data.errors.name) {
-                        $('#name').addClass('is-invalid'); // add the error class to show red input
-                        $('#name-group').append('<div class="help-block">' + data.errors.name + '</div>'); // add the actual error message under our input
+                        $('#name').addClass('is-invalid');
+                        $('#name-group').append('<div class="help-block">' + data.errors.name + '</div>');
                     }
                     if (data.errors.metadata) {
-                        $('#metadata').addClass('is-invalid'); // add the error class to show red input
-                        $('#metadata-group').append('<div class="help-block">' + data.errors.metadata + '</div>'); // add the actual error message under our input
+                        $('#metadata').addClass('is-invalid');
+                        $('#metadata-group').append('<div class="help-block">' + data.errors.metadata + '</div>');
                     }
                     if (data.errors.description) {
-                        $('#description').addClass('is-invalid'); // add the error class to show red input
-                        $('#description-group').append('<div class="help-block">' + data.errors.description + '</div>'); // add the actual error message under our input
+                        $('#description').addClass('is-invalid');
+                        $('#description-group').append('<div class="help-block">' + data.errors.description + '</div>');
                     }
                     $('form#datospcategoria').append('<div class="mt-3 alert alert-danger">' + data.message + '</div>');
 
@@ -60,10 +55,10 @@ $(document).ready(function() {
                     }else{
                         window.location.replace("admineditpcat?guidcategory="+data.message);
                     }
-                    
+
                 }
             });
-            
+
     });
 
 });
