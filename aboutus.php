@@ -22,7 +22,6 @@
 
                 <div class="col-md-6 col-12 align-self-center learts-mb-30">
                     <div class="about-us3">
-                       <?=$trans['aboutus_aboutsubtitle']?></span> -->
                         <h2 class="title"><?=$trans['aboutus_abouttitle']?></h2>
                         <div class="desc">
                             <p><?=$trans['aboutus_aboutdescription']?></p>

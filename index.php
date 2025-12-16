@@ -75,7 +75,7 @@
                         LEFT JOIN product_translation pt ON p.id = pt.productId
                         LEFT JOIN product_review pr ON p.id = pr.productId
                         LEFT JOIN product_image pi ON p.id = pi.productId
-                        WHERE pt.lang = '$lang' AND p.isdeleted = 0
+                        WHERE pt.lang = '$lang' AND p.isdeleted = 0 AND pi.isdeleted = 0
                         GROUP BY title, guidproduct, price, discount
                         ORDER BY rate DESC
                         LIMIT 6";
@@ -91,7 +91,7 @@
                     ?>
                     <div class="list-product">
                             <div class="thumbnail">
-                                <a href="productdetails?guidproduct=<?=$guidproduct?>"><img src="img/product/<?=$image?>" alt="List product"></a>
+                                <a href="productdetails?guidproduct=<?=$guidproduct?>"><img src="img/product/<?=$image?>" alt="<?=$title?>"></a>
                             </div>
                             <div class="content">
                                 <h6 class="title"><a href="productdetails?guidproduct=<?=$guidproduct?>"><?=$title?></a></h6>
@@ -131,7 +131,7 @@
                         LEFT JOIN product_translation pt ON p.id = pt.productId
                         LEFT JOIN product_review pr ON p.id = pr.productId
                         LEFT JOIN product_image pi ON p.id = pi.productId
-                        WHERE pt.lang = '$lang' AND discount > 0 AND p.isdeleted = 0
+                        WHERE pt.lang = '$lang' AND discount > 0 AND p.isdeleted = 0 AND pi.isdeleted = 0
                         GROUP BY title, guidproduct, price, discount
                         ORDER BY rate DESC
                         LIMIT 6";
@@ -147,7 +147,7 @@
                     ?>
                      <div class="list-product">
                             <div class="thumbnail">
-                                <a href="productdetails?guidproduct=<?=$guidproduct?>"><img src="img/product/<?=$image?>" alt="List product"></a>
+                                <a href="productdetails?guidproduct=<?=$guidproduct?>"><img src="img/product/<?=$image?>" alt="<?=$title?>"></a>
                             </div>
                             <div class="content">
                                 <h6 class="title"><a href="productdetails?guidproduct=<?=$guidproduct?>"><?=$title?></a></h6>

@@ -67,7 +67,7 @@
                 <div class="col-xl-9 col-lg-8 col-12 learts-mb-50">
                     <div class="single-blog">
                         <div class="image">
-                            <img src="img/blog/<?=$imagename?>.<?=$extension?>" alt="Blog Image">
+                            <img src="img/blog/<?=$imagename?>.<?=$extension?>" alt="<?=$title?>">
                         </div>
                         <div class="content">
                             <ul class="category">
@@ -124,7 +124,7 @@
                     </div>
                     <div class="blog-author">
                         <div class="thumbnail">
-                            <img src="img/team/<?=$userimage?>-90.<?=$userextension?>" alt="Autor Image">
+                            <img src="img/team/<?=$userimage?>.<?=$userextension?>" alt="<?=$firstname?> <?=$middlename?>">
                         </div>
                         <div class="content">
                             <a href="blog?guiduser=<?=$guiduser?>" class="name"><?=$firstname?> <?=$middlename?></a>
@@ -186,7 +186,7 @@
                             <div class="col-md-6 col-12 learts-mb-40">
                                 <div class="blog">
                                     <div class="image">
-                                        <a href="blogdetails?guidpost=<?=$guidpost?>"><img src="img/blog/<?=$imagename?>-370.<?=$extension?>" alt="Blog Image"></a>
+                                        <a href="blogdetails?guidpost=<?=$guidpost?>"><img src="img/blog/<?=$imagename?>.<?=$extension?>" alt="<?=$title?>"></a>
                                     </div>
                                     <div class="content">
                                         <ul class="meta">
@@ -227,7 +227,7 @@
                         ?>
                         <li class="widget-blog">
                                 <div class="thumbnail">
-                                    <a href="blogdetails?guidpost=<?=$guidpost?>"><img src="img/blog/<?=$imagename?>-120.<?=$extension?>" alt="Widget Blog Post"></a>
+                                    <a href="blogdetails?guidpost=<?=$guidpost?>"><img src="img/blog/<?=$imagename?>.<?=$extension?>" alt="<?=$title?>"></a>
                                 </div>
                                 <div class="content">
                                     <h6 class="title"><a href="blogdetails?guidpost=<?=$guidpost?>"><?=$title?></a></h6>

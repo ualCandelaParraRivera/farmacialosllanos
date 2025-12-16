@@ -43,6 +43,10 @@ $(document).ready(function() {
                         $('#email').addClass('is-invalid'); // add the error class to show red input
                         $('#email-group').append('<div class="help-block">' + data.errors.email + '</div>'); // add the actual error message under our input
                     }
+                    if (data.errors.email2) {
+                        $('#email2').addClass('is-invalid'); // add the error class to show red input
+                        $('#email2-group').append('<div class="help-block">' + data.errors.email2 + '</div>'); // add the actual error message under our input
+                    }
                     if (data.errors.newpass) {
                         $('#newpass').addClass('is-invalid'); // add the error class to show red input
                         $('#newpass-group').append('<div class="help-block">' + data.errors.newpass + '</div>'); // add the actual error message under our input

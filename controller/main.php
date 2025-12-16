@@ -77,6 +77,13 @@ function sectionhead($db){
 }
 
 function getMeta($db, $page=""){
+    $lang = "es";
+    if(isset($_COOKIE['language'])){
+        $lang = $_COOKIE['language'];
+        if($lang != "es" && $lang != "en"){
+            $lang = "es";
+        }
+    }
     $parts = explode('/', $_SERVER['SCRIPT_NAME']);
     $page = explode('.', array_pop($parts))[0];
     $qs = $_SERVER['QUERY_STRING'];
@@ -90,25 +97,26 @@ function getMeta($db, $page=""){
     $resourcetype = "Document";
     $datecreated = "Mon, 3 May 2021 00:00:00 GMT+1";
     $revisitafter = "30 days";
-    $query = "SELECT * FROM metadata WHERE page = ?";
-    $res=$db->prepare($query, array($page));
+    $query = "SELECT * FROM metadata WHERE page = ? AND lang= ?";
+    $res=$db->prepare($query, array($page, $lang));
     if($db->numRows($res) > 0){
         $row = mysqli_fetch_array($res);
         $title.=$row['title'];
         $robots = $row['robots'];
         $description = $row['description'];
-        $keywords = $row['keywords'];;
+        $keywords = $row['keywords'];
     }
 
     if (strpos($qs, 'guidproduct') !== false) {
         $guidproduct = str_replace("guidproduct=", "", $qs);
-        $query = "SELECT metatitle FROM product p
+        $query = "SELECT summary, metatitle FROM product p
         LEFT JOIN product_translation pt ON p.id = pt.productId
-        WHERE guidproduct = ? AND lang = 'es'";
-        $res=$db->prepare($query, array($guidproduct));
+        WHERE guidproduct = ? AND lang = ?";
+        $res=$db->prepare($query, array($guidproduct, $lang));
         if($db->numRows($res) > 0){
             $row = mysqli_fetch_array($res);
-            $description = $row['metatitle'];
+            $description = $row['summary'];
+            $keywords = $row['metatitle'];
         }
     }else if (strpos($qs, 'guidwholesale') !== false) {
         $guidwholesale = str_replace("guidwholesale=", "", $qs);
@@ -133,7 +141,7 @@ function getMeta($db, $page=""){
     $meta = '<meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>'.$title.'</title>
-    <meta name="'.$robots.'" />
+    <meta name="robots" content="'.$robots.'" />
     <meta name="description" content="'.$description.'">
     <meta name="viewport" content="'.$viewport.'">
     <meta name="author" content="'.$author.'">
@@ -147,7 +155,7 @@ function getMeta($db, $page=""){
 }
 
 function sectiontopbar($trans){
-    echo '<!-- Topbar Section Start -->
+    echo '
     <div class="topbar-section section border-bottom">
         <div class="container">
             <div class="row align-items-center">
@@ -155,7 +163,6 @@ function sectiontopbar($trans){
                     <div class="topbar-menu">
                         <ul>
                             <li><a href="https://maps.app.goo.gl/oUg9AVoB9mbK26Pe7" target="_blank"><i class="fa fa-map-marker-alt"></i>'.$trans['top_store'].'</a></li>
-                            <!--<li><a href="myaccount#orders"><i class="fa fa-truck"></i>'.$trans['top_status'].'</a></li>-->
                         </ul>
                     </div>
                 </div>
@@ -163,7 +170,6 @@ function sectiontopbar($trans){
                     <p class="text-center my-2">'.$trans['top_message'].'</p>
                 </div>
 
-                <!-- Header Language Start -->
                 <div class="col d-none d-md-block">
                     <div class="nav-bar">
                         <ul class="language">
@@ -172,11 +178,9 @@ function sectiontopbar($trans){
                         </ul>
                     </div>
                 </div>
-                <!-- Header Language End -->
             </div>
         </div>
     </div>
-    <!-- Topbar Section End -->
     ';
 }
 
@@ -195,20 +199,17 @@ foreach($products as $product){
     $quantity += $product->count;
     $subtotal += $product->total + $product->totaltax;
 }
-    echo '<!-- Header Section Start -->
+    echo '
     <div class="header-section header-menu-center section bg-white d-none d-xl-block">
         <div class="container">
             <div class="row align-items-center">
 
-                <!-- Header Logo Start -->
                 <div class="col">
                     <div class="header-logo">
                         <a href="index"><img src="img/logo/logof.png" alt="Los Llanos Logo"></a>
                     </div>
                 </div>
-                <!-- Header Logo End -->
 
-                <!-- Search Start -->
                 <div class="col">
                     <nav class="site-main-menu menu-height-100 justify-content-center">
                         <ul>
@@ -218,9 +219,6 @@ foreach($products as $product){
                             <li>
                                 <a href="shop"><span class="menu-text">'.$trans['menu_productos'].'</span></a>
                             </li>
-                            <!--<li>
-                                <a href="wholesales"><span class="menu-text">'.$trans['menu_wholesales'].'</span></a>
-                            </li>-->
                             <li>
                                 <a href="aboutus"><span class="menu-text">'.$trans['menu_nosotros'].'</span></a>
                             </li>
@@ -233,9 +231,7 @@ foreach($products as $product){
                         </ul>
                     </nav>
                 </div>
-                <!-- Search End -->
 
-                <!-- Header Tools Start -->
                 <div class="col">
                     <div class="header-tools justify-content-end">
                         <div class="header-login">
@@ -246,28 +242,22 @@ foreach($products as $product){
                         </div>
                     </div>
                 </div>
-                <!-- Header Tools End -->
 
             </div>
         </div>
 
     </div>
-    <!-- Header Section End -->
 
-    <!-- Header Sticky Section Start -->
     <div class="sticky-header header-menu-center section bg-white d-none d-xl-block">
         <div class="container">
             <div class="row align-items-center">
 
-                <!-- Header Logo Start -->
                 <div class="col">
                     <div class="header-logo">
                         <a href="index"><img src="img/logo/logof.png" alt="Hempleaf Logo"></a>
                     </div>
                 </div>
-                <!-- Header Logo End -->
 
-                <!-- Search Start -->
                 <div class="col d-none d-xl-block">
                     <nav class="site-main-menu justify-content-center">
                         <ul>
@@ -277,9 +267,6 @@ foreach($products as $product){
                             <li>
                                 <a href="shop"><span class="menu-text">'.$trans['menu_productos'].'</span></a>
                             </li>
-                            <!--<li>
-                                <a href="wholesales"><span class="menu-text">'.$trans['menu_wholesales'].'</span></a>
-                            </li>-->
                             <li>
                                 <a href="aboutus"><span class="menu-text">'.$trans['menu_nosotros'].'</span></a>
                             </li>
@@ -292,9 +279,7 @@ foreach($products as $product){
                         </ul>
                     </nav>
                 </div>
-                <!-- Search End -->
 
-                <!-- Header Tools Start -->
                 <div class="col-auto">
                     <div class="header-tools justify-content-end">
                         <div class="header-login">
@@ -314,28 +299,22 @@ foreach($products as $product){
                         </div>
                     </div>
                 </div>
-                <!-- Header Tools End -->
 
             </div>
         </div>
 
     </div>
-    <!-- Header Sticky Section End -->
 
-    <!-- Mobile Header Section Start -->
     <div class="mobile-header bg-white section d-xl-none">
         <div class="container">
             <div class="row align-items-center">
 
-                <!-- Header Logo Start -->
                 <div class="col">
                     <div class="header-logo">
                         <a href="index"><img src="img/logo/logof.png" alt="Hempleaf Logo"></a>
                     </div>
                 </div>
-                <!-- Header Logo End -->
 
-                <!-- Header Tools Start -->
                 <div class="col-auto">
                     <div class="header-tools justify-content-end">
                         <div class="header-login d-none d-sm-block">
@@ -355,14 +334,11 @@ foreach($products as $product){
                         </div>
                     </div>
                 </div>
-                <!-- Header Tools End -->
 
             </div>
         </div>
     </div>
-    <!-- Mobile Header Section End -->
 
-    <!-- OffCanvas Cart Start -->
     <div id="offcanvas-cart" class="offcanvas offcanvas-cart">
         <div class="inner">
             <div class="head">
@@ -422,9 +398,7 @@ foreach($products as $product){
             </div>
         </div>
     </div>
-    <!-- OffCanvas Cart End -->
 
-    <!-- OffCanvas Search Start -->
     <div id="offcanvas-mobile-menu" class="offcanvas offcanvas-mobile-menu">
         <div class="inner customScroll">
             <div class="mobile-logo">
@@ -473,7 +447,6 @@ foreach($products as $product){
            
         </div>
     </div>
-    <!-- OffCanvas Search End -->
 
     <div class="offcanvas-overlay"></div>
 
@@ -488,7 +461,6 @@ function sectionbreadcrumb($text, $trans){
     $N = count($tokens);
     $var = getPage($tokens[$N-1], $trans);
     echo '
-    <!-- Page Title/Header Start -->
     <div class="page-title-section section" data-bg-image="img/bg/page-title-1.jpg">
         <div class="container">
             <div class="row">
@@ -512,7 +484,6 @@ function sectionbreadcrumb($text, $trans){
             </div>
         </div>
     </div>
-    <!-- Page Title/Header End -->
     ';
 }    
 

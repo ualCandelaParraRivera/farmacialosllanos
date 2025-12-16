@@ -51,6 +51,10 @@
                             <label for="email"><?=$trans['register_email']?>  <abbr class="required">*</abbr></label>
                             <input type="email" class="form-control" id="email" name="email" value="<?=$email?>" readonly>
                         </div>
+                        <div class="col-12 learts-mb-30 form-group" id="email2-group">
+                            <label for="email2">Confirmar email  <abbr class="required">*</abbr></label>
+                            <input type="email" class="form-control" id="email2" name="email2" value="">
+                        </div>
                         <div class="col-md-6 col-12 learts-mb-30 form-group" id="newpass-group">
                             <label for="newpass"><?=$trans['register_newpass']?> <abbr class="required">*</abbr></label>
                             <input type="password" class="form-control" id="newpass" name="newpass">
