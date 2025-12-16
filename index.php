@@ -244,9 +244,9 @@
         </div>
     </div>
 
-    <?php sectioncookies($trans);?>
     <?php sectionfooter($trans);?>
 
     <?php sectionjs();?>
+    <?php sectioncookies($trans);?>
     
 </body>

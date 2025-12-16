@@ -519,9 +519,61 @@ function getPage($text, $trans){
 }
 
 function sectioncookies($trans){
-    echo '<div id="cookies">
-        '.$trans['control_cookiesmessage'].' 🍪 ! 
-        <span id="close-cookies" class="cookie-button">'.$trans['control_cookiesaccept'].'</span>
+    echo '<div id="cookies-banner" style="display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 999999; background: #fff; box-shadow: 0 -2px 20px rgba(0,0,0,0.1); padding: 20px; margin: 0; width: 100%;">
+        <div class="cookies-content" style="max-width: 1200px; margin: 0 auto;">
+            <div style="display: flex; align-items: flex-start; gap: 20px; flex-wrap: wrap;">
+                <div class="cookies-icon" style="font-size: 48px; flex-shrink: 0;">🍪</div>
+                <div style="flex: 1; min-width: 250px;">
+                    <h3 style="margin: 0 0 10px 0; font-size: 20px; color: #333; font-family: Marcellus, Arial, Helvetica, sans-serif;">'.$trans['cookies_banner_title'].'</h3>
+                    <p style="margin: 0 0 20px 0; font-size: 14px; color: #696969; line-height: 1.5;">'.$trans['cookies_banner_message'].' <a href="cookies" style="color: #333; text-decoration: underline;">'.$trans['cookies_banner_link'].'</a></p>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <div class="cookie-category" style="background: #f9f9f9; padding: 12px; margin-bottom: 10px; border-radius: 4px;">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <label class="cookie-switch">
+                                    <input type="checkbox" id="cookie-necessary" checked disabled>
+                                    <span class="cookie-slider"></span>
+                                </label>
+                                <div style="flex: 1;">
+                                    <span style="font-size: 14px; color: #333; font-weight: 500;">Cookies Necesarias</span>
+                                    <span style="background: #333; color: #fff; padding: 2px 6px; border-radius: 3px; font-size: 10px; margin-left: 8px;">Obligatorias</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="cookie-category" style="background: #f9f9f9; padding: 12px; margin-bottom: 10px; border-radius: 4px;">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <label class="cookie-switch">
+                                    <input type="checkbox" id="cookie-analytics">
+                                    <span class="cookie-slider"></span>
+                                </label>
+                                <div style="flex: 1;">
+                                    <span style="font-size: 14px; color: #333; font-weight: 500;">Cookies Analíticas</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="cookie-category" style="background: #f9f9f9; padding: 12px; margin-bottom: 10px; border-radius: 4px;">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <label class="cookie-switch">
+                                    <input type="checkbox" id="cookie-marketing">
+                                    <span class="cookie-slider"></span>
+                                </label>
+                                <div style="flex: 1;">
+                                    <span style="font-size: 14px; color: #333; font-weight: 500;">Cookies de Marketing</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cookies-buttons" style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button id="accept-all-cookies" class="btn btn-primary2 btn-hover-black">Aceptar todas</button>
+                        <button id="reject-cookies" class="btn btn-secondary btn-hover-black">Rechazar</button>
+                        <button id="save-cookie-preferences" class="btn btn-secondary btn-hover-black">Guardar preferencias</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>';
 }
 
@@ -601,6 +653,7 @@ function sectionfooter($trans) {
 }
 
 function sectionjs(){
+    global $trans;
     echo '<!-- ==================== JS ======================== -->
 
     <!-- Vendors JS -->
@@ -636,6 +689,7 @@ function sectionjs(){
     <!-- Main Activation JS -->
     <script src="js/main.js"></script>
 ';
+    sectioncookies($trans);
 }
 
 function isAcceptedIp($acceptedIps){
