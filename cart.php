@@ -86,10 +86,13 @@ if(isset($_SESSION['promo'])){
                             <td class="price"><span><?=$price?>€</span></td>
                             <td class="quantity">
                                 <div class="product-quantity">
-                                    <span class="qty-btn minus" data-id="<?=$guidproduct?>"><i class="ti-minus"></i></span>
-                                    <input type="text" class="input-qty" value="<?=$quantityitem?>">
-                                    <span class="qty-btn plus" data-id="<?=$guidproduct?>"><i class="ti-plus"></i></span>
+                                    <span class="qty-btn minus" data-id="<?=$guidproduct?>" data-max="<?=$product->quantity?>"><i class="ti-minus"></i></span>
+                                    <input type="text" class="input-qty" value="<?=$quantityitem?>" data-max="<?=$product->quantity?>" data-id="<?=$guidproduct?>" min="1" max="<?=$product->quantity?>">
+                                    <span class="qty-btn plus" data-id="<?=$guidproduct?>" data-max="<?=$product->quantity?>"><i class="ti-plus"></i></span>
                                 </div>
+                                <?php if($quantityitem >= $product->quantity) { ?>
+                                    <small class="text-warning">Stock máximo alcanzado</small>
+                                <?php } ?>
                             </td>
                             <td class="subtotal"><span><?php echo ($price*$quantityitem);?>€</span></td>
                             <td class="remove"><a class="btn removeFromCart" data-id="<?=$guidproduct?>">×</a></td>

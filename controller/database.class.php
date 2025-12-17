@@ -290,41 +290,59 @@ Class Db{
 		$_SESSION['cart'] = "";
 	}
 	
-	public function getCart(){
-		$cartArray = array();
-      if(!isset($_SESSION['cart'])){
-         $_SESSION['cart'] = "";
-      }
+	public function getCart($lang){
 		if($_SESSION['cart'] != ""){
 			$cart = json_decode($_SESSION['cart'], true);
-			for($i=0;$i<count($cart);$i++){
-				$lines = $this->getProductData($cart[$i]["guidproduct"]);
-				$line = new stdClass;
-            $line->productid = $lines->productid;
-            $line->sku = $lines->sku;
-            $line->pricenotax = $lines->pricenotax;
-            $line->price = $lines->price;
-            $line->tax = $lines->tax;
-            $line->discount = $lines->discount;
-				$line->guidproduct = $cart[$i]["guidproduct"];
-				$line->count = $cart[$i]["count"];
-				$line->title = $lines->title;
-            $line->finalprice = $lines->finalprice;
-            $line->finalpricediscount = $lines->finalpricediscount;
-            $line->finalpricetax = $lines->finalpricetax;
-            $line->imagename = $lines->imagename;
-            $line->extension = $lines->extension;
-            $line->summary = $lines->summary;
-				$line->total = ($lines->finalprice*$cart[$i]["count"]);
-            $line->totaldiscount = ($lines->finalpricediscount*$cart[$i]["count"]);
-            $line->totaltax = ($lines->finalpricetax*$cart[$i]["count"]);
-				$cartArray[] = $line;
+			$guidproducts = array();
+			foreach($cart as $line){
+				$guidproducts[] = $line['guidproduct'];
 			}
+			
+			$in  = str_repeat('?,', count($guidproducts) - 1) . '?';
+			
+			$query = "SELECT p.id, guidproduct, title, price, discount, 
+			ROUND((1-discount)*price,2) as finalprice,
+			quantity as available_quantity,
+			ltrim(replace(substring(substring_index(pi.image, '.', 1), length(substring_index(pi.image, '.', 1 - 1)) + 1), '.', '')) AS imagename,
+			ltrim(replace(substring(substring_index(pi.image, '.', 2), length(substring_index(pi.image, '.', 2 - 1)) + 1), '.', '')) AS extension
+			FROM product p
+			LEFT JOIN (SELECT DISTINCT productId, image FROM product_image WHERE isdeleted = 0) pi ON p.id = pi.productId
+			LEFT JOIN product_translation pt ON p.id = pt.productId
+			WHERE guidproduct IN ($in) AND lang = ? AND p.isdeleted = 0";
+			
+			$params = array_merge($guidproducts, [$lang]);
+			$res = $this->prepare($query, $params);
+			
+			$products = array();
+			while($row = mysqli_fetch_array($res)){
+				foreach($cart as $line){
+					if($line['guidproduct'] == $row['guidproduct']){
+						$product = new stdClass;
+						$product->guidproduct = $row['guidproduct'];
+						$product->title = $row['title'];
+						$product->price = $row['price'];
+						$product->discount = $row['discount'];
+						$product->finalprice = $row['finalprice'];
+						$product->imagename = $row['imagename'];
+						$product->extension = $row['extension'];
+						$product->quantity = $row['available_quantity']; // Stock disponible
+						
+						// Limitar count al stock disponible
+						$product->count = min($line['count'], $row['available_quantity']);
+						
+						$product->total = $product->finalprice * $product->count;
+						$product->totaltax = $product->total * 0.21;
+						$products[] = $product;
+						break;
+					}
+				}
+			}
+			return $products;
 		}
-		return $cartArray;
+		return array();
 	}
-
-   public function getPromo(){
+	
+	public function getPromo(){
 		$promoArray = array();
       if(!isset($_SESSION['promo'])){
          $_SESSION['promo'] = "";

@@ -812,11 +812,20 @@
 	});
 
     $('.qty-btn').on('click', function () {
+        var $button = $(this);
         var $this = $(this);
-        var oldValue = $this.siblings('input').val();
-		var id = $(this).attr("data-id");
+        var oldValue = $button.parent().find('.input-qty').val();
+        var id = $button.attr('data-id');
+        var maxStock = parseInt($button.attr('data-max'));
+
         if ($this.hasClass('plus')) {
             var newVal = parseFloat(oldValue) + 1;
+            
+            if (newVal > maxStock) {
+                alert('No hay suficiente stock disponible. Stock máximo: ' + maxStock);
+                return false;
+            }
+            
             $.ajax({
                 type: "GET",
                 url: "controller/cart?id="+id+"&action=set&val="+newVal+""
@@ -842,6 +851,11 @@
             });
         } else if ($this.hasClass('pluss')) {
             var newVal = parseFloat(oldValue) + 1;
+            
+            if (newVal > maxStock) {
+                alert('No hay suficiente stock disponible. Stock máximo: ' + maxStock);
+                return false;
+            }
         } else if($this.hasClass('minuss')) {
             // Don't allow decrementing below zero
             if (oldValue > 1) {
@@ -850,8 +864,8 @@
                 newVal = 1;
             }
         }
-        
-        $this.siblings('input').val(newVal);
+
+        $button.parent().find('.input-qty').val(newVal);
     });
 
     $('#addToCartDetails').on('click', function () {
