@@ -61,7 +61,7 @@ while($row = mysqli_fetch_array($res)){
                                             ';
                                                 if($isdiscount > 0){ $html.='<span class="onsale">-'.$discountlabel.'</span>'; }
                                                 if($ishot > 0){ $html.='<span class="hot">hot</span>'; }
-                                                if($isoutofstock > 0){ $html.='<span class="outofstock"><i class="fa-solid fa-fire"></i></span>'; }
+                                                if($isoutofstock > 0){ $html.='<span class="outofstock"><i class="fal fa-frown"></i></span>'; }
                                             $html.='</span>
                                             ';
                                         }
