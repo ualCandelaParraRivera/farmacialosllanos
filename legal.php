@@ -172,7 +172,7 @@
                 <p>El Usuario puede hacer llegar a Farmacia los llanos sus quejas, reclamaciones o todo otro comentario que desee realizar a trav&eacute;s de los datos de contacto que se facilitan al principio de estas Condiciones (Informaci&oacute;n General).</p>
                 <p>Adem&aacute;s, Farmacia los llanos dispone de hojas oficiales de reclamaci&oacute;n a disposici&oacute;n de los consumidores y usuarios, y que estos pueden solicitar a Farmacia los llanos en cualquier momento, utilizando los datos de contacto que se facilitan al principio de estas Condiciones (Informaci&oacute;n General).</p>
                 
-                <p>&Uacute;ltima modificaci&oacute;n: 3 de mayo 2021</p>
+                <p>&Uacute;ltima modificaci&oacute;n: 3 de diciembre 2025</p>
             </div>
             <!-- Section Title End -->
         </div>
