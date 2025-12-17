@@ -224,8 +224,8 @@ if (isset($_GET['guidproduct'])) {
                                                     </div>
                                                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
                                                         <div class="form-group" id="hot-group">
-                                                            <label for="fa-solid fa-fire" class="col-form-label">Interesante</label>
-                                                            <select id="fa-solid fa-fire" name="fa-solid fa-fire" type="text" class="form-control">
+                                                            <label for="hot" class="col-form-label">Interesante</label>
+                                                            <select id="hot" name="hot" type="text" class="form-control">
                                                                 <option value="0" <?php if($hot == 0){ echo "selected"; }?>>No</option>
                                                                 <option value="1" <?php if($hot == 1){ echo "selected"; }?>>Si</option>
                                                             </select>
