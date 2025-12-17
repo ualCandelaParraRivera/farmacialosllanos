@@ -356,7 +356,11 @@
                                         </span>
                                         <div class="product-buttons">
                                             <a href="#quickViewModal" data-id="<?=$guidproduct?>" id="<?=$guidproduct?>" data-toggle="modal" class="product-button hintT-top" data-hint="<?=$trans['products_quickview']?>"><i class="fal fa-search"></i></a>
-                                            <a class="product-button hintT-top addToCart" data-hint="<?=$trans['products_addtocart']?>" data-id="<?=$guidproduct?>"><i class="fal fa-shopping-cart"></i></a>
+                                            <?php if($isoutofstock == 1) { ?>
+                                                <a class="product-button hintT-top disabled" data-hint="<?=$trans['products_outofstock']?>" style="cursor: not-allowed; opacity: 0.5; pointer-events: none;"><i class="fal fa-ban"></i></a>
+                                            <?php } else { ?>
+                                                <a class="product-button hintT-top addToCart" data-hint="<?=$trans['products_addtocart']?>" data-id="<?=$guidproduct?>"><i class="fal fa-shopping-cart"></i></a>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>
