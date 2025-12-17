@@ -11,7 +11,7 @@ foreach($products as $product){
     $quantity += $product->count;
     $subtotal += $product->total;
     $taxes += $product->totaltax;
-    $weight += $product->count * $product->weight;
+    // $weight += $product->count * $product->weight;
 }
 
 

@@ -750,7 +750,9 @@
         $this.siblings('input').val(newVal);
     }); */
 
-    $("a.addToCart").on("click",function(){
+    // Event delegation para que funcione con productos cargados dinámicamente
+    $(document).on("click", "a.addToCart", function(e){
+        e.preventDefault();
         var id = $(this).attr("data-id");
         console.log("Adding product:", id);
         $.ajax({

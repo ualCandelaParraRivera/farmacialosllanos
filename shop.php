@@ -503,7 +503,9 @@
 
     <?php sectionjs();?>
     <script>
-    $('a.product-button').on('click', function(e) {
+    // Event delegation para que funcione con productos cargados dinámicamente
+    $(document).on('click', 'a.product-button', function(e) {
+        e.preventDefault();
         var guidproduct = $(this).data('id');
         $.ajax({
             type: 'POST',
@@ -513,10 +515,21 @@
             },
             success: function(response) {
                 $('#modalin').html(response);
-                
+                // Reinicializar slick slider para el modal
+                $('#quickViewModal').off('shown.bs.modal').on('shown.bs.modal', function (e) {
+                    if (!$('.product-gallery-slider-quickview').hasClass('slick-initialized')) {
+                        $('.product-gallery-slider-quickview').slick({
+                            dots: true,
+                            infinite: true,
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            prevArrow: '<button class="slick-prev"><i class="ti-angle-left"></i></button>',
+                            nextArrow: '<button class="slick-next"><i class="ti-angle-right"></i></button>'
+                        });
+                    }
+                });
             }
         });
-        
     });
     </script>
 </body>

@@ -245,10 +245,26 @@ if(!isset($_POST['paymentmethod']) || empty($_POST['paymentmethod'])){
     $payment = $_POST['paymentmethod'];
 }
 
-if(!isset($_POST['shipmentmethod']) || empty($_POST['shipmentmethod'])){
+if(!isset($_POST['options']) || empty($_POST['options'])){
     $errors['shippingtype'] = $trans['control_placeorder_error16'];
 }else{
-    $shippingtype = $_POST['shipmentmethod'];
+    switch($_POST['options']){
+        case 'option1':
+            $shippingtype = 'glseco';
+            break;
+        case 'option2':
+            $shippingtype = 'gls24';
+            break;
+        case 'option3':
+            $shippingtype = 'gls14';
+            break;
+        case 'option4':
+            $shippingtype = 'gls10';
+            break;
+        default:
+            $shippingtype = 'glsislas';
+            break;
+    }
 }
 
 if(!isset($_POST['shipmentprice']) || empty($_POST['shipmentprice'])){

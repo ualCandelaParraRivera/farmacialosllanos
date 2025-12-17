@@ -1,143 +1,100 @@
 $(document).ready(function() {
-    $('#wirebtn').off('click').on('click', function() {
-        $('#paymenttype').val('w');
-        console.log('Método de pago seleccionado: Transferencia');
-    });
-    
-    $('#cardbtn').off('click').on('click', function() {
-        $('#paymenttype').val('c');
-        console.log('Método de pago seleccionado: Tarjeta');
-    });
-    
-    $('input[name="options"]').off('change').on('change', function() {
-        var selectedValue = $(this).val();
-        var selectedId = $(this).attr('id');
-        
-        $('#shipmentprice').val(selectedValue);
-        $('#shipmenttype').val(selectedId);
-        
-        $('#shippingcost span').text(parseFloat(selectedValue).toFixed(2).replace('.', ',') + '€');
-        
-        var finalprice = parseFloat($('#finalprice').val());
-        var grandtotal = finalprice + parseFloat(selectedValue);
-        $('#grandtotal span').text(grandtotal.toFixed(2).replace('.', ',') + '€');
-        
-        console.log('Método de envío:', selectedId, 'Precio:', selectedValue);
-    });
-    
-    $('.btn.btn-dark.btn-outline-hover-dark').off('click').on('click', function(e) {
+    var form = $('#checkoutForm');
+    var formMessages = $('#placeordergroup');
+
+    $(form).submit(function(e) {
         e.preventDefault();
-        $('#checkoutForm').submit();
-    });
-    
-    $('form#checkoutForm').off('submit').on('submit', function(event) {
-        event.preventDefault();
-        
-        console.log('Formulario enviado');
-        console.log('Método de pago:', $('#paymenttype').val());
-        console.log('Método de envío:', $('#shipmenttype').val());
-        console.log('Precio envío:', $('#shipmentprice').val());
-        
-        $('.form-control').removeClass('is-invalid');
-        $('.form-check-input').removeClass('is-invalid');
+
+        // Limpiar mensajes anteriores
+        $(formMessages).empty();
+        $('.form-group').removeClass('has-error');
         $('.help-block').remove();
-        $('.alert').remove();
+
+        // Obtener el método de envío seleccionado
+        var selectedShipping = $('input[name="options"]:checked');
+        if (selectedShipping.length === 0) {
+            $(formMessages).html('<div class="alert alert-danger">Debe seleccionar un método de envío</div>');
+            return false;
+        }
+
+        // Crear FormData con todos los campos del formulario
+        var formData = $(form).serialize();
         
-        var fd = new FormData($(this)[0]);
+        // Agregar el valor del radio button seleccionado
+        formData += '&options=' + selectedShipping.attr('id');
+
+        console.log('FormData:', formData); // Para debugging
 
         $.ajax({
             type: 'POST',
-            url: './controller/placeorder',
-            data: fd,
-            dataType: 'json',
-            processData: false,
-            contentType: false,
-            encode: true
+            url: $(form).attr('action'),
+            data: formData,
+            dataType: 'json'
         })
-        .done(function(data) {
-            console.log(data);
-            if (!data.success) {
-                if (data.errors.billfirstname) {
-                    $('#billfirstname').addClass('is-invalid');
-                    $('#billfirstname-group').append('<div class="help-block">' + data.errors.billfirstname + '</div>');
+        .done(function(response) {
+            console.log('Response completa:', response);
+            console.log('Success value:', response.success);
+
+            if (response.success === false || !response.success) {
+                // Mostrar errores
+                if (response.errors) {
+                    $.each(response.errors, function(key, value) {
+                        var formGroup = $('#' + key + '-group');
+                        $(formGroup).addClass('has-error');
+                        $(formGroup).append('<div class="help-block text-danger">' + value + '</div>');
+                    });
                 }
-                if (data.errors.billmiddlename) {
-                    $('#billmiddlename').addClass('is-invalid');
-                    $('#billmiddlename-group').append('<div class="help-block">' + data.errors.billmiddlename + '</div>');
+
+                if (response.message) {
+                    $(formMessages).html('<div class="alert alert-danger">' + response.message + '</div>');
                 }
-                if (data.errors.email) {
-                    $('#email').addClass('is-invalid');
-                    $('#email-group').append('<div class="help-block">' + data.errors.email + '</div>');
-                }
-                if (data.errors.billmobile) {
-                    $('#billmobile').addClass('is-invalid');
-                    $('#billmobile-group').append('<div class="help-block">' + data.errors.billmobile + '</div>');
-                }
-                if (data.errors.billcountry) {
-                    $('#billcountry').addClass('is-invalid');
-                    $('#billcountry-group').append('<div class="help-block">' + data.errors.billcountry + '</div>');
-                }
-                if (data.errors.billdistrict) {
-                    $('#billdistrict').addClass('is-invalid');
-                    $('#billdistrict-group').append('<div class="help-block">' + data.errors.billdistrict + '</div>');
-                }
-                if (data.errors.billcity) {
-                    $('#billcity').addClass('is-invalid');
-                    $('#billcity-group').append('<div class="help-block">' + data.errors.billcity + '</div>');
-                }
-                if (data.errors.billaddress1) {
-                    $('#billaddress1').addClass('is-invalid');
-                    $('#billaddress1-group').append('<div class="help-block">' + data.errors.billaddress1 + '</div>');
-                }
-                if (data.errors.shipfirstname) {
-                    $('#shipfirstname').addClass('is-invalid');
-                    $('#shipfirstname-group').append('<div class="help-block">' + data.errors.shipfirstname + '</div>');
-                }
-                if (data.errors.shipmiddlename) {
-                    $('#shipmiddlename').addClass('is-invalid');
-                    $('#shipmiddlename-group').append('<div class="help-block">' + data.errors.shipmiddlename + '</div>');
-                }
-                if (data.errors.shipmobile) {
-                    $('#shipmobile').addClass('is-invalid');
-                    $('#shipmobile-group').append('<div class="help-block">' + data.errors.shipmobile + '</div>');
-                }
-                if (data.errors.shipcountry) {
-                    $('#shipcountry').addClass('is-invalid');
-                    $('#shipcountry-group').append('<div class="help-block">' + data.errors.shipcountry + '</div>');
-                }
-                if (data.errors.shipdistrict) {
-                    $('#shipdistrict').addClass('is-invalid');
-                    $('#shipdistrict-group').append('<div class="help-block">' + data.errors.shipdistrict + '</div>');
-                }
-                if (data.errors.shipcity) {
-                    $('#shipcity').addClass('is-invalid');
-                    $('#shipcity-group').append('<div class="help-block">' + data.errors.shipcity + '</div>');
-                }
-                if (data.errors.shipaddress1) {
-                    $('#shipaddress1').addClass('is-invalid');
-                    $('#shipaddress1-group').append('<div class="help-block">' + data.errors.shipaddress1 + '</div>');
-                }
-                if (data.errors.account) {
-                    $('#accountCheck').addClass('is-invalid');
-                    $('#accountCheck-group').append('<div class="help-block">' + data.errors.account + '</div>');
-                }
-                if (data.errors.payment) {
-                    $('#paymenttype').addClass('is-invalid');
-                    $('#paymenttype-group').append('<div class="help-block">' + data.errors.payment + '</div>');
-                }
-                if (data.errors.shippingtype) {
-                    $('#shipmenttype').addClass('is-invalid');
-                    $('#shipmenttype-group').append('<div class="help-block">' + data.errors.shippingtype + '</div>');
-                }
-                $('#placeordergroup').append('<div class="mt-3 alert alert-danger">' + data.message + '</div>');
             } else {
-                console.log("Pedido realizado correctamente");
-                window.location.replace("transaction");
+                // Éxito
+                console.log('Pedido realizado con éxito, redirigiendo...');
+                $(formMessages).html('<div class="alert alert-success">Pedido realizado correctamente. Redirigiendo...</div>');
+                
+                // Redirigir directamente sin vaciar el carrito (el servidor ya lo hace)
+                setTimeout(function() {
+                    console.log('Redirigiendo a transaction...');
+                    window.location.replace('transaction');
+                }, 1500);
             }
         })
         .fail(function(xhr, status, error) {
-            console.error('Error AJAX:', error);
-            console.error('Response:', xhr.responseText);
+            console.error('Error completo:', xhr);
+            console.error('Status:', status);
+            console.error('Error:', error);
+            console.error('Response text:', xhr.responseText);
+            
+            // Intentar parsear la respuesta como JSON
+            try {
+                var response = JSON.parse(xhr.responseText);
+                if (response.message) {
+                    $(formMessages).html('<div class="alert alert-danger">' + response.message + '</div>');
+                } else {
+                    $(formMessages).html('<div class="alert alert-danger">Ha ocurrido un error. Por favor, inténtelo de nuevo.</div>');
+                }
+            } catch(e) {
+                if (xhr.responseText !== '') {
+                    $(formMessages).html('<div class="alert alert-danger">' + xhr.responseText + '</div>');
+                } else {
+                    $(formMessages).html('<div class="alert alert-danger">Ha ocurrido un error. Por favor, inténtelo de nuevo.</div>');
+                }
+            }
         });
+    });
+
+    // Actualizar el precio de envío cuando se selecciona una opción
+    $('input[name="options"]').on('change', function() {
+        var shippingPrice = parseFloat($(this).val());
+        var finalPrice = parseFloat($('#finalprice').val());
+        var grandTotal = finalPrice + shippingPrice;
+        
+        $('#shipmentprice').val(shippingPrice);
+        $('#shippingcost span').text(shippingPrice.toFixed(2).replace('.', ',') + '€');
+        $('#grandtotal span').text(grandTotal.toFixed(2).replace('.', ',') + '€');
+        
+        // Guardar el tipo de envío
+        $('#shipmenttype').val($(this).attr('id'));
     });
 });
