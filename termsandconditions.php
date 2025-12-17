@@ -187,7 +187,7 @@
                     <li>Vender medicamentos</li>
                 </ul>
                 
-                <p>Ultima modificaci&oacute;n: 10 de abril 2023</p>
+                <p>Ultima modificaci&oacute;n: 10 de diciembre 2025</p>
                 
                 
             </div>

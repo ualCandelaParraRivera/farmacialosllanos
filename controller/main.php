@@ -657,7 +657,7 @@ function sectionfooter($trans) {
 
                 <div class="col-md-4 col-12 learts-mb-40 order-md-1">
                     <div class="widget-copyright">
-                        <p class="copyright text-center text-md-left">&copy; <script>document.write(new Date().getFullYear());</script>  Farmacialosllanos. '.$trans['footer_copy'].'</a></p>
+                        <p class="copyright text-center text-md-left">&copy; <script>document.write(new Date().getFullYear());</script>  Farmacia Los Llanos. '.$trans['footer_copy'].'</a></p>
                     </div>
                 </div>
 
