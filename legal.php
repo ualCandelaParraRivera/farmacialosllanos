@@ -16,7 +16,7 @@
         <div class="container">
             <div class="section-title3">
                 <p><strong>I. INFORMACI&Oacute;N GENERAL</strong></p>
-                <p>La titularidad de este sitio web, farmacialosllanos.org, (en adelante Sitio Web) la ostenta: FARMACIA LOS LLANOS, provista de NIF: B02910669 e inscrita en: Registro Mercantil de la provincia de Almer&iacute;a; y cuyos datos registrales son: Tomo 2095; Folio 10, inscripci&oacute;n 1&ordm;, Hoja Al-58275, y cuyos datos de contacto son:</p>
+                <p>La titularidad de este sitio web, farmacialosllanos.org, (en adelante Sitio Web) la ostenta: FARMACIA LOS LLANOS, provista de NIF: 23242441K e inscrita en: Registro Mercantil de la provincia de Almer&iacute;a; y cuyos datos registrales son: Tomo 2095; Folio 10, inscripci&oacute;n 1&ordm;, Hoja Al-58275, y cuyos datos de contacto son:</p>
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Direcci&oacute;n: C/Potasio 7, Loma Cabrera (Almería)<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tel&eacute;fono de contacto: (+34) 950 33 70 53<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email de contacto: contacto@farmacialosllanos.org</p>
@@ -86,7 +86,7 @@
                 <p>Este plazo de desistimiento expirar&aacute; a los 14 d&iacute;as naturales del d&iacute;a que el Usuario o un tercero autorizado por &eacute;ste, distinto del transportista, adquiri&oacute; la posesi&oacute;n material de los bienes adquiridos en el Sitio Web de Farmacia los llanos o en caso de que los bienes que componen su pedido se entreguen por separado, a los 14 d&iacute;as naturales del d&iacute;a que el Usuario o un tercero autorizado por &eacute;ste, distinto del transportista, adquiri&oacute; la posesi&oacute;n material del &uacute;ltimo de esos bienes que compon&iacute;an un mismo pedido de compra, o en el caso de tratarse de un contrato de servicios, a los 14 d&iacute;as naturales desde el d&iacute;a de la celebraci&oacute;n del contrato.</p>
                 <p>Para ejercer este derecho de desistimiento, el Usuario deber&aacute; notificar su decisi&oacute;n a Farmacia los llanos. Podr&aacute; hacerlo, en su caso, a trav&eacute;s de los espacios de contacto habilitados en el Sitio Web o a trav&eacute;s de:</p>
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FARMACIA LOS LLANOS,<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;con CIF B02910669,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;con CIF 23242441K,<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C/Potasio 7, Loma Cabrera<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(+34) 950 33 70 53;<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;contacto@farmacialosllanos.org</p>

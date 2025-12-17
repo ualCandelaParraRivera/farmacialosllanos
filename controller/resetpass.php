@@ -5,7 +5,7 @@
 function enviarEmail($email, $link, $nombre){
     include("mailcredentials.php");
     $fromAddress = $infomail;
-    $fromName = "Farmacialosllanos";
+    $fromName = $infoname;
     $toAddress = $email;
     $toName = $nombre;
     $mail = new PHPMailer;

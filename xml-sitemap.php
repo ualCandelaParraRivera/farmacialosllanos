@@ -26,7 +26,8 @@ function parse_dir( $dir, $url ) {
 		}
 		
 		if(strpos($file, "admin") !== false || strpos($file, "redirect") !== false || strpos($file, "orderview") !== false
-		|| strpos($file, "restorepassword") !== false || strpos($file, "transaction") !== false || strpos($file, "validateregistration") !== false){
+		|| strpos($file, "restorepassword") !== false || strpos($file, "transaction") !== false || strpos($file, "validateregistration") !== false
+		|| strpos($file, "wholesales") !== false || strpos($file, "wholesaledetails") !== false){
 			continue;
 		}
 
@@ -51,8 +52,6 @@ function parse_dir( $dir, $url ) {
 			case 'privacy.php': $specificprior = 0.4; break;
 			case 'legal.php': $specificprior = 0.4; break;
 			case 'cookies.php': $specificprior = 0.4; break;
-			case 'wholesales.php': $specificprior = 0.8; break;
-			case 'wholesaledetails.php': $specificprior = 0.7; break;
 			default: $specificprior = $prio; break;
 		}
 

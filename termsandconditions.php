@@ -17,7 +17,7 @@
             <div class="section-title3">
                 <p><strong>I. INFORMACI&Oacute;N GENERAL</strong></p>
                 <p>En cumplimiento con el deber de informaci&oacute;n dispuesto en la Ley 34/2002 de Servicios de la Sociedad de la Informaci&oacute;n y el Comercio Electr&oacute;nico (LSSI-CE) de 11 de julio, se facilitan a continuaci&oacute;n los siguientes datos de informaci&oacute;n general de este sitio web:</p>
-                <p>La titularidad de este sitio web, farmacialosllanos.org, (en adelante, Sitio Web) la ostenta: FARMACIA LOS LLANOS, provista de NIF: B02910669 e inscrita en: Registro Mercantil de la provincia de Almer&iacute;a con los siguientes datos registrales: Tomo 2095; Folio 10, inscripci&oacute;n 1&ordm;, Hoja Al-58275, cuyo representante es: Victor Manuel Manrique Morales, y cuyos datos de contacto son:</p>
+                <p>La titularidad de este sitio web, farmacialosllanos.org, (en adelante, Sitio Web) la ostenta: FARMACIA LOS LLANOS, provista de NIF: 23242441K e inscrita en: Registro Mercantil de la provincia de Almer&iacute;a con los siguientes datos registrales: Tomo 2095; Folio 10, inscripci&oacute;n 1&ordm;, Hoja Al-58275, cuyo representante es: Victor Manuel Manrique Morales, y cuyos datos de contacto son:</p>
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Direcci&oacute;n: C/ Potasio 7, Loma Cabrera<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tel&eacute;fono de contacto: (+34) 950 33 70 53<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email de contacto: contacto@farmacialosllanos.org</p>
@@ -57,7 +57,7 @@
                     <li>La Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Informaci&oacute;n y de Comercio Electr&oacute;nico (LSSI-CE).</li>
                 </ul>
                 <p><strong>Identidad del responsable del tratamiento de los datos personales</strong></p>
-                <p>El responsable del tratamiento de los datos personales recogidos en Farmacia los llanos es: FARMACIA LOS LLANOS, provista de NIF: B02910669 e inscrita en: Registro Mercantil de la provincia de Almer&iacute;a con los siguientes datos registrales: Tomo 2095; Folio 10, inscripci&oacute;n 1&ordm;, Hoja Al-58275, cuyo representante es: Victor Manuel Manrique Morales (en adelante, tambi&eacute;n Responsable del tratamiento). Sus datos de contacto son los siguientes:</p>
+                <p>El responsable del tratamiento de los datos personales recogidos en Farmacia los llanos es: FARMACIA LOS LLANOS, provista de NIF: 23242441K e inscrita en: Registro Mercantil de la provincia de Almer&iacute;a con los siguientes datos registrales: Tomo 2095; Folio 10, inscripci&oacute;n 1&ordm;, Hoja Al-58275, cuyo representante es: Victor Manuel Manrique Morales (en adelante, tambi&eacute;n Responsable del tratamiento). Sus datos de contacto son los siguientes:</p>
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Direcci&oacute;n: C/ Potasio 7, Loma Cabrera<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tel&eacute;fono de contacto: (+34) 950 33 70 53<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email de contacto: contacto@farmacialosllanos.org</p>
