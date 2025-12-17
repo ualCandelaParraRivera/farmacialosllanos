@@ -7,10 +7,6 @@
   }
 ?>
 <?php 
-    /* $res=$db->query("SELECT name FROM user");
-    while($row = mysqli_fetch_array($res)){
-        echo $row['name'];
-    } */
 ?>
 <html class="no-js" lang="<?=$lang?>">
 
@@ -27,7 +23,6 @@
 
     <?php sectionbreadcrumb("|login", $trans);?>
 
-    <!-- Login & Register Section Start -->
     <div class="section section-padding">
         <div class="container">
             <div class="row no-gutters">
@@ -59,12 +54,7 @@
                                     </div>
                                     <div class="col-12 learts-mb-50">
                                         <div class="row learts-mb-n20">
-                                            <!-- <div class="col-12 learts-mb-20">
-                                                <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" name="remember" id="remember" <?php if(isset($_COOKIE["member_login"])) { ?> checked<?php } ?>>
-                                                    <label class="form-check-label" for="remember"><?=$trans['login_loginrememberme']?></label>
-                                                </div>
-                                            </div> -->
+                                            
                                             <div class="col-12 learts-mb-20">
                                                 <a href="lostpassword" class="fw-400"><?=$trans['login_loginlostpassword']?></a>
                                             </div>
@@ -104,7 +94,6 @@
         </div>
 
     </div>
-    <!-- Login & Register Section End -->
     <?php sectioncookies($trans);?>
     <?php sectionfooter($trans);?>
 

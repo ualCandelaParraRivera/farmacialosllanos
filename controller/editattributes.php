@@ -26,13 +26,10 @@ $guidproductmeta = $_POST['guid'];
         }
     }
 
-    // Devuelve una respuesta ===========================================================
-	// Si hay algun error en el array de errores, devuelve un valor de success a false
     if (!empty($errors)) {
 		$data['success'] = false;
         $data['errors']  = $errors;
         $data['message'] = "Existen errores en el formulario";
-	} else { //Si todo el formulario es correcto, se guarda el pedido
         if($newattribute==1){
             $query = "INSERT INTO product_meta (`key`, content, isdeleted, guidproductmeta) VALUES
             (?, ?, 0, UUID())";

@@ -54,7 +54,6 @@ if(isset($_SESSION['promo'])){
 
     <?php sectionbreadcrumb("|cart", $trans);?>
 
-    <!-- Shopping Cart Section Start -->
     <div class="section section-padding pb-0">
         <div class="container">
         <?php
@@ -112,7 +111,6 @@ if(isset($_SESSION['promo'])){
                     </div>
                     <div class="col-auto">
                         <a class="btn btn-light btn-hover-dark mr-3 mb-3" href="shop"><?=$trans['cart_continue']?></a>
-                        <!-- <button class="btn btn-dark btn-outline-hover-dark mb-3">Update Cart</button> -->
                     </div>
                 </div>
             </form>
@@ -136,7 +134,6 @@ if(isset($_SESSION['promo'])){
                             WHERE type = 'eco' AND $weight BETWEEN minweight AND maxweight";
                             $res=$db->query($query);
                             $row = mysqli_fetch_array($res);
-                            // $shipping = $row['shipping'];
 
                             if(!empty($promocode)){
                                 
@@ -177,7 +174,6 @@ if(isset($_SESSION['promo'])){
         </div>
 
     </div>
-    <!-- Shopping Cart Section End -->
     <?php sectioncookies($trans);?>
     <?php sectionfooter($trans);?>
 

@@ -15,13 +15,7 @@
         <div class="dashboard-wrapper">
             <div class="dashboard-ecommerce">
                 <div class="container-fluid dashboard-content ">
-                    <!-- ============================================================== -->
-                    <!-- pageheader  -->
-                    <!-- ============================================================== -->
                     <?php sectionbreadcrumb("Dashboard", "|admin", $trans);?>
-                    <!-- ============================================================== -->
-                    <!-- end pageheader  -->
-                    <!-- ============================================================== -->
                     <div class="ecommerce-widget">
 
                         <div class="row">
@@ -83,12 +77,6 @@
                             </div>
                         </div>
                         <div class="row">
-                            <!-- ============================================================== -->
-                      
-                            <!-- ============================================================== -->
-
-                                          <!-- recent orders  -->
-                            <!-- ============================================================== -->
                             <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <h5 class="card-header">Pedidos Recientes</h5>
@@ -130,7 +118,7 @@
                                                          FROM order_item oi
                                                         LEFT JOIN `order` o ON oi.orderID = o.id
                                                         LEFT JOIN product_translation pt ON pt.productId = oi.productId 
-                                                        LEFT JOIN (SELECT productId, image FROM product_image GROUP BY productId) pi ON pi.productId = oi.productId
+                                                        LEFT JOIN (SELECT productId, image FROM product_image WHERE isdeleted = 0 GROUP BY productId) pi ON pi.productId = oi.productId
                                                         WHERE pt.lang = 'es'
                                                         ORDER BY createdAt DESC
                                                         LIMIT 6";
@@ -161,14 +149,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- ============================================================== -->
-                            <!-- end recent orders  -->
-
-    
-                            <!-- ============================================================== -->
-                            <!-- ============================================================== -->
-                            <!-- customer acquistion  -->
-                            <!-- ============================================================== -->
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <h5 class="card-header">Pedidos por Día</h5>
@@ -188,14 +168,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- ============================================================== -->
-                            <!-- end customer acquistion  -->
-                            <!-- ============================================================== -->
                         </div>
                         <div class="row">
-                            <!-- ============================================================== -->
-              				                        <!-- product category  -->
-                            <!-- ============================================================== -->
                             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <h5 class="card-header">Pedidos por Categorías</h5>
@@ -244,10 +218,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- ============================================================== -->
-                            <!-- end product category  -->
-                                   <!-- product sales  -->
-                            <!-- ============================================================== -->
                             <div class="col-xl-8 col-lg-7 col-md-12 col-sm-12 col-12">
                                 <div class="card">
                                     <h5 class="card-header"> Total Ventas Mensual</h5>
@@ -264,21 +234,9 @@
                     </div>
                 </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- footer -->
-            <!-- ============================================================== -->
             <?php sectionfooter($trans);?>
-            <!-- ============================================================== -->
-            <!-- end footer -->
-            <!-- ============================================================== -->
         </div>
-        <!-- ============================================================== -->
-        <!-- end wrapper  -->
-        <!-- ============================================================== -->
     </div>
-    <!-- ============================================================== -->
-    <!-- end main wrapper  -->
-    <!-- ============================================================== -->
 
     <?php sectionjs();?>
     <script src="assets/libs/js/dashboard.js"></script>

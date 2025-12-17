@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <?php include ("./controller/main.php");?>
 <?php 
-    /* $res=$db->query("SELECT name FROM user");
-    while($row = mysqli_fetch_array($res)){
-        echo $row['name'];
-    } */
+    
 ?>
 <html class="no-js" lang="<?=$lang?>">
 
@@ -21,7 +18,7 @@
 
     <?php sectionbreadcrumb("|login|lostpassword", $trans);?>
 
-    <!-- Lost Password Section Start -->
+   
     <div class="section section-padding">
         <div class="container">
 
@@ -43,7 +40,6 @@
         </div>
 
     </div>
-    <!-- Lost Password Section End -->
     <?php sectioncookies($trans);?>
     <?php sectionfooter($trans);?>
 

@@ -42,13 +42,11 @@ $guidcategory = $_POST['guid'];
         $description = $_POST['description'];
     }
 
-    // Devuelve una respuesta ===========================================================
-	// Si hay algun error en el array de errores, devuelve un valor de success a false
     if (!empty($errors)) {
 		$data['success'] = false;
         $data['errors']  = $errors;
         $data['message'] = "Existen errores en el formulario";
-	} else { //Si todo el formulario es correcto, se guarda el pedido
+	} else {
         if($newpcategory==1){
             $query = "SELECT MAX(id)+1 as id FROM category";
             $res = $db->query($query);
@@ -62,11 +60,9 @@ $guidcategory = $_POST['guid'];
             $query = "SELECT guidcategory FROM category WHERE id = ?";
             $res = $db->prepare($query, array($id));
             $row = mysqli_fetch_array($res);
-            //ES
             $query = "INSERT INTO category_translation (categoryId, title, metaTitle, content, lang) VALUES 
             (?, ?, ?, ?, 'es')";
             $db->prepare($query, array($id,$nombre, $metadatos, $descripcion));
-            //EN
             $query = "INSERT INTO category_translation (categoryId, title, metaTitle, content, lang) VALUES 
             (?, ?, ?, ?, 'en')";
             $db->prepare($query, array($id,$name, $metadata, $description));
@@ -75,14 +71,12 @@ $guidcategory = $_POST['guid'];
             $res = $db->prepare($query, array($guidcategory));
             $row = mysqli_fetch_array($res);
             $id = $row['id'];
-            //ES
             $query = "SELECT id FROM category_translation WHERE categoryId = ? AND lang = 'es'";
             $res = $db->prepare($query, array($id));
             $row = mysqli_fetch_array($res);
             $transid = $row['id'];
             $query = "UPDATE category_translation SET title = ?, metaTitle = ?, content = ? WHERE id = ?";
             $db->prepare($query, array($nombre, $metadatos, $descripcion, $transid));
-            //EN
             $query = "SELECT id FROM category_translation WHERE categoryId = ? AND lang = 'en'";
             $res = $db->prepare($query, array($id));
             $row = mysqli_fetch_array($res);

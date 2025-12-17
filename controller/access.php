@@ -14,14 +14,6 @@
 		$eightteen = strtotime("-" . $minAge . " years");
 		$server = $_SERVER["HTTP_HOST"];
 
-		// $count = count(explode("/",getcurrentpath()));
-		// $prev = "";
-		// for ($i=0; $i < $count; $i++) { 
-		// 	$prev.="../";
-		// }
-		// echo getcurrentpath().'<br>';
-		// echo $count;
-		// if($age && $eightteen && $age <= $eightteen){
 			
 			if(isset($_POST['rememberme']) && $_POST['rememberme'] == 'remember-me'){
 				setcookie ( 'over18', $age, time() + 60*60*24*30, '/', ''.$server.'');
@@ -29,14 +21,6 @@
 				$_SESSION['over18'] = $age;
 			}
 			header("location: ../index");
-			//redirect($prev."index");
-
-		// } else {
-		// 	header("location: ../over18error");
-		// 	//redirect($prev."over18error");
-
-		// }
-
 	}
 
 ?>

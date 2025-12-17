@@ -36,7 +36,6 @@
 
     <?php sectionbreadcrumb("|wholesales|wholesaledetails", $trans);?>
 
-    <!-- Portfolio Section Start -->
     <div class="section section-padding pb-0">
         <div class="container">
             <div class="row learts-mb-n30">
@@ -76,7 +75,6 @@
         </div>
 
     </div>
-    <!-- Portfolio Section End -->
     <?php sectioncookies($trans);?>
     <?php sectionfooter($trans);?>
 

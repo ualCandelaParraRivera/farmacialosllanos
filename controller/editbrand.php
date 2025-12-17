@@ -42,13 +42,11 @@ if(isset($_POST['create'])){
         $telefono = $_POST['telefono'];
     }
 
-    // Devuelve una respuesta ===========================================================
-	// Si hay algun error en el array de errores, devuelve un valor de success a false
     if (!empty($errors)) {
 		$data['success'] = false;
         $data['errors']  = $errors;
         $data['message'] = "Existen errores en el formulario";
-	} else { //Si todo el formulario es correcto, se guarda el pedido
+	} else {
         if($newbrand==1){
             $query = "INSERT INTO user (firstName, mobile, email, password, image, admin, vendor, registeredAt, lastLogin, intro, profile, isdeleted, isvalid, guiduser) VALUES
             (?, ?, ?, sha1(UUID()), 'brand1.png', 0, 1, NOW(), NOW(), ?, ?, 0, 1, UUID())";
@@ -76,7 +74,7 @@ if(isset($_POST['create'])){
 }else if(isset($_POST['edit'])){
     
     $errors = array();
-    $data = array(); // array para devolver información
+    $data = array();
     $guid = guid();
     $allowed = array('jpeg', 'png', 'jpg');
     $target_dir = "../img/brands/";
@@ -110,8 +108,6 @@ if(isset($_POST['create'])){
     }
     }   
 
-    // Devuelve una respuesta ===========================================================
-	// Si hay algun error en el array de errores, devuelve un valor de success a false
     if (!empty($errors)) {
 		$data['success'] = false;
         $data['errors']  = $errors;

@@ -65,13 +65,11 @@ $guidpromo = $_POST['guid'];
         }
     }
 
-    // Devuelve una respuesta ===========================================================
-	// Si hay algun error en el array de errores, devuelve un valor de success a false
     if (!empty($errors)) {
 		$data['success'] = false;
         $data['errors']  = $errors;
         $data['message'] = "Existen errores en el formulario";
-	} else { //Si todo el formulario es correcto, se guarda el pedido
+	} else {
         if($newpromo==1){
             $query = "INSERT INTO promo (promocode, content, discount, min, max, startDate, endDate, isdeleted, guidpromo) VALUES 
             (?, ?, ?, ?, ?, ?, ?, 0, UUID())";

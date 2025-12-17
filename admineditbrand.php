@@ -159,7 +159,6 @@ if (isset($_GET['guidbrand'])) {
     </div>
 
     <?php sectionjs(); ?>
-    <!-- <script src="js/avatarupload.js"></script> -->
 
 </body>
 

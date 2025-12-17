@@ -52,13 +52,11 @@ if(isset($_POST['create'])){
         $mobile = $_POST['phone'];
     }
 
-    // Devuelve una respuesta ===========================================================
-	// Si hay algun error en el array de errores, devuelve un valor de success a false
     if (!empty($errors)) {
 		$data['success'] = false;
         $data['errors']  = $errors;
         $data['message'] = "Existen errores en el formulario";
-	} else { //Si todo el formulario es correcto, se guarda el pedido
+	} else {
         if($newuser==1){
             $query = "INSERT INTO `user` (`firstName`, `middleName`, `lastName`, `mobile`, `email`, `password`, `image`, `admin`, `vendor`, `registeredAt`, `lastLogin`, `isdeleted`, `isvalid`, `guiduser`) VALUES
             (?, ?, ?, ?, ?, sha1(UUID()), 'user1.jpg', 0, 0, NOW(), NOW(), 0, 1, UUID())";

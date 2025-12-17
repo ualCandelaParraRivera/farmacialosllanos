@@ -1,8 +1,8 @@
 <?php include ("main.php");
  
 
-$errors = array(); // array con los errores producidos
-$data = array(); // array para devolver información
+$errors = array();
+$data = array();
 
 if(!isset($_POST['newpass']) || empty($_POST['newpass'])){
     $errors['newpass'] = $trans['control_restore_error1'];

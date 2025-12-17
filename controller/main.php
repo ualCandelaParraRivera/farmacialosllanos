@@ -2,7 +2,6 @@
 include_once("config.php");
 include_once("expire.php");
 
-//$acceptedIps = array("79.116.38.92");
 $acceptedIps = array();
 if(getcurrentpath() == "coming-soon"){
     if(isAcceptedIp($acceptedIps)){
@@ -12,7 +11,6 @@ if(getcurrentpath() == "coming-soon"){
     redirect("coming-soon");
 }
 
-//Maneja las traducciones mediante etiquetas
 $lang = "es";
 if(isset($_COOKIE['language'])){
     $lang = $_COOKIE['language'];
@@ -21,43 +19,18 @@ if(isset($_COOKIE['language'])){
     }
 }
 
-
-
-/* $products = $db->getCart();
-$quantity = 0;
-foreach($products as $product){
-    $quantity += $product->count;
-} */
-/* foreach($products as $product){
-    echo $product->guidproduct;
-    echo "<br>";
-    echo $product->title;
-    echo "<br>";
-    echo $product->imagename;
-    echo "<br>";
-    echo $product->extension;
-    echo "<br>";
-    echo $product->price;
-    echo "<br>";
-    echo $product->count;
-    echo "<br>";
-    echo $product->total;
-    echo "<br>";
-} */
-
  $trans = array();
 $res=$db->query("SELECT tag, texto FROM etiqueta WHERE idioma = '$lang'");
 while($row = mysqli_fetch_array($res)){
     $trans[$row['tag']] = $row['texto'];
 }
-//Fin de traducciones
 
 function getcurrentpath(){
     $relative = "";
     if($_SERVER['HTTP_HOST'] == "localhost"){
-        $relative = str_replace("/hempleaf/","",$_SERVER['REQUEST_URI']);
-    }else if($_SERVER['HTTP_HOST'] == "hempleaf.ddns.net"){
-        $relative = str_replace("/hempleaf/","",$_SERVER['REQUEST_URI']);
+        $relative = str_replace("/farmacialosllanos/","",$_SERVER['REQUEST_URI']);
+    }else if($_SERVER['HTTP_HOST'] == "farmacialosllanos.ddns.net"){
+        $relative = str_replace("/farmacialosllanos/","",$_SERVER['REQUEST_URI']);
     }else{
         $relative = str_replace("/","",$_SERVER['REQUEST_URI']);
     }
@@ -104,6 +77,13 @@ function sectionhead($db){
 }
 
 function getMeta($db, $page=""){
+    $lang = "es";
+    if(isset($_COOKIE['language'])){
+        $lang = $_COOKIE['language'];
+        if($lang != "es" && $lang != "en"){
+            $lang = "es";
+        }
+    }
     $parts = explode('/', $_SERVER['SCRIPT_NAME']);
     $page = explode('.', array_pop($parts))[0];
     $qs = $_SERVER['QUERY_STRING'];
@@ -117,25 +97,26 @@ function getMeta($db, $page=""){
     $resourcetype = "Document";
     $datecreated = "Mon, 3 May 2021 00:00:00 GMT+1";
     $revisitafter = "30 days";
-    $query = "SELECT * FROM metadata WHERE page = ?";
-    $res=$db->prepare($query, array($page));
+    $query = "SELECT * FROM metadata WHERE page = ? AND lang= ?";
+    $res=$db->prepare($query, array($page, $lang));
     if($db->numRows($res) > 0){
         $row = mysqli_fetch_array($res);
         $title.=$row['title'];
         $robots = $row['robots'];
         $description = $row['description'];
-        $keywords = $row['keywords'];;
+        $keywords = $row['keywords'];
     }
 
     if (strpos($qs, 'guidproduct') !== false) {
         $guidproduct = str_replace("guidproduct=", "", $qs);
-        $query = "SELECT metatitle FROM product p
+        $query = "SELECT summary, metatitle FROM product p
         LEFT JOIN product_translation pt ON p.id = pt.productId
-        WHERE guidproduct = ? AND lang = 'es'";
-        $res=$db->prepare($query, array($guidproduct));
+        WHERE guidproduct = ? AND lang = ?";
+        $res=$db->prepare($query, array($guidproduct, $lang));
         if($db->numRows($res) > 0){
             $row = mysqli_fetch_array($res);
-            $description = $row['metatitle'];
+            $description = $row['summary'];
+            $keywords = $row['metatitle'];
         }
     }else if (strpos($qs, 'guidwholesale') !== false) {
         $guidwholesale = str_replace("guidwholesale=", "", $qs);
@@ -160,7 +141,7 @@ function getMeta($db, $page=""){
     $meta = '<meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>'.$title.'</title>
-    <meta name="'.$robots.'" />
+    <meta name="robots" content="'.$robots.'" />
     <meta name="description" content="'.$description.'">
     <meta name="viewport" content="'.$viewport.'">
     <meta name="author" content="'.$author.'">
@@ -174,7 +155,7 @@ function getMeta($db, $page=""){
 }
 
 function sectiontopbar($trans){
-    echo '<!-- Topbar Section Start -->
+    echo '
     <div class="topbar-section section border-bottom">
         <div class="container">
             <div class="row align-items-center">
@@ -182,7 +163,6 @@ function sectiontopbar($trans){
                     <div class="topbar-menu">
                         <ul>
                             <li><a href="https://maps.app.goo.gl/oUg9AVoB9mbK26Pe7" target="_blank"><i class="fa fa-map-marker-alt"></i>'.$trans['top_store'].'</a></li>
-                            <!--<li><a href="myaccount#orders"><i class="fa fa-truck"></i>'.$trans['top_status'].'</a></li>-->
                         </ul>
                     </div>
                 </div>
@@ -190,7 +170,6 @@ function sectiontopbar($trans){
                     <p class="text-center my-2">'.$trans['top_message'].'</p>
                 </div>
 
-                <!-- Header Language Start -->
                 <div class="col d-none d-md-block">
                     <div class="nav-bar">
                         <ul class="language">
@@ -199,11 +178,9 @@ function sectiontopbar($trans){
                         </ul>
                     </div>
                 </div>
-                <!-- Header Language End -->
             </div>
         </div>
     </div>
-    <!-- Topbar Section End -->
     ';
 }
 
@@ -222,20 +199,17 @@ foreach($products as $product){
     $quantity += $product->count;
     $subtotal += $product->total + $product->totaltax;
 }
-    echo '<!-- Header Section Start -->
+    echo '
     <div class="header-section header-menu-center section bg-white d-none d-xl-block">
         <div class="container">
             <div class="row align-items-center">
 
-                <!-- Header Logo Start -->
                 <div class="col">
                     <div class="header-logo">
                         <a href="index"><img src="img/logo/logof.png" alt="Los Llanos Logo"></a>
                     </div>
                 </div>
-                <!-- Header Logo End -->
 
-                <!-- Search Start -->
                 <div class="col">
                     <nav class="site-main-menu menu-height-100 justify-content-center">
                         <ul>
@@ -245,9 +219,6 @@ foreach($products as $product){
                             <li>
                                 <a href="shop"><span class="menu-text">'.$trans['menu_productos'].'</span></a>
                             </li>
-                            <!--<li>
-                                <a href="wholesales"><span class="menu-text">'.$trans['menu_wholesales'].'</span></a>
-                            </li>-->
                             <li>
                                 <a href="aboutus"><span class="menu-text">'.$trans['menu_nosotros'].'</span></a>
                             </li>
@@ -260,9 +231,7 @@ foreach($products as $product){
                         </ul>
                     </nav>
                 </div>
-                <!-- Search End -->
 
-                <!-- Header Tools Start -->
                 <div class="col">
                     <div class="header-tools justify-content-end">
                         <div class="header-login">
@@ -273,28 +242,22 @@ foreach($products as $product){
                         </div>
                     </div>
                 </div>
-                <!-- Header Tools End -->
 
             </div>
         </div>
 
     </div>
-    <!-- Header Section End -->
 
-    <!-- Header Sticky Section Start -->
     <div class="sticky-header header-menu-center section bg-white d-none d-xl-block">
         <div class="container">
             <div class="row align-items-center">
 
-                <!-- Header Logo Start -->
                 <div class="col">
                     <div class="header-logo">
-                        <a href="index"><img src="img/logo/logof.png" alt="Hempleaf Logo"></a>
+                        <a href="index"><img src="img/logo/logof.png" alt="Farmacia Los Llanos Logo"></a>
                     </div>
                 </div>
-                <!-- Header Logo End -->
 
-                <!-- Search Start -->
                 <div class="col d-none d-xl-block">
                     <nav class="site-main-menu justify-content-center">
                         <ul>
@@ -304,9 +267,6 @@ foreach($products as $product){
                             <li>
                                 <a href="shop"><span class="menu-text">'.$trans['menu_productos'].'</span></a>
                             </li>
-                            <!--<li>
-                                <a href="wholesales"><span class="menu-text">'.$trans['menu_wholesales'].'</span></a>
-                            </li>-->
                             <li>
                                 <a href="aboutus"><span class="menu-text">'.$trans['menu_nosotros'].'</span></a>
                             </li>
@@ -319,9 +279,7 @@ foreach($products as $product){
                         </ul>
                     </nav>
                 </div>
-                <!-- Search End -->
 
-                <!-- Header Tools Start -->
                 <div class="col-auto">
                     <div class="header-tools justify-content-end">
                         <div class="header-login">
@@ -341,28 +299,22 @@ foreach($products as $product){
                         </div>
                     </div>
                 </div>
-                <!-- Header Tools End -->
 
             </div>
         </div>
 
     </div>
-    <!-- Header Sticky Section End -->
 
-    <!-- Mobile Header Section Start -->
     <div class="mobile-header bg-white section d-xl-none">
         <div class="container">
             <div class="row align-items-center">
 
-                <!-- Header Logo Start -->
                 <div class="col">
                     <div class="header-logo">
-                        <a href="index"><img src="img/logo/logof.png" alt="Hempleaf Logo"></a>
+                        <a href="index"><img src="img/logo/logof.png" alt="Los Llanos Logo"></a>
                     </div>
                 </div>
-                <!-- Header Logo End -->
 
-                <!-- Header Tools Start -->
                 <div class="col-auto">
                     <div class="header-tools justify-content-end">
                         <div class="header-login d-none d-sm-block">
@@ -382,14 +334,11 @@ foreach($products as $product){
                         </div>
                     </div>
                 </div>
-                <!-- Header Tools End -->
 
             </div>
         </div>
     </div>
-    <!-- Mobile Header Section End -->
 
-    <!-- OffCanvas Cart Start -->
     <div id="offcanvas-cart" class="offcanvas offcanvas-cart">
         <div class="inner">
             <div class="head">
@@ -449,13 +398,11 @@ foreach($products as $product){
             </div>
         </div>
     </div>
-    <!-- OffCanvas Cart End -->
 
-    <!-- OffCanvas Search Start -->
     <div id="offcanvas-mobile-menu" class="offcanvas offcanvas-mobile-menu">
         <div class="inner customScroll">
             <div class="mobile-logo">
-                <a href="index"><img src="img/logo/HL-Icon-White.png" alt="Hempleaf Logo"></a>
+                <a href="index"><img src="img/logo/HL-Icon-White.png" alt="Los Llanos Logo"></a>
             </div>
             <div class="offcanvas-menu">
                 <ul>
@@ -500,12 +447,27 @@ foreach($products as $product){
            
         </div>
     </div>
-    <!-- OffCanvas Search End -->
 
     <div class="offcanvas-overlay"></div>
 
-    <div class="modal fade" id="alertmodal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel"
-                aria-hidden="true" data-backdrop="static">
+    <div class="modal fade" id="alertmodal" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="alertModalLabel">Carrito de compras</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="alertModalBody">
+                    <!-- El mensaje se inyectará aquí -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Continuar comprando</button>
+                    <button type="button" class="btn btn-primary" id="modalBtnConfirm">Ver carrito</button>
+                </div>
+            </div>
+        </div>
     </div>
     ';
 }
@@ -515,7 +477,6 @@ function sectionbreadcrumb($text, $trans){
     $N = count($tokens);
     $var = getPage($tokens[$N-1], $trans);
     echo '
-    <!-- Page Title/Header Start -->
     <div class="page-title-section section" data-bg-image="img/bg/page-title-1.jpg">
         <div class="container">
             <div class="row">
@@ -539,7 +500,6 @@ function sectionbreadcrumb($text, $trans){
             </div>
         </div>
     </div>
-    <!-- Page Title/Header End -->
     ';
 }    
 
@@ -575,9 +535,61 @@ function getPage($text, $trans){
 }
 
 function sectioncookies($trans){
-    echo '<div id="cookies">
-        '.$trans['control_cookiesmessage'].' 🍪 ! 
-        <span id="close-cookies" class="cookie-button">'.$trans['control_cookiesaccept'].'</span>
+    echo '<div id="cookies-banner" style="display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 999999; background: #fff; box-shadow: 0 -2px 20px rgba(0,0,0,0.1); padding: 20px; margin: 0; width: 100%;">
+        <div class="cookies-content" style="max-width: 1200px; margin: 0 auto;">
+            <div style="display: flex; align-items: flex-start; gap: 20px; flex-wrap: wrap;">
+                <div class="cookies-icon" style="font-size: 48px; flex-shrink: 0;">🍪</div>
+                <div style="flex: 1; min-width: 250px;">
+                    <h3 style="margin: 0 0 10px 0; font-size: 20px; color: #333; font-family: Marcellus, Arial, Helvetica, sans-serif;">'.$trans['cookies_banner_title'].'</h3>
+                    <p style="margin: 0 0 20px 0; font-size: 14px; color: #696969; line-height: 1.5;">'.$trans['cookies_banner_message'].' <a href="cookies" style="color: #333; text-decoration: underline;">'.$trans['cookies_banner_link'].'</a></p>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <div class="cookie-category" style="background: #f9f9f9; padding: 12px; margin-bottom: 10px; border-radius: 4px;">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <label class="cookie-switch">
+                                    <input type="checkbox" id="cookie-necessary" checked disabled>
+                                    <span class="cookie-slider"></span>
+                                </label>
+                                <div style="flex: 1;">
+                                    <span style="font-size: 14px; color: #333; font-weight: 500;">Cookies Necesarias</span>
+                                    <span style="background: #333; color: #fff; padding: 2px 6px; border-radius: 3px; font-size: 10px; margin-left: 8px;">Obligatorias</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="cookie-category" style="background: #f9f9f9; padding: 12px; margin-bottom: 10px; border-radius: 4px;">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <label class="cookie-switch">
+                                    <input type="checkbox" id="cookie-analytics">
+                                    <span class="cookie-slider"></span>
+                                </label>
+                                <div style="flex: 1;">
+                                    <span style="font-size: 14px; color: #333; font-weight: 500;">Cookies Analíticas</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="cookie-category" style="background: #f9f9f9; padding: 12px; margin-bottom: 10px; border-radius: 4px;">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <label class="cookie-switch">
+                                    <input type="checkbox" id="cookie-marketing">
+                                    <span class="cookie-slider"></span>
+                                </label>
+                                <div style="flex: 1;">
+                                    <span style="font-size: 14px; color: #333; font-weight: 500;">Cookies de Marketing</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cookies-buttons" style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button id="accept-all-cookies" class="btn btn-primary2 btn-hover-black">Aceptar todas</button>
+                        <button id="reject-cookies" class="btn btn-secondary btn-hover-black">Rechazar</button>
+                        <button id="save-cookie-preferences" class="btn btn-secondary btn-hover-black">Guardar preferencias</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>';
 }
 
@@ -657,6 +669,7 @@ function sectionfooter($trans) {
 }
 
 function sectionjs(){
+    global $trans;
     echo '<!-- ==================== JS ======================== -->
 
     <!-- Vendors JS -->
@@ -692,6 +705,7 @@ function sectionjs(){
     <!-- Main Activation JS -->
     <script src="js/main.js"></script>
 ';
+    sectioncookies($trans);
 }
 
 function isAcceptedIp($acceptedIps){
@@ -700,10 +714,8 @@ function isAcceptedIp($acceptedIps){
 
 function getIp(){
     if(!empty($_SERVER['HTTP_CLIENT_IP'])){
-        //ip del cliente
         $ip = $_SERVER['HTTP_CLIENT_IP'];
     }elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
-        //ip desde proxy
         $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
     }else{
         $ip = $_SERVER['REMOTE_ADDR'];
@@ -765,15 +777,15 @@ function clearAuthCookie() {
 function cryptoRandSecure($min, $max){
     $range = $max - $min;
     if ($range < 1) {
-        return $min; // not so random...
+        return $min;
     }
     $log = ceil(log($range, 2));
-    $bytes = (int) ($log / 8) + 1; // length in bytes
-    $bits = (int) $log + 1; // length in bits
-    $filter = (int) (1 << $bits) - 1; // set all lower bits to 1
+    $bytes = (int) ($log / 8) + 1;
+    $bits = (int) $log + 1;
+    $filter = (int) (1 << $bits) - 1;
     do {
         $rnd = hexdec(bin2hex(openssl_random_pseudo_bytes($bytes)));
-        $rnd = $rnd & $filter; // discard irrelevant bits
+        $rnd = $rnd & $filter;
     } while ($rnd >= $range);
     return $min + $rnd;
 }

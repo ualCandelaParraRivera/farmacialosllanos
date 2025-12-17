@@ -12,10 +12,8 @@
 
     <?php sectionbreadcrumb('|termsandconditions', $trans);?>
 
-    <!-- Contact Information & Map Section Start -->
     <div class="section section-padding">
         <div class="container">
-            <!-- Section Title Start -->
             <div class="section-title3">
                 <p><strong>I. INFORMACI&Oacute;N GENERAL</strong></p>
                 <p>En cumplimiento con el deber de informaci&oacute;n dispuesto en la Ley 34/2002 de Servicios de la Sociedad de la Informaci&oacute;n y el Comercio Electr&oacute;nico (LSSI-CE) de 11 de julio, se facilitan a continuaci&oacute;n los siguientes datos de informaci&oacute;n general de este sitio web:</p>
@@ -193,10 +191,8 @@
                 
                 
             </div>
-            <!-- Section Title End -->
         </div>
     </div>
-    <!-- Contact Information & Map Section End -->
 
     <?php sectioncookies($trans);?>
     <?php sectionfooter($trans);?>

@@ -1,7 +1,6 @@
 <?php
 include ("mainadmin.php");
 
-//Total Ventas
 $query = "SELECT SUM(subtotal) as subtotal FROM `order` 
 WHERE YEAR(createdAt) = YEAR(NOW())";
 $res=$db->query($query);
@@ -11,7 +10,6 @@ if($db->numRows($res) > 0){
     $totalventas = intval($row['subtotal']);
 }
 
-//Total Ventas Porcentaje
 $query = "SELECT SUM(subtotal) as subtotal FROM `order` 
 WHERE YEAR(createdAt) = YEAR(NOW())-1";
 $res=$db->query($query);
@@ -25,7 +23,6 @@ $porcentajeVentas = $totalventasLY == 0 ? 100 : ($totalventas/$totalventasLY-1)*
 
 $ventasporcentajetext = $porcentajeVentas >= 0 ? '<span><i class="fa fa-fw fa-arrow-up"></i></span><span>'.$porcentajeVentas.'%</span>' : '<span><i class="fa fa-fw fa-arrow-down"></i></span><span>'.$porcentajeVentas.'%</span>';
 
-//Ventas
 $query = "SELECT SUM(subtotal) as subtotal FROM `order`
 WHERE YEAR(createdAt) = YEAR(NOW())
 GROUP BY YEAR(createdAt)*100+MONTH(createdAt)
@@ -35,8 +32,7 @@ $ventas = array();
 while($row = mysqli_fetch_array($res)){
     $ventas[] = intval($row['subtotal']);
 }
-/////////////////
-//Total Pedidos
+
 $query = "SELECT COUNT(*) as pedidos FROM `order`
 WHERE YEAR(createdAt) = YEAR(NOW())";
 $res=$db->query($query);
@@ -46,7 +42,6 @@ if($db->numRows($res) > 0){
     $totalpedidos = intval($row['pedidos']);
 }
 
-//Total Pedidos Porcentaje
 $query = "SELECT COUNT(*) as pedidos FROM `order` 
 WHERE YEAR(createdAt) = YEAR(NOW())-1";
 $res=$db->query($query);
@@ -60,7 +55,6 @@ $porcentajePedidos = $totalpedidosLY == 0 ? 100 : ($totalpedidos/$totalpedidosLY
 
 $pedidosporcentajetext = $porcentajePedidos >= 0 ? '<span><i class="fa fa-fw fa-arrow-up"></i></span><span>'.$porcentajePedidos.'%</span>' : '<span><i class="fa fa-fw fa-arrow-down"></i></span><span>'.$porcentajePedidos.'%</span>';
 
-//Pedidos
 $query = "SELECT COUNT(*) as pedidos FROM `order`
 WHERE YEAR(createdAt) = YEAR(NOW())
 GROUP BY YEAR(createdAt)*100+MONTH(createdAt)
@@ -71,8 +65,6 @@ while($row = mysqli_fetch_array($res)){
     $pedidos[] = intval($row['pedidos']);
 }
 
-///////////////////
-//Total Ticket Medio
 $query = "SELECT AVG(subtotal) as subtotal FROM `order`
 WHERE YEAR(createdAt) = YEAR(NOW())";
 $res=$db->query($query);
@@ -82,7 +74,6 @@ if($db->numRows($res) > 0){
     $totalmedio = intval($row['subtotal']);
 }
 
-//Total Ticket Medio Porcentaje
 $query = "SELECT AVG(subtotal) as subtotal FROM `order` 
 WHERE YEAR(createdAt) = YEAR(NOW())-1";
 $res=$db->query($query);
@@ -96,7 +87,6 @@ $porcentajeMedio = $totalmedioLY == 0 ? 100 : ($totalmedio/$totalmedioLY-1)*100;
 
 $medioporcentajetext = $porcentajeMedio >= 0 ? '<span><i class="fa fa-fw fa-arrow-up"></i></span><span>'.$porcentajeMedio.'%</span>' : '<span><i class="fa fa-fw fa-arrow-down"></i></span><span>'.$porcentajeMedio.'%</span>';
 
-//Ticket Medio
 $query = "SELECT AVG(subtotal) as subtotal FROM `order`
 WHERE YEAR(createdAt) = YEAR(NOW())
 GROUP BY YEAR(createdAt)*100+MONTH(createdAt)
@@ -107,8 +97,6 @@ while($row = mysqli_fetch_array($res)){
     $ticketmedio[] = intval($row['subtotal']);
 }
 
-///////////////////
-//Total Nuevos Clientes
 $query = "SELECT COUNT(id) as nusers FROM `user`
 WHERE admin = 0 AND vendor = 0 AND YEAR(registeredAt) = YEAR(NOW())";
 $res=$db->query($query);
@@ -118,7 +106,7 @@ if($db->numRows($res) > 0){
     $totalusers = intval($row['nusers']);
 }
 
-//Total Nuevos Clientes Porcentaje
+//T
 $query = "SELECT COUNT(id) as nusers FROM `user`
 WHERE admin = 0 AND vendor = 0 AND YEAR(registeredAt) = YEAR(NOW())-1";
 $res=$db->query($query);
@@ -132,8 +120,6 @@ $porcentajeUsers = $totalusersLY == 0 ? 100 : ($totalusers/$totalusersLY-1)*100;
 
 $usersporcentajetext = $porcentajeUsers >= 0 ? '<span><i class="fa fa-fw fa-arrow-up"></i></span><span>'.$porcentajeUsers.'%</span>' : '<span><i class="fa fa-fw fa-arrow-down"></i></span><span>'.$porcentajeUsers.'%</span>';
 
-
-//Nuevos Clientes
 $query = "SELECT COUNT(id) as nusers FROM `user`
 WHERE admin = 0 AND vendor = 0 AND YEAR(registeredAt) = YEAR(NOW())
 GROUP BY YEAR(registeredAt)*100+MONTH(registeredAt)
@@ -144,7 +130,6 @@ while($row = mysqli_fetch_array($res)){
     $users[] = intval($row['nusers']);
 }
 
-//Pedidos por Día de la semana
 $query = "SELECT CASE wd WHEN 0 THEN 'Lun'
 WHEN 1 THEN 'Mar'
 WHEN 2 THEN 'Mie'
@@ -176,7 +161,6 @@ while($row = mysqli_fetch_array($res)){
     $nonregisteredorders[] = intval($row['nonregisteredorders']);
 }
 
-//Pedidos por Categoría
 $query = "SELECT ct.title as category, COUNT(oi.id) as count FROM order_item oi
 LEFT JOIN `order` o ON oi.orderId = o.id 
 LEFT JOIN product_category pc ON oi.productId = pc.productId
@@ -193,7 +177,6 @@ while($row = mysqli_fetch_array($res)){
     $categoryorders[] = intval($row['count']);
 }
 
-//Ventas por Mes
 $query = "SELECT CASE m.m WHEN 1 THEN 'Ene'
 WHEN 2 THEN 'Feb'
 WHEN 3 THEN 'Mar'

@@ -220,7 +220,6 @@ if (isset($_GET['guidpost'])) {
     </div>
 
     <?php sectionjs(); ?>
-    <!-- <script src="js/avatarupload.js"></script> -->
     <script>CKEDITOR.replace( 'descripcion',
     {customConfig: 'config.js'});
     </script>
@@ -228,11 +227,9 @@ if (isset($_GET['guidpost'])) {
     <script>
         var data = CKEDITOR.instances.descripcion.getData();
         CKEDITOR.instances.descripcion.on('change', function() { CKEDITOR.instances.descripcion.updateElement() });
-        // Your code to save "data", usually through Ajax.
     </script>
     <script src="./js/multitags.js"></script>
     <script>
-        // pureScriptSelect('#select');
         pureScriptSelect('#multicategories');
         pureScriptSelect('#multitags');
     </script>

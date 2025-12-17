@@ -1,6 +1,4 @@
 $(document).ready(function() {
-    
-    // Manejar cambio de método de pago
     $('#wirebtn').off('click').on('click', function() {
         $('#paymenttype').val('w');
         console.log('Método de pago seleccionado: Transferencia');
@@ -11,7 +9,6 @@ $(document).ready(function() {
         console.log('Método de pago seleccionado: Tarjeta');
     });
     
-    // Manejar cambio de método de envío
     $('input[name="options"]').off('change').on('change', function() {
         var selectedValue = $(this).val();
         var selectedId = $(this).attr('id');
@@ -19,10 +16,8 @@ $(document).ready(function() {
         $('#shipmentprice').val(selectedValue);
         $('#shipmenttype').val(selectedId);
         
-        // Actualizar el costo de envío en la tabla
         $('#shippingcost span').text(parseFloat(selectedValue).toFixed(2).replace('.', ',') + '€');
         
-        // Actualizar el total
         var finalprice = parseFloat($('#finalprice').val());
         var grandtotal = finalprice + parseFloat(selectedValue);
         $('#grandtotal span').text(grandtotal.toFixed(2).replace('.', ',') + '€');
@@ -30,13 +25,11 @@ $(document).ready(function() {
         console.log('Método de envío:', selectedId, 'Precio:', selectedValue);
     });
     
-    // Capturar clic del botón
     $('.btn.btn-dark.btn-outline-hover-dark').off('click').on('click', function(e) {
         e.preventDefault();
         $('#checkoutForm').submit();
     });
     
-    // procesa el formulario
     $('form#checkoutForm').off('submit').on('submit', function(event) {
         event.preventDefault();
         
@@ -64,7 +57,6 @@ $(document).ready(function() {
         .done(function(data) {
             console.log(data);
             if (!data.success) {
-                // Manejo de errores
                 if (data.errors.billfirstname) {
                     $('#billfirstname').addClass('is-invalid');
                     $('#billfirstname-group').append('<div class="help-block">' + data.errors.billfirstname + '</div>');

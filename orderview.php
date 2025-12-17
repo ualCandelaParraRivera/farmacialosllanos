@@ -93,7 +93,6 @@
 
     <?php sectionbreadcrumb("|myaccount|orderview", $trans);?>
 
-    <!-- Shopping Cart Section Start -->
     <div class="section section-padding pb-0">
         <div class="container">
             <form class="cart-form" action="#">
@@ -202,7 +201,6 @@
         </div>
 
     </div>
-    <!-- Shopping Cart Section End -->
 
     <?php sectionfooter($trans);?>
 

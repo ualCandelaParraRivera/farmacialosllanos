@@ -44,41 +44,13 @@
 
     <?php sectionbreadcrumb('|contact', $trans);?>
 
-    <!-- Contact Information & Map Section Start -->
     <div class="section section-padding">
         <div class="container">
-            <!-- Section Title Start -->
             <div class="section-title2 text-center">
                 <h2 class="title"><?=$trans['contact_title']?></h2>
                 <p><?=$trans['contact_text']?></p>
             </div>
-            <!-- Section Title End -->
-            <!-- Contact Information Start -->
-             <!--
-            <div class="row learts-mb-n30">
-                <div class="col-lg-4 col-md-6 col-12 learts-mb-30">
-                    <div class="contact-info">
-                        <h4 class="title"><?=$trans['contact_address']?></h4>
-                        <span class="info"><i class="icon fal fa-map-marker-alt"></i> <?=$trans['contact_address2']?></span>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 learts-mb-30">
-                    <div class="contact-info">
-                        <h4 class="title"><?=$trans['contact_contact']?></h4>
-                        <span class="info"><i class="icon fal fa-phone-alt"></i> <?=$trans['contact_mobile']?></span>
-                        <span class="info"><i class="icon fal fa-envelope"></i> <?=$trans['contact_mail']?></span>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 learts-mb-30">
-                    <div class="contact-info">
-                        <h4 class="title"><?=$trans['contact_hour']?></h4>
-                        <span class="info"><i class="icon fal fa-clock"></i> <?=$trans['contact_hour2']?></span>
-                    </div>
-                </div>
-            </div>
-            -->
-            <!-- Contact Information End -->
-            <!-- Contact Information Start -->
+            
             <div class="row learts-mt-30">
                 <div class="col-lg-4 col-md-6 col-12 learts-mb-30">
                     <div class="contact-info">
@@ -100,20 +72,15 @@
                     </div>
                 </div>
             </div>
-            <!-- Contact Information End -->
 
         </div>
     </div>
-    <!-- Contact Information & Map Section End -->
 
-    <!-- Contact Form Section Start -->
     <div class="section section-padding pt-0 pb-0">
         <div class="container">
-            <!-- Section Title Start -->
             <div class="section-title2 text-center">
                 <h2 class="title"><?=$trans['contact_messagetitle']?></h2>
             </div>
-            <!-- Section Title End -->
 
             <div class="row">
                 <div class="col-lg-8 col-12 mx-auto">
@@ -134,7 +101,6 @@
 
         </div>
     </div>
-    <!-- Contact Form Section End -->
 
     <?php sectioncookies($trans);?>
     <?php sectionfooter($trans);?>

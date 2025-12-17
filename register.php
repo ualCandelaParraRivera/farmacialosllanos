@@ -5,10 +5,6 @@
         redirect($location_loginuser);
     }
     $email = $_POST['email'];
-    /* $res=$db->query("SELECT name FROM user");
-    while($row = mysqli_fetch_array($res)){
-        echo $row['name'];
-    } */
 ?>
 <html class="no-js" lang="<?=$lang?>">
 
@@ -25,7 +21,6 @@
 
     <?php sectionbreadcrumb("|login|register", $trans);?>
 
-    <!-- Lost Password Section Start -->
     <div class="section section-padding pb-0">
         <div class="container">
 
@@ -55,6 +50,10 @@
                         <div class="col-12 learts-mb-30 form-group" id="email-group">
                             <label for="email"><?=$trans['register_email']?>  <abbr class="required">*</abbr></label>
                             <input type="email" class="form-control" id="email" name="email" value="<?=$email?>" readonly>
+                        </div>
+                        <div class="col-12 learts-mb-30 form-group" id="email2-group">
+                            <label for="email2">Confirmar email  <abbr class="required">*</abbr></label>
+                            <input type="email" class="form-control" id="email2" name="email2" value="">
                         </div>
                         <div class="col-md-6 col-12 learts-mb-30 form-group" id="newpass-group">
                             <label for="newpass"><?=$trans['register_newpass']?> <abbr class="required">*</abbr></label>
@@ -92,7 +91,6 @@
         </div>
 
     </div>
-    <!-- Lost Password Section End -->
     <?php sectioncookies($trans);?>
     <?php sectionfooter($trans);?>
 

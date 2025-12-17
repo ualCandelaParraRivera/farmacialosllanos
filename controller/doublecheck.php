@@ -198,7 +198,6 @@ if(isset($_POST['op'])){
                     break;
                 
                 default:
-                    # code...
                     break;
             }
             
@@ -259,7 +258,6 @@ if(isset($_POST['op'])){
                     $db->prepare($query, array($guid));
                     break;
                 default:
-                    # code...
                     break;
             }
             echo "deleted";

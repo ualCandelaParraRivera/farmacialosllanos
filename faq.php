@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <?php include ("./controller/main.php");?>
 <?php 
-    /* $res=$db->query("SELECT name FROM user");
-    while($row = mysqli_fetch_array($res)){
-        echo $row['name'];
-    } */
 ?>
 <html class="no-js" lang="<?=$lang?>">
 
@@ -19,17 +15,14 @@
 
     <?php sectionbreadcrumb("|faq", $trans);?>
 
-    <!-- FAQs Section Start -->
     <div class="section section-padding pb-0">
         <div class="container">
             <div class="row row-cols-lg-2 row-cols-1 learts-mb-n40">
 
                 <div class="col learts-mb-40">
-                    <!-- Section Title Start -->
                     <div class="section-title2">
                         <h2 class="title"><?=$trans['faq_group1_title']?></h2>
                     </div>
-                    <!-- Section Title End -->
                     <div class="row">
                         <div class="col">
                             <div class="accordion" id="faq-accordion">
@@ -66,28 +59,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <div class="card">
-                                    <div class="card-header">
-                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#faq-accordion-4"><?=$trans['faq_group1_btn4']?></button>
-                                    </div>
-
-                                    <div id="faq-accordion-4" class="collapse" data-parent="#faq-accordion">
-                                        <div class="card-body">
-                                            <p><?=$trans['faq_group1_text4']?></p>
-                                        </div>
-                                    </div>
-                                </div> -->
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="col learts-mb-40">
-                    <!-- Section Title Start -->
                     <div class="section-title2">
                         <h2 class="title"><?=$trans['faq_group2_title']?></h2>
                     </div>
-                    <!-- Section Title End -->
                     <div class="row">
                         <div class="col">
                             <div class="accordion" id="faq-accordion2">
@@ -124,17 +104,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <div class="card">
-                                    <div class="card-header">
-                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#faq-accordion-8"><?=$trans['faq_group2_btn4']?></button>
-                                    </div>
-
-                                    <div id="faq-accordion-8" class="collapse" data-parent="#faq-accordion2">
-                                        <div class="card-body">
-                                            <p><?=$trans['faq_group2_text4']?></p>
-                                        </div>
-                                    </div>
-                                </div> -->
+                                
                             </div>
                         </div>
                     </div>
@@ -143,7 +113,6 @@
             </div>
         </div>
     </div>
-    <!-- FAQs Section End -->
     <?php sectioncookies($trans);?>
     <?php sectionfooter($trans);?>
 

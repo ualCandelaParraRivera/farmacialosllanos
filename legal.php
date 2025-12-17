@@ -12,10 +12,8 @@
 
     <?php sectionbreadcrumb('|legal', $trans);?>
 
-    <!-- Contact Information & Map Section Start -->
     <div class="section section-padding">
         <div class="container">
-            <!-- Section Title Start -->
             <div class="section-title3">
                 <p><strong>I. INFORMACI&Oacute;N GENERAL</strong></p>
                 <p>La titularidad de este sitio web, farmacialosllanos.org, (en adelante Sitio Web) la ostenta: FARMACIA LOS LLANOS, provista de NIF: B02910669 e inscrita en: Registro Mercantil de la provincia de Almer&iacute;a; y cuyos datos registrales son: Tomo 2095; Folio 10, inscripci&oacute;n 1&ordm;, Hoja Al-58275, y cuyos datos de contacto son:</p>
@@ -174,10 +172,8 @@
                 
                 <p>&Uacute;ltima modificaci&oacute;n: 3 de diciembre 2025</p>
             </div>
-            <!-- Section Title End -->
         </div>
     </div>
-    <!-- Contact Information & Map Section End -->
 
     <?php sectioncookies($trans);?>
     <?php sectionfooter($trans);?>

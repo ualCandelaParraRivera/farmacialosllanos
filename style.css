@@ -8196,3 +8196,339 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
         padding-left: 10px;
     }
 }
+
+/*----------------------------------------*/
+/*  14. Cookies Banner CSS (RGPD/GDPR)
+/*----------------------------------------*/
+
+#cookies-banner {
+    animation: slideUp 0.3s ease-out;
+}
+
+#cookies-banner.display {
+    display: block !important;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.cookies-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cookies-main {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.cookies-settings {
+    display: none;
+    padding: 20px 0;
+}
+
+#cookies-banner.show-settings .cookies-main {
+    display: none;
+}
+
+#cookies-banner.show-settings .cookies-settings {
+    display: block;
+}
+
+.cookies-icon {
+    font-size: 48px;
+    flex-shrink: 0;
+}
+
+.cookies-text {
+    flex: 1;
+    min-width: 250px;
+}
+
+.cookies-text h3 {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+    color: #333;
+}
+
+.cookies-text p {
+    margin: 0;
+    font-size: 14px;
+    color: #696969;
+    line-height: 1.5;
+}
+
+.cookies-text a {
+    color: #00B569;
+    text-decoration: underline;
+}
+
+.cookies-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+#cookies-banner .btn-cookie {
+    padding: 14px 32px !important;
+    border: 1px solid #333 !important;
+    border-radius: 0 !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    cursor: pointer;
+    transition: all 0.4s ease !important;
+    font-family: "Futura", Arial, Helvetica, sans-serif !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    line-height: 1 !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+#cookies-banner .btn-cookie-accept {
+    background: #333333 !important;
+    color: #fff !important;
+    border-color: #333333 !important;
+}
+
+#cookies-banner .btn-cookie-accept:hover {
+    background: transparent !important;
+    color: #333333 !important;
+    border-color: #333333 !important;
+}
+
+#cookies-banner .btn-cookie-reject {
+    background: transparent !important;
+    color: #333 !important;
+    border-color: #333 !important;
+}
+
+#cookies-banner .btn-cookie-reject:hover {
+    background: #333 !important;
+    color: #fff !important;
+    border-color: #333 !important;
+}
+
+#cookies-banner .btn-cookie-config {
+    background: transparent !important;
+    color: #333 !important;
+    border-color: #333 !important;
+}
+
+#cookies-banner .btn-cookie-config:hover {
+    background: #f5f5f5 !important;
+    color: #333 !important;
+    border-color: #333 !important;
+}
+
+#cookies-banner .btn-cookie-save {
+    background: #333 !important;
+    color: #fff !important;
+    border-color: #333 !important;
+}
+
+#cookies-banner .btn-cookie-save:hover {
+    background: transparent !important;
+    color: #333 !important;
+    border-color: #333 !important;
+}
+
+#cookies-banner .cookie-slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+#cookies-banner input:checked + .cookie-slider {
+    background-color: #333 !important;
+}
+
+#cookies-banner input:checked + .cookie-slider:before {
+    transform: translateX(24px);
+}
+
+.btn-cookie-config {
+    background: transparent;
+    color: #333;
+    border: 2px solid #333;
+}
+
+.btn-cookie-config:hover {
+    background: #333;
+    color: #fff;
+}
+
+.btn-cookie-save {
+    background: #333333;
+    color: #fff;
+    border-color: #333333;
+    width: 100%;
+}
+
+.btn-cookie-save:hover {
+    background: #fff;
+    color: #333333;
+    border-color: #333333;
+}
+
+.btn-back {
+    background: transparent;
+    border: none;
+    color: #333;
+    font-size: 16px;
+    padding: 5px 0;
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.btn-back:hover {
+    color: #000;
+}
+
+.cookies-settings h3 {
+    margin: 0 0 10px 0;
+    font-size: 22px;
+    color: #333;
+}
+
+.cookies-settings > p {
+    margin: 0 0 20px 0;
+    font-size: 14px;
+    color: #696969;
+}
+
+.cookie-category {
+    background: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+}
+
+.cookie-category-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.cookie-category-info {
+    flex: 1;
+}
+
+.cookie-category-info h4 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.cookie-required {
+    display: inline-block;
+    background: #00B569;
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.cookie-category-desc {
+    margin: 0;
+    font-size: 13px;
+    color: #696969;
+    line-height: 1.5;
+}
+
+/* Cookie Switch */
+.cookie-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+    flex-shrink: 0;
+}
+
+.cookie-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.cookie-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 26px;
+}
+
+.cookie-slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .cookie-slider {
+    background-color: #00B569;
+}
+
+input:disabled + .cookie-slider {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+input:checked + .cookie-slider:before {
+    transform: translateX(24px);
+}
+
+/* Responsive */
+@media only screen and (max-width: 767px) {
+    .cookies-main {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .cookies-icon {
+        font-size: 36px;
+    }
+    
+    .cookies-buttons {
+        width: 100%;
+    }
+    
+    .btn-cookie {
+        flex: 1;
+        min-width: 120px;
+    }
+    
+    .cookies-text h3 {
+        font-size: 18px;
+    }
+}

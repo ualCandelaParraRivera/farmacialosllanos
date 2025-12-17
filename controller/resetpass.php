@@ -10,19 +10,19 @@ function enviarEmail($email, $link, $nombre){
     $toName = $nombre;
     $mail = new PHPMailer;
     $mail->CharSet = "UTF-8";
-    $mail->isSMTP();                            // Set mailer to use SMTP
-    $mail->Host = $hostmail;             // Specify main and backup SMTP servers
-    $mail->SMTPAuth = true;                     // Enable SMTP authentication
+    $mail->isSMTP();
+    $mail->Host = $hostmail;
+    $mail->SMTPAuth = true;
     $mail->SMTPDebug = 0;
     $mail->Debugoutput = 'html';
-    $mail->Username = $infomail;            // SMTP username
-    $mail->Password = $infopass;            // SMTP password
-    $mail->SMTPSecure = 'tls';                  // Enable TLS encryption, `ssl` also accepted
-    $mail->Port = 587;                          // TCP port to connect to
+    $mail->Username = $infomail;
+    $mail->Password = $infopass;
+    $mail->SMTPSecure = 'tls';
+    $mail->Port = 587;
     $mail->addReplyTo($fromAddress, $fromName);
     $mail->setFrom($fromAddress, $fromName);
-    $mail->addAddress($toAddress,$toName);          // Add a recipient
-    $mail->isHTML(true);                        // Set email format to HTML
+    $mail->addAddress($toAddress,$toName);
+    $mail->isHTML(true);
 
     $mensaje = generarMensaje($link, $nombre);
 
@@ -41,8 +41,8 @@ function enviarEmail($email, $link, $nombre){
 
 function generarLinkTemporal($db, $guiduser, $email){
     $relativeurl = "";
-    if($_SERVER["HTTP_HOST"]=="hempleaf.ddns.net" || $_SERVER['HTTP_HOST'] == "localhost"){
-        $relativeurl = "/hempleaf";
+    if($_SERVER["HTTP_HOST"]=="farmacialosllanos.ddns.net" || $_SERVER['HTTP_HOST'] == "localhost"){
+        $relativeurl = "/farmacialosllanos";
     }
     $plaintoken = $guiduser.$email.rand(1,9999999).date('Y-m-d');
     $token = sha1($plaintoken);
@@ -70,8 +70,8 @@ function imageToBase64($relativepath){
 }
 
 function generarMensaje($link, $nombre){
-    if($_SERVER['HTTP_HOST'] == "hempleaf.ddns.net" || $_SERVER['HTTP_HOST'] == "localhost"){
-        $webroot = $_SERVER['HTTP_HOST']."/hempleaf/";
+    if($_SERVER['HTTP_HOST'] == "farmacialosllanos.ddns.net" || $_SERVER['HTTP_HOST'] == "localhost"){
+        $webroot = $_SERVER['HTTP_HOST']."/farmacialosllanos/";
     }else{
         $webroot = $_SERVER['HTTP_HOST']."/";
     }
@@ -195,7 +195,7 @@ function generarMensaje($link, $nombre){
                       <td valign="top" align="center" style="padding:0;Margin:0;width:560px"> 
                        <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                          <tr style="border-collapse:collapse"> 
-                          <td align="center" style="padding:0;Margin:0;font-size:0px"><a href="'.$webroot.'" target="_blank" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#C04A81;font-size:14px"><img src="'.imageToBase64('img/email/56541618311612724.png').'" alt="Logo Hempleaf" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="162" title="Logo Hempleaf"></a></td> 
+                          <td align="center" style="padding:0;Margin:0;font-size:0px"><a href="'.$webroot.'" target="_blank" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#C04A81;font-size:14px"><img src="'.imageToBase64('img/email/56541618311612724.png').'" alt="Logo Los Llanos" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="162" title="Logo Los Llanos"></a></td> 
                          </tr> 
                        </table></td> 
                      </tr> 
@@ -290,7 +290,7 @@ function generarMensaje($link, $nombre){
                       <td class="es-m-p0r es-m-p20b" valign="top" align="center" style="padding:0;Margin:0;width:171px"> 
                        <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                          <tr style="border-collapse:collapse"> 
-                          <td align="center" style="padding:0;Margin:0;padding-bottom:15px;font-size:0px"><a target="_blank" href="'.$webroot.'" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#999999;font-size:12px"><img src="'.imageToBase64("img/email/68601618315015577.png").'" alt="Logo Hempleaf" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" title="Logo Hempleaf" width="135"></a></td> 
+                          <td align="center" style="padding:0;Margin:0;padding-bottom:15px;font-size:0px"><a target="_blank" href="'.$webroot.'" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#999999;font-size:12px"><img src="'.imageToBase64("img/email/68601618315015577.png").'" alt="Logo Los Llanos" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" title="Logo Los Llanos" width="135"></a></td> 
                          </tr> 
                          <tr style="border-collapse:collapse"> 
                           <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:18px;color:#999999;font-size:12px;text-align:center">info<a target="_blank" href="mailto:info@farmacialosllanos.org" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#999999;font-size:12px">@farmacialosllanos.org</a></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:18px;color:#999999;font-size:12px;text-align:center">© 2021&nbsp;Farmacia Los Llanos</p></td> 
@@ -355,8 +355,8 @@ function generarMensaje($link, $nombre){
 }
 
 
-$errors = array(); // array con los errores producidos
-$data = array(); // array para devolver información
+$errors = array();
+$data = array();
 
 $email = $_POST['email'];
 
@@ -373,17 +373,17 @@ if(emailValidation($email)){
             if($issended){
 
             }else{
-                $errors['pass']=$trans['control_resetpass_error1']; //No se ha enviado un correo
+                $errors['pass']=$trans['control_resetpass_error1'];
             }
             
         }else{
-            $errors['pass']=$trans['control_resetpass_error2']; //No se ha generado link temporal
+            $errors['pass']=$trans['control_resetpass_error2'];
         }
     }else{
         $errors['pass']=$trans['control_resetpass_error3'];
     }
 }else{
-    $errors['pass']=$trans['control_resetpass_error4']; //Ha introducido un correo inválido
+    $errors['pass']=$trans['control_resetpass_error4'];
 }
 
 if (!empty($errors)) {
