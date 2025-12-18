@@ -16,7 +16,15 @@
 
 			
 			if(isset($_POST['rememberme']) && $_POST['rememberme'] == 'remember-me'){
-				setcookie ( 'over18', $age, time() + 60*60*24*30, '/', ''.$server.'');
+				$cookie_options = array(
+					'expires' => time() + 60*60*24*30,
+					'path' => '/',
+					'domain' => '',
+					'secure' => true,
+					'httponly' => true,
+					'samesite' => 'Strict'
+				);
+				setcookie('over18', $age, $cookie_options);
 			}else{
 				$_SESSION['over18'] = $age;
 			}

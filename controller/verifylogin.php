@@ -90,6 +90,9 @@ $current_date = date("Y-m-d H:i:s", $current_time);
 $cookie_expiration_time = $current_time + (30 * 24 * 60 * 60);
 
 if ($user->verifylogin($db,$login,$pwd)){
+    // Regenerar ID de sesión para prevenir session fixation
+    session_regenerate_id(true);
+    
     $_SESSION["usercode"] = $user->usercode;
     $_SESSION["usertype"] = $user->usertype;
     if ($_SESSION["usertype"] >= 0) {
@@ -100,12 +103,22 @@ if ($user->verifylogin($db,$login,$pwd)){
         $query = "UPDATE user SET lastlogin=NOW() WHERE id=".$_SESSION["usercode"];
         $db->query($query);
         if(!empty($remember)){
-            setcookie("member_login", $login, $cookie_expiration_time,"/",true);
+            // Configurar cookies con flags de seguridad
+            $cookie_options = array(
+                'expires' => $cookie_expiration_time,
+                'path' => '/',
+                'domain' => '',
+                'secure' => true,      // Solo HTTPS
+                'httponly' => true,    // No accesible desde JavaScript
+                'samesite' => 'Strict' // Protección CSRF
+            );
+            
+            setcookie("member_login", $login, $cookie_options);
             $_COOKIE['member_login'] = $login;
             $random_password = getToken(16);
-            setcookie("random_password", $random_password, $cookie_expiration_time,"/",true);
+            setcookie("random_password", $random_password, $cookie_options);
             $random_selector = getToken(32);
-            setcookie("random_selector", $random_selector, $cookie_expiration_time,"/",true);
+            setcookie("random_selector", $random_selector, $cookie_options);
             $random_password_hash = password_hash($random_password, PASSWORD_DEFAULT);
             $random_selector_hash = password_hash($random_selector, PASSWORD_DEFAULT);
             $expiry_date = date("Y-m-d H:i:s", $cookie_expiration_time);

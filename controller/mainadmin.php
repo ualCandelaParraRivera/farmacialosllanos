@@ -543,14 +543,23 @@ function redirect($url) {
 }
 
 function clearAuthCookie() {
+    $cookie_options = array(
+        'expires' => time() - 3600,
+        'path' => '/',
+        'domain' => '',
+        'secure' => true,
+        'httponly' => true,
+        'samesite' => 'Strict'
+    );
+    
     if (isset($_COOKIE["member_login"])) {
-        setcookie("member_login", "");
+        setcookie("member_login", "", $cookie_options);
     }
     if (isset($_COOKIE["random_password"])) {
-        setcookie("random_password", "");
+        setcookie("random_password", "", $cookie_options);
     }
     if (isset($_COOKIE["random_selector"])) {
-        setcookie("random_selector", "");
+        setcookie("random_selector", "", $cookie_options);
     }
 }
 

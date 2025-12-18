@@ -30,8 +30,17 @@ $location_accessdenied = $location_accessdenied_default;
 
 $db=Db::getInstance();
 
+// Configuración segura de sesiones
+ini_set('session.cookie_httponly', 1);
+ini_set('session.cookie_secure', 1); // Solo HTTPS
+ini_set('session.cookie_samesite', 'Strict');
+ini_set('session.use_strict_mode', 1);
+ini_set('session.use_only_cookies', 1);
+ini_set('session.cookie_lifetime', 0); // Sesión expira al cerrar navegador
+
 session_name("losllanos");  
 session_start();
+
 if(!isset($_SESSION['cart'])){
     $_SESSION['cart']="";
 }
