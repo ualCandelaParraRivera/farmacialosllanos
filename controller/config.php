@@ -1,4 +1,7 @@
 <?php
+// Aplicar cabeceras de seguridad HTTP
+require_once 'security_headers.php';
+
 require 'database.class.php';
 
 $location_accessdenied = "403";
