@@ -157,24 +157,20 @@ $(document).ready(function() {
                 // ============================================================== 
                 // Total Revenue
                 // ============================================================== 
-                 console.log(data.totalpermonth); 
+                console.log(data.totalpermonth); 
                 Morris.Area({
-                    
                     element: 'morris_totalrevenue',
                     behaveLikeLine: true,
-                    data: data.totalpermonth
-                        /* { x: 'Ene', y: 0, },
-                        { x: 'Feb', y: 7500, },
-                        { x: 'Mar', y: 5000, },
-                        { x: 'Abr', y: 22500, } */
-                    ,
+                    data: data.totalpermonth,
                     parseTime: false,
                     xkey: 'x',
                     ykeys: ['y'],
                     labels: ['Ventas'],
                     lineColors: ['#5fa77f'],
-                    resize: true
-
+                    resize: true,
+                    yLabelFormat: function(y) { 
+                        return y.toFixed(2).replace('.', ',') + '€'; 
+                    }
                 });
 
 

@@ -527,8 +527,8 @@
                             infinite: true,
                             slidesToShow: 1,
                             slidesToScroll: 1,
-                            prevArrow: '<button class="slick-prev"><i class="ti-angle-left"></i></button>',
-                            nextArrow: '<button class="slick-next"><i class="ti-angle-right"></i></button>'
+                            prevArrow: '<button class="slick-prev" aria-label="Anterior"><i class="ti-angle-left"></i></button>',
+                            nextArrow: '<button class="slick-next" aria-label="Siguiente"><i class="ti-angle-right"></i></button>'
                         });
                     }
                 });

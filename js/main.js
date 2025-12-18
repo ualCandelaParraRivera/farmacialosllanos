@@ -247,7 +247,7 @@
             count: 14,
             children: {
                 radius: 2.5,
-                fill: ['#F8796C'],
+                fill: ['#AB0F07'],
                 scale: {
                     1: 0,
                     easing: 'quad.in'
@@ -423,8 +423,8 @@
         slidesToShow: 4,
         slidesToScroll: 1,
         focusOnSelect: true,
-        prevArrow: '<button class="slick-prev"><i class="ti-angle-left"></i></button>',
-        nextArrow: '<button class="slick-next"><i class="ti-angle-right"></i></button>',
+        prevArrow: '<button class="slick-prev" aria-label="Anterior"><i class="ti-angle-left"></i></button>',
+        nextArrow: '<button class="slick-next" aria-label="Siguiente"><i class="ti-angle-right"></i></button>',
         responsive: [{
                 breakpoint: 991,
                 settings: {
@@ -449,8 +449,8 @@
     // Product List Slider
     $('.product-list-slider').slick({
         rows: 3,
-        prevArrow: '<button class="slick-prev"><i class="ti-angle-left"></i></button>',
-        nextArrow: '<button class="slick-next"><i class="ti-angle-right"></i></button>'
+        prevArrow: '<button class="slick-prev" aria-label="Anterior"><i class="ti-angle-left"></i></button>',
+        nextArrow: '<button class="slick-next" aria-label="Siguiente"><i class="ti-angle-right"></i></button>'
     });
 
     // Single Product Slider
@@ -460,8 +460,8 @@
         slidesToShow: 1,
         slidesToScroll: 1,
         asNavFor: '.product-thumb-slider, .product-thumb-slider-vertical',
-        prevArrow: '<button class="slick-prev"><i class="ti-angle-left"></i></button>',
-        nextArrow: '<button class="slick-next"><i class="ti-angle-right"></i></button>'
+        prevArrow: '<button class="slick-prev" aria-label="Anterior"><i class="ti-angle-left"></i></button>',
+        nextArrow: '<button class="slick-next" aria-label="Siguiente"><i class="ti-angle-right"></i></button>'
     });
     $('.product-thumb-slider').slick({
         infinite: true,
@@ -469,8 +469,8 @@
         slidesToScroll: 1,
         focusOnSelect: true,
         asNavFor: '.product-gallery-slider',
-        prevArrow: '<button class="slick-prev"><i class="ti-angle-left"></i></button>',
-        nextArrow: '<button class="slick-next"><i class="ti-angle-right"></i></button>'
+        prevArrow: '<button class="slick-prev" aria-label="Anterior"><i class="ti-angle-left"></i></button>',
+        nextArrow: '<button class="slick-next" aria-label="Siguiente"><i class="ti-angle-right"></i></button>'
     });
     $('.product-thumb-slider-vertical').slick({
         infinite: true,
@@ -479,8 +479,8 @@
         vertical: true,
         focusOnSelect: true,
         asNavFor: '.product-gallery-slider',
-        prevArrow: '<button class="slick-prev"><i class="ti-angle-up"></i></button>',
-        nextArrow: '<button class="slick-next"><i class="ti-angle-down"></i></button>'
+        prevArrow: '<button class="slick-prev" aria-label="Anterior"><i class="ti-angle-up"></i></button>',
+        nextArrow: '<button class="slick-next" aria-label="Siguiente"><i class="ti-angle-down"></i></button>'
     });
 
     // Blog Carousel
@@ -489,8 +489,8 @@
         slidesToShow: 3,
         slidesToScroll: 1,
         focusOnSelect: true,
-        prevArrow: '<button class="slick-prev"><i class="ti-angle-left"></i></button>',
-        nextArrow: '<button class="slick-next"><i class="ti-angle-right"></i></button>',
+        prevArrow: '<button class="slick-prev" aria-label="Anterior"><i class="ti-angle-left"></i></button>',
+        nextArrow: '<button class="slick-next" aria-label="Siguiente"><i class="ti-angle-right"></i></button>',
         responsive: [{
                 breakpoint: 991,
                 settings: {
@@ -512,8 +512,8 @@
         slidesToShow: 5,
         slidesToScroll: 1,
         focusOnSelect: true,
-        prevArrow: '<button class="slick-prev"><i class="ti-angle-left"></i></button>',
-        nextArrow: '<button class="slick-next"><i class="ti-angle-right"></i></button>',
+        prevArrow: '<button class="slick-prev" aria-label="Anterior"><i class="ti-angle-left"></i></button>',
+        nextArrow: '<button class="slick-next" aria-label="Siguiente"><i class="ti-angle-right"></i></button>',
         responsive: [{
             breakpoint: 1199,
             settings: {
@@ -542,15 +542,15 @@
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-        prevArrow: '<button class="slick-prev"><i class="ti-angle-left"></i></button>',
-        nextArrow: '<button class="slick-next"><i class="ti-angle-right"></i></button>'
+        prevArrow: '<button class="slick-prev" aria-label="Anterior"><i class="ti-angle-left"></i></button>',
+        nextArrow: '<button class="slick-next" aria-label="Siguiente"><i class="ti-angle-right"></i></button>'
     });
     $('.testimonial-carousel').slick({
         infinite: true,
         slidesToShow: 3,
         slidesToScroll: 1,
-        prevArrow: '<button class="slick-prev"><i class="ti-angle-left"></i></button>',
-        nextArrow: '<button class="slick-next"><i class="ti-angle-right"></i></button>',
+        prevArrow: '<button class="slick-prev" aria-label="Anterior"><i class="ti-angle-left"></i></button>',
+        nextArrow: '<button class="slick-next" aria-label="Siguiente"><i class="ti-angle-right"></i></button>',
         responsive: [{
                 breakpoint: 991,
                 settings: {
@@ -571,8 +571,8 @@
         infinite: true,
         slidesToShow: 3,
         slidesToScroll: 1,
-        prevArrow: '<button class="slick-prev"><i class="fal fa-long-arrow-left"></i></button>',
-        nextArrow: '<button class="slick-next"><i class="fal fa-long-arrow-right"></i></button>',
+        prevArrow: '<button class="slick-prev" aria-label="Anterior"><i class="fal fa-long-arrow-left"></i></button>',
+        nextArrow: '<button class="slick-next" aria-label="Siguiente"><i class="fal fa-long-arrow-right"></i></button>',
         responsive: [{
                 breakpoint: 991,
                 settings: {
@@ -636,66 +636,66 @@
     /*--
         Instagram Feed
     -----------------------------------*/
-    $.instagramFeed({
-        'username': 'farmacialosllanos',
-        'container': ".instagram-feed",
-        'display_profile': false,
-        'display_biography': false,
-        'display_gallery': true,
-        'styling': false,
-        'items': 12,
-        "image_size": "320",
-    });
-    $('.instagram-feed').on("DOMNodeInserted", function (e) {
-        if (e.target.className == 'instagram_gallery') {
-            $('.instagram-carousel1 .' + e.target.className).slick({
-                infinite: true,
-                slidesToShow: 5,
-                slidesToScroll: 1,
-                prevArrow: '<button class="slick-prev"><i class="ti-angle-left"></i></button>',
-                nextArrow: '<button class="slick-next"><i class="ti-angle-right"></i></button>',
-                responsive: [{
-                    breakpoint: 119,
-                    settings: {
-                        slidesToShow: 4
-                    }
-                }, {
-                    breakpoint: 991,
-                    settings: {
-                        slidesToShow: 3
-                    }
-                }, {
-                    breakpoint: 767,
-                    settings: {
-                        slidesToShow: 2
-                    }
-                }, {
-                    breakpoint: 575,
-                    settings: {
-                        slidesToShow: 1
-                    }
-                }]
-            })
-            $('.instagram-carousel2 .' + e.target.className).slick({
-                infinite: true,
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                prevArrow: '<button class="slick-prev"><i class="ti-angle-left"></i></button>',
-                nextArrow: '<button class="slick-next"><i class="ti-angle-right"></i></button>',
-                responsive: [{
-                    breakpoint: 767,
-                    settings: {
-                        slidesToShow: 2
-                    }
-                }, {
-                    breakpoint: 575,
-                    settings: {
-                        slidesToShow: 1
-                    }
-                }]
-            });
-        }
-    });
+    // $.instagramFeed({
+    //     'username': 'farmacialosllanos',
+    //     'container': ".instagram-feed",
+    //     'display_profile': false,
+    //     'display_biography': false,
+    //     'display_gallery': true,
+    //     'styling': false,
+    //     'items': 12,
+    //     "image_size": "320",
+    // });
+    // $('.instagram-feed').on("DOMNodeInserted", function (e) {
+    //     if (e.target.className == 'instagram_gallery') {
+    //         $('.instagram-carousel1 .' + e.target.className).slick({
+    //             infinite: true,
+    //             slidesToShow: 5,
+    //             slidesToScroll: 1,
+    //             prevArrow: '<button class="slick-prev" aria-label="Anterior"><i class="ti-angle-left"></i></button>',
+    //             nextArrow: '<button class="slick-next" aria-label="Siguiente"><i class="ti-angle-right"></i></button>',
+    //             responsive: [{
+    //                 breakpoint: 119,
+    //                 settings: {
+    //                     slidesToShow: 4
+    //                 }
+    //             }, {
+    //                 breakpoint: 991,
+    //                 settings: {
+    //                     slidesToShow: 3
+    //                 }
+    //             }, {
+    //                 breakpoint: 767,
+    //                 settings: {
+    //                     slidesToShow: 2
+    //                 }
+    //             }, {
+    //                 breakpoint: 575,
+    //                 settings: {
+    //                     slidesToShow: 1
+    //                 }
+    //             }]
+    //         })
+    //         $('.instagram-carousel2 .' + e.target.className).slick({
+    //             infinite: true,
+    //             slidesToShow: 3,
+    //             slidesToScroll: 1,
+    //             prevArrow: '<button class="slick-prev" aria-label="Anterior"><i class="ti-angle-left"></i></button>',
+    //             nextArrow: '<button class="slick-next" aria-label="Siguiente"><i class="ti-angle-right"></i></button>',
+    //             responsive: [{
+    //                 breakpoint: 767,
+    //                 settings: {
+    //                     slidesToShow: 2
+    //                 }
+    //             }, {
+    //                 breakpoint: 575,
+    //                 settings: {
+    //                     slidesToShow: 1
+    //                 }
+    //             }]
+    //         });
+    //     }
+    // });
     /*--
         CountDown
     -----------------------------------*/
@@ -726,8 +726,8 @@
             infinite: true,
             slidesToShow: 1,
             slidesToScroll: 1,
-            prevArrow: '<button class="slick-prev"><i class="ti-angle-left"></i></button>',
-            nextArrow: '<button class="slick-next"><i class="ti-angle-right"></i></button>'
+            prevArrow: '<button class="slick-prev" aria-label="Anterior"><i class="ti-angle-left"></i></button>',
+            nextArrow: '<button class="slick-next" aria-label="Siguiente"><i class="ti-angle-right"></i></button>'
         });
     })
 

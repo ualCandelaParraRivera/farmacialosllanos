@@ -190,7 +190,7 @@ WHEN 10 THEN 'Oct'
 WHEN 11 THEN 'Nov'
 WHEN 12 THEN 'Dic'
 END as month
-,CASE WHEN o.subtotal IS NULL THEN 0 ELSE SUM(o.subtotal) END as subtotal 
+,CASE WHEN o.subtotal IS NULL THEN 0 ELSE ROUND(SUM(o.subtotal), 2) END as subtotal 
 FROM (
 	SELECT 1 as m 
 	UNION ALL SELECT 2 as m

@@ -23,7 +23,7 @@ body {
     position: relative;
     visibility: visible;
     overflow-x: hidden;
-    color: #696969;
+    color: #595959;
     background-color: #FFFFFF;
 }
 
@@ -173,11 +173,11 @@ hr {
 }
 
 .bg-primary2 {
-    background-color: #72A499 !important;
+    background-color: #3C5D54 !important;
 }
 
 .text-primary2 {
-    color: #72A499 !important;
+    color: #3C5D54 !important;
 }
 
 .bg-primary3 {
@@ -261,19 +261,19 @@ hr {
 }
 
 .bg-body {
-    background-color: #696969 !important;
+    background-color: #595959 !important;
 }
 
 .text-body {
-    color: #696969 !important;
+    color: #595959 !important;
 }
 
 .bg-body-light {
-    background-color: #7E7E7E !important;
+    background-color: #575757 !important;
 }
 
 .text-body-light {
-    color: #7E7E7E !important;
+    color: #575757 !important;
 }
 
 .bg-heading {
@@ -1134,7 +1134,7 @@ body.homepage-bg1.offcanvas-open {
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     opacity: 0;
-    color: #696969;
+    color: #595959;
     border: none;
     background-color: transparent;
 }
@@ -1258,7 +1258,7 @@ body.homepage-bg1.offcanvas-open {
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     opacity: 0;
-    color: #696969;
+    color: #595959;
 }
 
 [class*="swiper-button"] i {
@@ -1349,7 +1349,7 @@ body.homepage-bg1.offcanvas-open {
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     opacity: 0;
-    color: #696969;
+    color: #595959;
     border: none;
     background-color: transparent;
 }
@@ -1763,7 +1763,7 @@ body.homepage-bg1.offcanvas-open {
     position: relative;
     display: block;
     padding: 0 30px;
-    color: #7E7E7E;
+    color: #575757;
 }
 
 .sub-menu li a:not(.mega-menu-title) .menu-text {
@@ -1884,7 +1884,7 @@ body.homepage-bg1.offcanvas-open {
 
 .sub-menu.mega-menu>li ul li a {
     padding: 0;
-    color: #7E7E7E;
+    color: #575757;
 }
 
 .sub-menu.mega-menu>li ul li>img {
@@ -2490,7 +2490,7 @@ body.homepage-bg1.offcanvas-open {
     display: block;
     padding: 8px 24px 8px 0;
     text-transform: uppercase;
-    color: #7E7E7E;
+    color: #575757;
 }
 
 .offcanvas-menu>ul>li>a:hover {
@@ -2521,7 +2521,7 @@ body.homepage-bg1.offcanvas-open {
     -webkit-transform: scale(0.75);
     -ms-transform: scale(0.75);
     transform: scale(0.75);
-    background-color: #7E7E7E;
+    background-color: #575757;
 }
 
 .offcanvas-menu>ul>li .menu-expand::after {
@@ -2561,7 +2561,7 @@ body.homepage-bg1.offcanvas-open {
 .offcanvas-menu>ul>li .sub-menu li>a {
     display: block;
     padding: 8px 24px 8px 0;
-    color: #7E7E7E;
+    color: #575757;
 }
 
 .offcanvas-menu>ul>li .sub-menu li>a:hover {
@@ -2668,7 +2668,7 @@ body.homepage-bg1.offcanvas-open {
 }
 
 .minicart-product-list li .content .title {
-    color: #7E7E7E;
+    color: #575757;
 }
 
 .minicart-product-list li .content .title:hover {
@@ -2693,7 +2693,7 @@ body.homepage-bg1.offcanvas-open {
     top: 0;
     right: 0;
     padding: 0 3px;
-    color: #7E7E7E;
+    color: #575757;
 }
 
 .minicart-product-list li .content .remove:hover {
@@ -2751,7 +2751,7 @@ body.homepage-bg1.offcanvas-open {
     font-size: 16px;
     font-weight: 400;
     line-height: 2;
-    color: #7E7E7E;
+    color: #575757;
 }
 
 /* 04.02 Blockquote CSS */
@@ -2842,8 +2842,8 @@ blockquote:not(.learts-blockquote):not(.learts-blockquote2) p:last-child {
 }
 
 .btn-primary2 {
-    border-color: #72A499;
-    background-color: #72A499;
+    border-color: #3C5D54;
+    background-color: #3C5D54;
     color: #FFFFFF;
 }
 
@@ -2878,14 +2878,14 @@ blockquote:not(.learts-blockquote):not(.learts-blockquote2) p:last-child {
 }
 
 .btn-outline-body {
-    color: #696969;
-    border-color: #696969;
+    color: #595959;
+    border-color: #595959;
     background-color: transparent;
 }
 
 .btn-outline-body:hover {
-    border-color: #696969;
-    background-color: #696969;
+    border-color: #595959;
+    background-color: #595959;
     color: #FFFFFF;
 }
 
@@ -2916,20 +2916,20 @@ blockquote:not(.learts-blockquote):not(.learts-blockquote2) p:last-child {
 }
 
 .btn-outline-hover-primary:hover, .btn-outline-hover-primary:not(:disabled):not(.disabled).active {
-    color: #F8796C;
-    border-color: #F8796C;
+    color: #AB0F07;
+    border-color: #AB0F07;
     background-color: transparent;
 }
 
 .btn-hover-primary2:hover, .btn-hover-primary2:not(:disabled):not(.disabled).active {
-    border-color: #72A499;
-    background-color: #72A499;
+    border-color: #3C5D54;
+    background-color: #3C5D54;
     color: #FFFFFF;
 }
 
 .btn-outline-hover-primary2:hover, .btn-outline-hover-primary2:not(:disabled):not(.disabled).active {
-    color: #72A499;
-    border-color: #72A499;
+    color: #3C5D54;
+    border-color: #3C5D54;
     background-color: transparent;
 }
 
@@ -2985,19 +2985,19 @@ input:not([type="checkbox"]):not([type="radio"]), textarea {
 }
 
 input:not([type="checkbox"]):not([type="radio"])::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
-    color: #7E7E7E;
+    color: #575757;
 }
 
 input:not([type="checkbox"]):not([type="radio"]):-moz-placeholder, textarea:-moz-placeholder {
-    color: #7E7E7E;
+    color: #575757;
 }
 
 input:not([type="checkbox"]):not([type="radio"])::-moz-placeholder, textarea::-moz-placeholder {
-    color: #7E7E7E;
+    color: #575757;
 }
 
 input:not([type="checkbox"]):not([type="radio"]):-ms-input-placeholder, textarea:-ms-input-placeholder {
-    color: #7E7E7E;
+    color: #575757;
 }
 
 input:not([type="checkbox"]):not([type="radio"]):focus, textarea:focus {
@@ -3131,7 +3131,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
 
 .icon-box4 .inner .content p {
     line-height: 1.5;
-    color: #7E7E7E;
+    color: #575757;
 }
 
 /* 04.07 Tooltip CSS */
@@ -3665,7 +3665,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
     font-weight: 300;
     line-height: 1;
     margin-bottom: 8px;
-    color: #72A499;
+    color: #3C5D54;
 }
 
 .section-title2 .title {
@@ -3752,7 +3752,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
     font-weight: 300;
     line-height: 1;
     margin-bottom: 8px;
-    color: #72A499;
+    color: #3C5D54;
 }
 
 .section-title3 .title {
@@ -3882,12 +3882,12 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
 .page-title .breadcrumb .breadcrumb-item {
     font-size: 16px;
     font-weight: 400;
-    color: #999999;
+    color: #C2C2C2;
 }
 
 .page-title .breadcrumb .breadcrumb-item+.breadcrumb-item::before {
     content: ">";
-    color: #999999;
+    color: #C2C2C2;
 }
 
 .page-title .breadcrumb .breadcrumb-item a:hover {
@@ -3965,7 +3965,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
     line-height: 1;
     display: block;
     margin-bottom: 20px;
-    color: #72A499;
+    color: #3C5D54;
 }
 
 .sale-banner10 .inner .content .title {
@@ -4181,7 +4181,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
 }
 
 .product-info .title a {
-    color: #7E7E7E;
+    color: #575757;
 }
 
 .product-info .title a:hover {
@@ -4212,12 +4212,12 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
 
 .product-info .price span.old {
     text-decoration: line-through;
-    color: #AAAAAA;
+    color: #595959;
 }
 
 .product-info .price span.new {
     margin-left: 10px;
-    color: #F8796C;
+    color: #AB0F07;
 }
 
 .product-info .product-buttons {
@@ -4335,7 +4335,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
     display: block;
     height: 100%;
     border-radius: 50px;
-    background-color: #F8796C;
+    background-color: #AB0F07;
 }
 
 .product-info .product-stock-status>span {
@@ -4344,7 +4344,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
     line-height: 1;
     display: block;
     margin-top: 12px;
-    color: #7E7E7E;
+    color: #575757;
 }
 
 .product-info .product-stock-status>span span {
@@ -4427,7 +4427,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
     transform: translateY(10px);
     text-align: center;
     opacity: 0;
-    color: #F8796C;
+    color: #AB0F07;
 }
 
 .product-thumb .add-to-wishlist i {
@@ -4560,7 +4560,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
 }
 
 .product-options ul.colors li.active {
-    border: 2px solid #F8796C;
+    border: 2px solid #AB0F07;
 }
 
 .product-options ul.sizes li {
@@ -4624,7 +4624,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
 }
 
 .list-product .content .title a {
-    color: #7E7E7E;
+    color: #575757;
 }
 
 .list-product .content .title a:hover {
@@ -4656,12 +4656,12 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
 
 .list-product .content .price span.old {
     text-decoration: line-through;
-    color: #AAAAAA;
+    color: #595959;
 }
 
 .list-product .content .price span.new {
     margin-left: 10px;
-    color: #F8796C;
+    color: #AB0F07;
 }
 
 .list-product .content .ratting {
@@ -4679,7 +4679,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
     font-weight: 300;
     line-height: 1;
     content: "    ";
-    color: #AAAAAA;
+    color: #595959;
 }
 
 .list-product .content .ratting .rate {
@@ -4724,7 +4724,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
     -o-transition: all 0.5s ease 0s;
     transition: all 0.5s ease 0s;
     opacity: 1;
-    color: #7E7E7E;
+    color: #575757;
     border: none;
     background-color: transparent;
 }
@@ -5036,7 +5036,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
     font-size: 16px;
     font-weight: 500;
     line-height: 1;
-    color: #7E7E7E;
+    color: #575757;
 }
 
 .product-ratings .review-link:hover {
@@ -5077,12 +5077,12 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
 
 .product-price span.old {
     text-decoration: line-through;
-    color: #AAAAAA;
+    color: #595959;
 }
 
 .product-price span.new {
     margin-left: 10px;
-    color: #F8796C;
+    color: #AB0F07;
 }
 
 /* Product Description */
@@ -5559,7 +5559,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
 
 .blog .content .meta li i {
     margin-right: 8px;
-    color: #999999;
+    color: #C2C2C2;
 }
 
 .blog .content .meta li a {
@@ -5694,7 +5694,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
 
 .single-blog .meta li i {
     margin-right: 8px;
-    color: #999999;
+    color: #C2C2C2;
 }
 
 .single-blog .meta li a {
@@ -5740,7 +5740,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
 
 .single-blog .tags li i {
     margin-right: 8px;
-    color: #999999;
+    color: #C2C2C2;
 }
 
 .single-blog .tags li a {
@@ -6094,7 +6094,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
     font-weight: 400;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: #7E7E7E;
+    color: #575757;
 }
 
 .team:hover .image img {
@@ -6221,7 +6221,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
     font-weight: 400;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: #7E7E7E;
+    color: #575757;
 }
 
 .team:hover .image img {
@@ -6508,7 +6508,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
     margin: 0;
     padding-left: 0;
     list-style: none;
-    color: #999999;
+    color: #C2C2C2;
 }
 
 .widget-list li {
@@ -6534,7 +6534,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
 }
 
 .widget-list li a {
-    color: #999999;
+    color: #C2C2C2;
     border-bottom: 1px solid transparent;
 }
 
@@ -6549,7 +6549,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
 
 .widget-list li .count {
     margin-left: auto;
-    color: #999999;
+    color: #C2C2C2;
 }
 
 /* Tag Widget */
@@ -6558,7 +6558,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
     font-size: 16px;
     font-weight: 400;
     position: relative;
-    color: #7E7E7E;
+    color: #575757;
 }
 
 .widget-tags a::before {
@@ -6580,7 +6580,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
     font-size: 16px;
     margin: 0 8px;
     content: "/";
-    color: #7E7E7E;
+    color: #575757;
 }
 
 .widget-tags a:hover {
@@ -6602,7 +6602,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
     line-height: 1.25;
     width: 100%;
     padding: 8px 36px 8px 0 !important;
-    color: #696969;
+    color: #595959;
     border: 2px solid transparent;
     border-bottom-color: #CCCCCC;
 }
@@ -6683,7 +6683,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
 
 .widget-subscibe .btn:hover {
     border-color: transparent !important;
-    background-color: #72A499 !important;
+    background-color: #3C5D54 !important;
 }
 
 @media only screen and (max-width: 767px) {
@@ -6768,8 +6768,8 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
 }
 
 .widget-subscibe2 .btn:hover {
-    color: #72A499 !important;
-    border-color: #72A499 !important;
+    color: #3C5D54 !important;
+    border-color: #3C5D54 !important;
 }
 
 /* Product Widget */
@@ -6830,7 +6830,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
 }
 
 .widget-products .product .content .title a {
-    color: #7E7E7E;
+    color: #575757;
 }
 
 .widget-products .product .content .title a:hover {
@@ -6862,12 +6862,12 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
 
 .widget-products .product .content .price span.old {
     text-decoration: line-through;
-    color: #AAAAAA;
+    color: #595959;
 }
 
 .widget-products .product .content .price span.new {
     margin-left: 10px;
-    color: #F8796C;
+    color: #AB0F07;
 }
 
 .widget-products .product .content .ratting {
@@ -6885,7 +6885,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
     font-weight: 300;
     line-height: 1;
     content: "    ";
-    color: #AAAAAA;
+    color: #595959;
 }
 
 .widget-products .product .content .ratting .rate {
@@ -7208,7 +7208,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
-    color: #696969;
+    color: #595959;
 }
 
 .product-filter-toggle::before {
@@ -7326,7 +7326,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
 .cart-wishlist-table tbody tr td.name a {
     font-size: 16px;
     font-weight: 400;
-    color: #696969;
+    color: #595959;
 }
 
 .cart-wishlist-table tbody tr td.name a:hover {
@@ -7341,7 +7341,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
 .cart-wishlist-table tbody tr td.remove .btn {
     font-size: 24px;
     padding: 5px 10px;
-    color: #696969;
+    color: #595959;
 }
 
 .cart-wishlist-table tbody tr td.remove .btn:hover {
@@ -7592,7 +7592,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
 }
 
 .order-review .table tbody tr td.name {
-    color: #7E7E7E;
+    color: #575757;
 }
 
 .order-review .table tbody tr td.total {
@@ -8055,11 +8055,11 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
     font-size: 12px;
     margin-left: 5px;
     text-transform: capitalize;
-    color: #7E7E7E;
+    color: #575757;
 }
 
 .myaccount-content.address .title .edit-link:hover {
-    color: #F8796C;
+    color: #AB0F07;
 }
 
 .myaccount-content.address address {
@@ -8101,7 +8101,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
     line-height: 1.25;
     display: block;
     margin-bottom: 5px;
-    color: #72A499;
+    color: #3C5D54;
 }
 
 .about-us .inner p {
@@ -8184,7 +8184,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
 }
 
 .about-us3 .link:hover {
-    color: #F8796C;
+    color: #AB0F07;
 }
 
 .about-us3 .link:hover::before {
@@ -8627,7 +8627,7 @@ blockquote.learts-blockquote2 .content p, .learts-blockquote2 .content p {
     color: #fff;
     font-size: 18px;
     letter-spacing: 1px;
-    background-image: linear-gradient(62deg, #5fa77f 0%, #72a499 100%);
+    background-image: linear-gradient(62deg, #5fa77f 0%, #3C5D54 100%);
 }
 
 #cookies.display {
@@ -8879,7 +8879,7 @@ main#cart-main .text-red {
 }
 
 .bg-white {
-    background-color: #30716a !important;
+    background-color: #1e4741 !important;
 }
 
 .breadcrumb a {
@@ -8888,4 +8888,12 @@ main#cart-main .text-red {
 
 .breadcrumb .breadcrumb-item.active {
     color: rgb(202, 202, 202) !important;
+}
+
+.site-main-menu > ul > li.active > a {
+    background-color: #1e4741 !important; /* Fondo más oscuro: ratio 7.14:1 */
+}
+
+.site-main-menu > ul > li > a .menu-text {
+    font-weight: 600; /* Texto más grueso mejora legibilidad */
 }

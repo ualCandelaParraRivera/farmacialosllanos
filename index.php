@@ -21,8 +21,8 @@
                 
             </div>
         </div>
-        <div class="home7-slider-prev swiper-button-prev"><i class="ti-angle-left"></i></div>
-        <div class="home7-slider-next swiper-button-next"><i class="ti-angle-right"></i></div>
+        <div class="home7-slider-prev swiper-button-prev" aria-label="Anterior"><i class="ti-angle-left"></i></div>
+        <div class="home7-slider-next swiper-button-next" aria-label="Siguiente"><i class="ti-angle-right"></i></div>
     </div>
 
     <div class="section section-padding">
@@ -32,7 +32,7 @@
                 <div class="col-lg-5 col-md-6 col-12 ml-lg-auto align-self-center learts-mb-30">
                     <div class="about-us">
                         <div class="inner">
-                            <img class="logo " src="img/about/about-01<?php if($lang!='es') echo '_en'; ?>.png" alt="About Image">
+                            <img class="logo " src="img/about/about-01<?php if($lang!='es') echo '_en'; ?>.png" alt="Sobre Nosotros">
                             <p><?=$trans['index_about1']?></p>
                             <a href="contact" class="btn btn-primary2 btn-hover-black"><?=$trans['index_about2']?></a>
                         </div>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="col-md-6 col-12 ml-lg-auto learts-mb-30">
                     <div class="about-us-image">
-                        <img src="img/about/about-2<?php if($lang!='es') echo '_en'; ?>.png" alt="About Image">
+                        <img src="img/about/about-2<?php if($lang!='es') echo '_en'; ?>.png" alt="Nuestra farmacia">
                     </div>
                 </div>
 
@@ -54,7 +54,7 @@
                 <div class="col-lg-4 col-12 learts-mb-30">
                     <div class="sale-banner10">
                         <div class="inner">
-                            <img src="img/banner/sale/sale-banner10-1.png" alt="Sale Banner Image">
+                            <img src="img/banner/sale/sale-banner10-1.png" alt="Banner de Venta">
                             <div class="content">
                                 
                             </div>
@@ -222,7 +222,7 @@
 
                 <div class="col-md-6 col-12 learts-mb-30">
                     <div class="about-us-image text-center">
-                        <img src="img/about/about-3<?php if($lang!='es') echo '_en'; ?>.png" alt="About Image">
+                        <img src="img/about/about-3<?php if($lang!='es') echo '_en'; ?>.png" alt="Sobre nosotros">
                     </div>
                 </div>
                 <div class="col-md-6 col-12 align-self-center learts-mb-30">

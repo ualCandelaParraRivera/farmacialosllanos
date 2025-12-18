@@ -46,7 +46,7 @@ function sectionhead($db){
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
     <link rel="manifest" href="./site.webmanifest">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- =================== CSS ========================= -->
 
@@ -70,7 +70,7 @@ function sectionhead($db){
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="css/style.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/cookies.js"></script>
 
 ';
@@ -95,8 +95,18 @@ function getMeta($db, $page=""){
     $replyto = "info@farmacialosllanos.org";
     $keywords = "";
     $resourcetype = "Document";
-    $datecreated = "Mon, 3 May 2021 00:00:00 GMT+1";
+    $datecreated = "Thu, 20 Nov 2025 00:00:00 GMT+1";
     $revisitafter = "30 days";
+    
+    // Valores por defecto para Social Media
+    $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http";
+    $domain = $_SERVER['HTTP_HOST'];
+    $ogImage = $protocol . "://" . $domain . "/img/logo/logof.png";
+    $ogType = "website";
+    $ogUrl = $protocol . "://" . $domain . $_SERVER['REQUEST_URI'];
+    $canonicalUrl = $ogUrl; // URL canónica por defecto
+    $siteName = "Farmacia Los Llanos";
+    
     $query = "SELECT * FROM metadata WHERE page = ? AND lang= ?";
     $res=$db->prepare($query, array($page, $lang));
     if($db->numRows($res) > 0){
@@ -109,14 +119,21 @@ function getMeta($db, $page=""){
 
     if (strpos($qs, 'guidproduct') !== false) {
         $guidproduct = str_replace("guidproduct=", "", $qs);
-        $query = "SELECT summary, metatitle FROM product p
+        $query = "SELECT summary, metatitle, pi.image FROM product p
         LEFT JOIN product_translation pt ON p.id = pt.productId
+        LEFT JOIN (SELECT DISTINCT productId, image FROM product_image WHERE isdeleted = 0 LIMIT 1) pi ON p.id = pi.productId
         WHERE guidproduct = ? AND lang = ?";
         $res=$db->prepare($query, array($guidproduct, $lang));
         if($db->numRows($res) > 0){
             $row = mysqli_fetch_array($res);
             $description = $row['summary'];
             $keywords = $row['metatitle'];
+            $ogType = "product";
+            if(!empty($row['image'])){
+                $ogImage = $protocol . "://" . $domain . "/img/product/" . $row['image'];
+            }
+            // Canonical para productos
+            $canonicalUrl = $protocol . "://" . $domain . "/productdetails?guidproduct=" . $guidproduct;
         }
     }else if (strpos($qs, 'guidwholesale') !== false) {
         $guidwholesale = str_replace("guidwholesale=", "", $qs);
@@ -127,21 +144,35 @@ function getMeta($db, $page=""){
         if($db->numRows($res) > 0){
             $row = mysqli_fetch_array($res);
             $description = $row['metatitle'];
+            // Canonical para wholesales
+            $canonicalUrl = $protocol . "://" . $domain . "/wholesaledetails?guidwholesale=" . $guidwholesale;
         }
     }else if (strpos($qs, 'guidpost') !== false) {
         $guidpost = str_replace("guidpost=", "", $qs);
-        $query = "SELECT metatitle FROM post WHERE guidpost = ?";
+        $query = "SELECT metatitle, image FROM post WHERE guidpost = ?";
         $res=$db->prepare($query, array($guidpost));
         if($db->numRows($res) > 0){
             $row = mysqli_fetch_array($res);
             $description = $row['metatitle'];
+            $ogType = "article";
+            if(!empty($row['image'])){
+                $ogImage = $protocol . "://" . $domain . "/img/blog/" . $row['image'];
+            }
+            // Canonical para posts de blog
+            $canonicalUrl = $protocol . "://" . $domain . "/blogdetails?guidpost=" . $guidpost;
         }
+    }else if (!empty($qs) && strpos($qs, 'page=') !== false) {
+        // Para páginas con paginación, usar la URL sin el parámetro de página
+        $canonicalUrl = $protocol . "://" . $domain . "/" . $page;
+    }else{
+        // Para páginas normales sin query string
+        $canonicalUrl = $protocol . "://" . $domain . "/" . $page;
     }
 
     $meta = '<meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>'.$title.'</title>
-    <meta name="robots" content="'.$robots.'" />
+    <meta name="robots" content="'.$robots.'">
     <meta name="description" content="'.$description.'">
     <meta name="viewport" content="'.$viewport.'">
     <meta name="author" content="'.$author.'">
@@ -149,9 +180,28 @@ function getMeta($db, $page=""){
     <meta name="keywords" content="'.$keywords.'">
     <meta name="resource-type" content="'.$resourcetype.'">
     <meta name="datecreated" content="'.$datecreated.'">
-    <meta name="revisit-after" content="'.$revisitafter.'">';
-    return $meta;
+    <meta name="revisit-after" content="'.$revisitafter.'">
     
+    <!-- Canonical URL -->
+    <link rel="canonical" href="'.$canonicalUrl.'">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="'.$ogType.'">
+    <meta property="og:url" content="'.$canonicalUrl.'">
+    <meta property="og:title" content="'.$title.'">
+    <meta property="og:description" content="'.$description.'">
+    <meta property="og:image" content="'.$ogImage.'">
+    <meta property="og:site_name" content="'.$siteName.'">
+    <meta property="og:locale" content="'.($lang == 'es' ? 'es_ES' : 'en_US').'">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="'.$canonicalUrl.'">
+    <meta property="twitter:title" content="'.$title.'">
+    <meta property="twitter:description" content="'.$description.'">
+    <meta property="twitter:image" content="'.$ogImage.'">';
+    
+    return $meta;
 }
 
 function sectiontopbar($trans){
@@ -162,7 +212,7 @@ function sectiontopbar($trans){
                 <div class="col d-none d-md-block">
                     <div class="topbar-menu">
                         <ul>
-                            <li><a href="https://maps.app.goo.gl/oUg9AVoB9mbK26Pe7" target="_blank"><i class="fa fa-map-marker-alt"></i>'.$trans['top_store'].'</a></li>
+                            <li><a href="https://maps.app.goo.gl/oUg9AVoB9mbK26Pe7" target="_blank" aria-label="Localización"><i class="fa fa-map-marker-alt"></i>'.$trans['top_store'].'</a></li>
                         </ul>
                     </div>
                 </div>
@@ -173,8 +223,8 @@ function sectiontopbar($trans){
                 <div class="col d-none d-md-block">
                     <div class="nav-bar">
                         <ul class="language">
-                            <li><a href="controller/lang?lang=es&callback='.$_SERVER['REQUEST_URI'].'" id="es" class="nav-bar-lang '.(!isset($_COOKIE["language"]) || $_COOKIE["language"] == "es" ? "active" : "").'">ES</a></li>
-                            <li><a href="controller/lang?lang=en&callback='.$_SERVER['REQUEST_URI'].'" id="en" class="nav-bar-lang '.(isset($_COOKIE["language"]) && $_COOKIE["language"] == "en" ? "active" : "").'">EN</a></li>
+                            <li><a href="controller/lang?lang=es&callback='.$_SERVER['REQUEST_URI'].'" id="es" class="nav-bar-lang '.(!isset($_COOKIE["language"]) || $_COOKIE["language"] == "es" ? "active" : "").'" aria-label="Español">ES</a></li>
+                            <li><a href="controller/lang?lang=en&callback='.$_SERVER['REQUEST_URI'].'" id="en" class="nav-bar-lang '.(isset($_COOKIE["language"]) && $_COOKIE["language"] == "en" ? "active" : "").'" aria-label="Inglés">EN</a></li>
                         </ul>
                     </div>
                 </div>
@@ -206,7 +256,7 @@ foreach($products as $product){
 
                 <div class="col">
                     <div class="header-logo">
-                        <a href="index"><img src="img/logo/logof.png" alt="Los Llanos Logo"></a>
+                        <a href="./" aria-label="Inicio"><img src="img/logo/logof.png" alt="Los Llanos Logo"></a>
                     </div>
                 </div>
 
@@ -235,10 +285,10 @@ foreach($products as $product){
                 <div class="col">
                     <div class="header-tools justify-content-end">
                         <div class="header-login">
-                            <a href='.(isset($_SESSION['usercode'])?"myaccount":"login").'><i class="fal fa-user"></i></a>
+                            <a href='.(isset($_SESSION['usercode'])?"myaccount":"login").' aria-label="Cuenta de usuario"><i class="fal fa-user"></i></a>
                         </div>
                         <div class="header-cart">
-                            <a href="#offcanvas-cart" class="offcanvas-toggle" id="cartcount">'.($quantity>0 ? '<span class="cart-count">'.$quantity.'</span>' : '').'<i class="fal fa-shopping-cart"></i></a>
+                            <a href="#offcanvas-cart" class="offcanvas-toggle" id="cartcount" aria-label="Carrito de compras">'.($quantity>0 ? '<span class="cart-count">'.$quantity.'</span>' : '').'<i class="fal fa-shopping-cart"></i></a>
                         </div>
                     </div>
                 </div>
@@ -254,7 +304,7 @@ foreach($products as $product){
 
                 <div class="col">
                     <div class="header-logo">
-                        <a href="index"><img src="img/logo/logof.png" alt="Farmacia Los Llanos Logo"></a>
+                        <a href="./" aria-label="Inicio"><img src="img/logo/logof.png" alt="Farmacia Los Llanos Logo"></a>
                     </div>
                 </div>
 
@@ -283,13 +333,11 @@ foreach($products as $product){
                 <div class="col-auto">
                     <div class="header-tools justify-content-end">
                         <div class="header-login">
-                        <!-- <a href='.(isset($_SESSION['usercode'])?"myaccount":"login").'><i class="fal fa-user"></i></a> -->
                         </div>
                         <div class="header-cart">
-                        <!-- <a href="#offcanvas-cart" class="offcanvas-toggle" id="cartcount2">'.($quantity>0 ? '<span class="cart-count">'.$quantity.'</span>' : '').'<i class="fal fa-shopping-cart"></i></a> -->
                         </div>
                         <div class="mobile-menu-toggle d-xl-none">
-                            <a href="#offcanvas-mobile-menu" class="offcanvas-toggle">
+                            <a href="#offcanvas-mobile-menu" class="offcanvas-toggle" aria-label="Menú móvil">
                                 <svg viewBox="0 0 800 600">
                                     <path d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200" id="top"></path>
                                     <path d="M300,320 L540,320" id="middle"></path>
@@ -311,20 +359,18 @@ foreach($products as $product){
 
                 <div class="col">
                     <div class="header-logo">
-                        <a href="index"><img src="img/logo/logof.png" alt="Los Llanos Logo"></a>
+                        <a href="./" aria-label="Inicio"><img src="img/logo/logof.png" alt="Los Llanos Logo"></a>
                     </div>
                 </div>
 
                 <div class="col-auto">
                     <div class="header-tools justify-content-end">
                         <div class="header-login d-none d-sm-block">
-                        <!--<a href='.(isset($_SESSION['usercode'])?"myaccount":"login").'><i class="fal fa-user"></i></a> -->
                         </div>
                         <div class="header-cart">
-                        <!--<a href="#offcanvas-cart" class="offcanvas-toggle" id="cartcount3">'.($quantity>0 ? '<span class="cart-count">'.$quantity.'</span>' : '').'<i class="fal fa-shopping-cart"></i></a> -->
                         </div>
                         <div class="mobile-menu-toggle">
-                            <a href="#offcanvas-mobile-menu" class="offcanvas-toggle">
+                            <a href="#offcanvas-mobile-menu" class="offcanvas-toggle" aria-label="Menú móvil">
                                 <svg viewBox="0 0 800 600">
                                     <path d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200" id="top"></path>
                                     <path d="M300,320 L540,320" id="middle"></path>
@@ -343,7 +389,7 @@ foreach($products as $product){
         <div class="inner">
             <div class="head">
             <!-- <span class="title">'.$trans['canvas_cart'].'</span> -->
-                <button class="offcanvas-close">×</button>
+                <button class="offcanvas-close" aria-label="Cerrar">×</button>
             </div>
             <div class="body customScroll" id="cartlist">';
             if($quantity > 0){
@@ -364,7 +410,7 @@ foreach($products as $product){
                     $price = $product->finalprice + $product->finalpricetax;
                     $quantityitem = $product->count;
                     echo '<li>
-                        <a href="productdetails?guidproduct='.$guidproduct.'" class="image"><img src="img/product/'.$imagename.'-cart.'.$extension.'" alt="Cart product Image"></a>
+                        <a href="productdetails?guidproduct='.$guidproduct.'" class="image"><img src="img/product/'.$imagename.'-cart.'.$extension.'" alt="Producto del carrito"></a>
                         <div class="content">
                             <a href="productdetails?guidproduct='.$guidproduct.'" class="title">'.$title.'</a>
                             <span class="quantity-price">'.$quantityitem.' x <span class="amount">'.$price.'€</span></span>
@@ -402,7 +448,7 @@ foreach($products as $product){
     <div id="offcanvas-mobile-menu" class="offcanvas offcanvas-mobile-menu">
         <div class="inner customScroll">
             <div class="mobile-logo">
-                <a href="index"><img src="img/logo/HL-Icon-White.png" alt="Los Llanos Logo"></a>
+                <a href="index" aria-label="Inicio"><img src="img/logo/HL-Icon-White.png" alt="Los Llanos Logo"></a>
             </div>
             <div class="offcanvas-menu">
                 <ul>
@@ -430,16 +476,16 @@ foreach($products as $product){
                 <div class="row" style="justify-content: space-around;">
                     <div class="header-tools">
                         <div class="header-login">
-                        <a href='.(isset($_SESSION['usercode'])?"myaccount":"login").'><i class="fal fa-user" style="color: #696969;"></i></a>
+                        <a href='.(isset($_SESSION['usercode'])?"myaccount":"login").' aria-label="Cuenta de usuario"><i class="fal fa-user" style="color: #595959;"></i></a>
                         </div>
                         <div class="header-cart">
-                        <a href="cart" id="cartcount4">'.($quantity>0 ? '<span class="cart-count">'.$quantity.'</span>' : '').'<i class="fal fa-shopping-cart"  style="color: #696969;"></i></a>
+                        <a href="cart" id="cartcount4" aria-label="Carrito de compras">'.($quantity>0 ? '<span class="cart-count">'.$quantity.'</span>' : '').'<i class="fal fa-shopping-cart"  style="color: #595959;"></i></a>
                         </div>
                     </div>
                     <div class="nav-bar">
                         <ul class="language">
-                            <li><a href="controller/lang?lang=es&callback='.$_SERVER['REQUEST_URI'].'" id="es" class="nav-bar-lang '.(!isset($_COOKIE["language"]) || $_COOKIE["language"] == "es" ? "active" : "").'" style="color: inherit;">ES</a></li>
-                            <li><a href="controller/lang?lang=en&callback='.$_SERVER['REQUEST_URI'].'" id="en" class="nav-bar-lang '.(isset($_COOKIE["language"]) && $_COOKIE["language"] == "en" ? "active" : "").'" style="color: inherit;">EN</a></li>
+                            <li><a href="controller/lang?lang=es&callback='.$_SERVER['REQUEST_URI'].'" id="es" class="nav-bar-lang '.(!isset($_COOKIE["language"]) || $_COOKIE["language"] == "es" ? "active" : "").'" style="color: inherit;" aria-label="Español">ES</a></li>
+                            <li><a href="controller/lang?lang=en&callback='.$_SERVER['REQUEST_URI'].'" id="en" class="nav-bar-lang '.(isset($_COOKIE["language"]) && $_COOKIE["language"] == "en" ? "active" : "").'" style="color: inherit;" aria-label="English">EN</a></li>
                         </ul>
                     </div>
                 </div>
@@ -455,7 +501,7 @@ foreach($products as $product){
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="alertModalLabel">Carrito de compras</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -541,15 +587,15 @@ function sectioncookies($trans){
                 <div class="cookies-icon" style="font-size: 48px; flex-shrink: 0;">🍪</div>
                 <div style="flex: 1; min-width: 250px;">
                     <h3 style="margin: 0 0 10px 0; font-size: 20px; color: #333; font-family: Marcellus, Arial, Helvetica, sans-serif;">'.$trans['cookies_banner_title'].'</h3>
-                    <p style="margin: 0 0 20px 0; font-size: 14px; color: #696969; line-height: 1.5;">'.$trans['cookies_banner_message'].' <a href="cookies" style="color: #333; text-decoration: underline;">'.$trans['cookies_banner_link'].'</a></p>
+                    <p style="margin: 0 0 20px 0; font-size: 14px; color: #595959; line-height: 1.5;">'.$trans['cookies_banner_message'].' <a href="cookies" style="color: #333; text-decoration: underline;">'.$trans['cookies_banner_link'].'</a></p>
                     
-                    <div style="margin-bottom: 20px;">
+                   <div style="margin-bottom: 20px;">
                         <div class="cookie-category" style="background: #f9f9f9; padding: 12px; margin-bottom: 10px; border-radius: 4px;">
                             <div style="display: flex; align-items: center; gap: 12px;">
-                                <label class="cookie-switch">
-                                    <input type="checkbox" id="cookie-necessary" checked disabled>
-                                    <span class="cookie-slider"></span>
-                                </label>
+                                <div class="cookie-switch">
+                                    <input type="checkbox" id="cookie-necessary" checked disabled aria-label="Cookies Necesarias - Obligatorias">
+                                    
+                                </div>
                                 <div style="flex: 1;">
                                     <span style="font-size: 14px; color: #333; font-weight: 500;">Cookies Necesarias</span>
                                     <span style="background: #333; color: #fff; padding: 2px 6px; border-radius: 3px; font-size: 10px; margin-left: 8px;">Obligatorias</span>
@@ -559,10 +605,10 @@ function sectioncookies($trans){
                         
                         <div class="cookie-category" style="background: #f9f9f9; padding: 12px; margin-bottom: 10px; border-radius: 4px;">
                             <div style="display: flex; align-items: center; gap: 12px;">
-                                <label class="cookie-switch">
-                                    <input type="checkbox" id="cookie-analytics">
-                                    <span class="cookie-slider"></span>
-                                </label>
+                                <div class="cookie-switch">
+                                    <input type="checkbox" id="cookie-analytics" aria-label="Activar Cookies Analíticas">
+                                   
+                                </div>
                                 <div style="flex: 1;">
                                     <span style="font-size: 14px; color: #333; font-weight: 500;">Cookies Analíticas</span>
                                 </div>
@@ -571,10 +617,10 @@ function sectioncookies($trans){
                         
                         <div class="cookie-category" style="background: #f9f9f9; padding: 12px; margin-bottom: 10px; border-radius: 4px;">
                             <div style="display: flex; align-items: center; gap: 12px;">
-                                <label class="cookie-switch">
-                                    <input type="checkbox" id="cookie-marketing">
-                                    <span class="cookie-slider"></span>
-                                </label>
+                                <div class="cookie-switch">
+                                    <input type="checkbox" id="cookie-marketing" aria-label="Activar Cookies de Marketing">
+                                    
+                                </div>
                                 <div style="flex: 1;">
                                     <span style="font-size: 14px; color: #333; font-weight: 500;">Cookies de Marketing</span>
                                 </div>
@@ -584,8 +630,8 @@ function sectioncookies($trans){
                     
                     <div class="cookies-buttons" style="display: flex; gap: 10px; flex-wrap: wrap;">
                         <button id="accept-all-cookies" class="btn btn-primary2 btn-hover-black">Aceptar todas</button>
-                        <button id="reject-cookies" class="btn btn-secondary btn-hover-black">Rechazar</button>
-                        <button id="save-cookie-preferences" class="btn btn-secondary btn-hover-black">Guardar preferencias</button>
+                        <button id="reject-cookies" class="btn btn-secondary btn-hover-black" style="background-color: #54585F;border-color: #54585F;">Rechazar</button>
+                        <button id="save-cookie-preferences" class="btn btn-secondary btn-hover-black" style="background-color: #54585F;border-color: #54585F;">Guardar preferencias</button>
                     </div>
                 </div>
             </div>
@@ -603,15 +649,14 @@ function sectionfooter($trans) {
                 <div class="col-lg-4 col-sm-6 col-12 learts-mb-40">
                     <h4 class="widget-title">'.$trans['footer_contactanos'].'</h4>
                     <div class="widget-contact2">
-                        <p>C/ Potasio, 7<br> Loma Cabrera, Almería <br> info@farmacialosllanos.org <br> <span>(+34) 950 33 70 53</span> <br> <span class="text-primary">www.farmacialosllanos.org</span></p>
+                        <p>C/ Potasio, 7<br> Loma Cabrera, Almería <br> info@farmacialosllanos.org <br> <span>(+34) 950 33 70 53</span> <br> <span style="color: #A7CDB8;">www.farmacialosllanos.org</span></p>
                     </div>
                 </div>
                 <div class="col-lg-2 col-sm-6 col-12 learts-mb-40">
                     <h4 class="widget-title">'.$trans['footer_usefull'].'</h4>
                     <ul class="widget-list">
                         <li><a href="shop">'.$trans['footer_shop'].'</a></li>
-                        <!-- <li><a href="wholesales">'.$trans['footer_wholesales'].'</a></li> -->
-                        <!-- <li><a href="myaccount">'.$trans['footer_myaccount'].'</a></li> -->
+                        <li><a href="myaccount">'.$trans['footer_myaccount'].'</a></li>
                         <li><a href="contact">'.$trans['footer_contacto'].'</a></li>
                     </ul>
                 </div>
@@ -636,28 +681,28 @@ function sectionfooter($trans) {
                 <div class="col-lg-2 col-sm-6 col-12 learts-mb-40">
                     <h4 class="widget-title">'.$trans['footer_social'].'</h4>
                     <ul class="widget-list">
-                        <li> <i class="fab fa-instagram"></i> <a href="https://www.instagram.com/farmacialosllanosalmeria/" target="_blank">Instagram</a></li>
+                        <li> <i class="fab fa-instagram"></i> <a href="https://www.instagram.com/farmacialosllanosalmeria/" target="_blank" aria-label="Instagram">Instagram</a></li>
                         
-                        <li> <i class="fab fa-facebook"></i> <a href="https://www.facebook.com/FarmaciaLosLlanos/" target="_blank">Facebook</a></li>
+                        <li> <i class="fab fa-facebook"></i> <a href="https://www.facebook.com/FarmaciaLosLlanos/" target="_blank" aria-label="Facebook">Facebook</a></li>
                     </ul>
                 </div>
             </div>
             <div class="row align-items-end learts-mb-n40 learts-mt-40">
                 <div class="col-md-4 col-12 learts-mb-40 order-md-2">
                     <div class="widget-about text-center">
-                        <img src="img/logo/logof.png" alt="">
+                        <img src="img/logo/logof.png" alt="Logo Farmacia Los Llanos">
                     </div>
                 </div>
 
                 <div class="col-md-4 col-12 learts-mb-40 order-md-3">
                     <div class="widget-payment text-center text-md-right">
-                        <img src="img/others/pay.png" alt="">
+                        <img src="img/others/pay.png" alt="Métodos de pago">
                     </div>
                 </div>
 
                 <div class="col-md-4 col-12 learts-mb-40 order-md-1">
                     <div class="widget-copyright">
-                        <p class="copyright text-center text-md-left">&copy; <script>document.write(new Date().getFullYear());</script>  Farmacia Los Llanos. '.$trans['footer_copy'].'</a></p>
+                        <p class="copyright text-center text-md-left">&copy; <script>document.write(new Date().getFullYear());</script>  Farmacia Los Llanos. '.$trans['footer_copy'].'</p>
                     </div>
                 </div>
 
@@ -685,7 +730,7 @@ function sectionjs(){
     <script src="js/plugins/swiper.min.js"></script>
     <script src="js/plugins/slick.min.js"></script>
     <script src="js/plugins/mo.min.js"></script>
-    <script src="js/plugins/jquery.instagramFeed.min.js"></script>
+    <!--<script src="js/plugins/jquery.instagramFeed.min.js"></script>-->
     <script src="js/plugins/jquery.ajaxchimp.min.js"></script>
     <script src="js/plugins/jquery.countdown.min.js"></script>
     <script src="js/plugins/imagesloaded.pkgd.min.js"></script>
