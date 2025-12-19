@@ -2,8 +2,8 @@
 
 Class Db{
 
-   private $servidor='localhost:3306';
-   // private $servidor='cuberty.ddns.net:3306';
+   // private $servidor='localhost:3306';
+   private $servidor='cuberty.ddns.net:3306';
    private $usuario='llanosfarmacia';
    private $password='Llanos25!Ual';
    private $base_datos='losllanos';
