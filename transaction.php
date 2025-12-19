@@ -66,23 +66,7 @@ if($lang != "en"){
     $locale = "en_US";
 }  
 ?>
-
-<html class="no-js" lang="<?=$lang?>"> 
-<head>
-    <?php sectionhead($db)?>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"></script>
-    <script src="https://www.paypal.com/sdk/js?client-id=ASluQE8pQPTJA9GtfFMg3I3EdXssslkTsEhC7WP86lX7ifgcEg-OYKyh9aLtmoZJ68gfJw2k1GpuFS1K&disable-funding=card,sofort&currency=EUR&locale=<?=$locale?>"></script>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-    <?php sectiontopbar($trans);?>
-
-    <?php sectionheader($db, 0, $trans); ?>
-
-    <?php sectionbreadcrumb("|payment", $trans);?>
-
-    <?php
+<?php
     $query = "SELECT pt.title
     ,oi.price
     ,oi.quantity
@@ -101,6 +85,22 @@ if($lang != "en"){
              header("location: ".$location_404);
         }        
     ?>
+
+<html class="no-js" lang="<?=$lang?>"> 
+<head>
+    <?php sectionhead($db)?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <?php sectiontopbar($trans);?>
+
+    <?php sectionheader($db, 0, $trans); ?>
+
+    <?php sectionbreadcrumb("|payment", $trans);?>
+
+    
        
     
     <?php
@@ -277,69 +277,6 @@ if($lang != "en"){
     <?php sectionfooter($trans);?>
 
     <?php sectionjs(); ?>
-    <script>
-      paypal.Buttons({
-        style : {
-        color: 'blue',
-        shape: 'pill'
-    
-    },
-        createOrder: function(data, actions) {
-          return actions.order.create({
-            purchase_units: [{
-              amount: {
-                value: <?= number_format($grandTotal, 2, '.', '.') ?>
-              }
-            }]
-          });
-        },
-        onApprove: function(data, actions) {
-            return actions.order.capture().then(function(details) {
-                guidorder = $("#guidorder").val();
-                $.ajax({
-                    type: 'POST',
-                    url: 'controller/invoicepaypal',
-                    data: {
-                        'ppidtransaction' : details.id
-                        ,'ppname': details.payer.name.given_name
-                        ,'ppsurname' : details.payer.name.surname
-                        ,'ppemail' : details.payer.email_adress
-                        ,'ppcountry' : details.payer.address.country_code
-                        ,'ppidpayer' : details.payer.payer_id
-                        ,'ppprice' : details.purchase_units[0].amount.value
-                        ,'ppidmerchant' : details.purchase_units[0].payee.merchant_id
-                        ,'ppaddress' : details.purchase_units[0].shipping.address.address_line_1
-                        ,'ppprovince' : details.purchase_units[0].shipping.address.admin_area_1
-                        ,'ppregion' : details.purchase_units[0].shipping.address.admin_area_2
-                        ,'pppostalcode' : details.purchase_units[0].shipping.address.postal_code
-                        ,'ppstatus' : details.session_status
-                        ,'ppcreatetime' : details.create_time
-                        ,'ppupdate_time' : details.update_time
-                        ,'ppguidorder' : guidorder
-                    },
-                    success: function(html) {
-                        var x = JSON.parse(html);
-                        
-                        $('.help-block').remove();
-                        $('.alert').remove();
-                        $('#paypal-button-container').remove();
-                        $('#payment-box').append('<div class="col-12 learts-mb-20 mt-3 alert alert-success">'+x.html+'</div>');
-
-
-                    },
-
-                });
-            });
-        },
-        onCancel: function(data, actions){
-            $('.help-block').remove();
-            $('.alert').remove();
-            $('#payment-box').append('<div class="col-12 learts-mb-20 mt-3 alert alert-danger">La operación ha sido cancelada.</div>');
-            
-        },
-
-    }).render('#paypal-button-container'); 
-</script>
 
 </body>
 

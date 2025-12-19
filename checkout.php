@@ -119,7 +119,7 @@
     <?php sectionhead($db)?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"></script>
    
-    <script src="https://www.paypal.com/sdk/js?client-id=ASluQE8pQPTJA9GtfFMg3I3EdXssslkTsEhC7WP86lX7ifgcEg-OYKyh9aLtmoZJ68gfJw2k1GpuFS1K&disable-funding=card,sofort&currency=EUR&locale=<?=$locale?>"></script>
+
 </head>
 
 <body>

@@ -811,21 +811,12 @@
 		});
 	});
 
-    $('.qty-btn').on('click', function () {
-        var $button = $(this);
+     $('.qty-btn').on('click', function () {
         var $this = $(this);
-        var oldValue = $button.parent().find('.input-qty').val();
-        var id = $button.attr('data-id');
-        var maxStock = parseInt($button.attr('data-max'));
-
+        var oldValue = $this.siblings('input').val();
+		var id = $(this).attr("data-id");
         if ($this.hasClass('plus')) {
             var newVal = parseFloat(oldValue) + 1;
-            
-            if (newVal > maxStock) {
-                alert('No hay suficiente stock disponible. Stock máximo: ' + maxStock);
-                return false;
-            }
-            
             $.ajax({
                 type: "GET",
                 url: "controller/cart?id="+id+"&action=set&val="+newVal+""

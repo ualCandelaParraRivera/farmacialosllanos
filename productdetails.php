@@ -172,9 +172,9 @@ GROUP BY p.id, title, guidproduct, price, discount, summary, content, firstname,
                                         <td class="label"><span><?=$trans['productsdetails_quantity']?></span></td>
                                         <td class="value">
                                             <div class="product-quantity">
-                                                <span class="qty-btn minuss" data-max="<?=$quantity?>" <?php if($quantity <= 0){ echo 'style="pointer-events: none; opacity: 0.5;"'; } ?>><i class="ti-minus"></i></span>
-                                                <input type="text" class="input-qty" step="1" min="1" max="<?=$quantity?>" value="<?php echo $quantity > 0 ? '1' : '0'; ?>" data-max="<?=$quantity?>" pattern="[0-9]*" inputmode="numeric" <?php if($quantity <= 0){ echo 'disabled'; } ?>>
-                                                <span class="qty-btn pluss" data-max="<?=$quantity?>" <?php if($quantity <= 0){ echo 'style="pointer-events: none; opacity: 0.5;"'; } ?>><i class="ti-plus"></i></span>
+                                                <span class="qty-btn minuss" <?php if($quantity <= 0){ echo 'style="pointer-events: none; opacity: 0.5;"'; } ?>><i class="ti-minus"></i></span>
+                                                <input type="text" class="input-qty" step="1" min="1" max="<?=$quantity?>" value="<?php echo $quantity > 0 ? '1' : '0'; ?>" pattern="[0-9]*" inputmode="numeric" <?php if($quantity <= 0){ echo 'disabled'; } ?>>
+                                                <span class="qty-btn pluss" <?php if($quantity <= 0){ echo 'style="pointer-events: none; opacity: 0.5;"'; } ?>><i class="ti-plus"></i></span>
                                             </div>
                                         </td>
                                     </tr>

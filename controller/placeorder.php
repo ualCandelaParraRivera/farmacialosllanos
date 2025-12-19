@@ -1,6 +1,15 @@
-<?php include ("main.php");
+<?php 
+// Iniciar output buffering para evitar problemas con headers
+ob_start();
 
+include("main.php");
 include("phpmailer/PHPMailerAutoload.php");
+
+// Establecer headers JSON al inicio
+header('Content-Type: application/json; charset=utf-8');
+
+// Limpiar cualquier output previo
+ob_clean();
 
 function enviarEmail($email, $nombre, $asunto, $mensaje){
     include("mailcredentials.php");
@@ -26,10 +35,10 @@ function enviarEmail($email, $nombre, $asunto, $mensaje){
     $mensaje = generarMensaje($email, $nombre, "Asunto", "Mensaje");
 
     $mail->smtpConnect([
-    'ssl' => [
-        'verify_peer' => false,
-        'verify_peer_name' => false,
-        'allow_self_signed' => true
+        'ssl' => [
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
         ]
     ]);
     $mail->Subject = 'Asunto de prueba';
@@ -53,22 +62,39 @@ function generarMensaje($email, $nombre, $asunto, $mensaje){
     }
     $message = 'hola buenas';
     return $message;
-
 }
 
+// Validar que sea una petición POST
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    echo json_encode([
+        'success' => false,
+        'message' => 'Método no permitido'
+    ]);
+    exit;
+}
+
+// OBTENER PRODUCTOS DEL CARRITO AL INICIO
 $products = $db->getCart($lang);
 $quantity = 0;
 $subtotal = 0;
 $taxes = 0;
 $weight = 1;
+
 foreach($products as $product){
     $quantity += $product->count;
     $subtotal += $product->total;
     $taxes += $product->totaltax;
 }
+
 if($quantity == 0){
-    redirect($location_404);
+    echo json_encode([
+        'success' => false,
+        'message' => isset($trans['control_placeorder_emptycart']) ? $trans['control_placeorder_emptycart'] : 'El carrito está vacío'
+    ]);
+    exit;
 }
+
+// Gestión de promociones
 if(isset($_SESSION['promo'])){
     if(!empty($_SESSION['promo'])){
         $promos = $db->getPromo();
@@ -97,152 +123,156 @@ if(isset($_SESSION['promo'])){
 $errors = array();
 $data = array(); 
 
-if(!isset($_POST['billfirstname']) || empty($_POST['billfirstname'])){
+// Sanitizar y validar entradas
+if(!isset($_POST['billfirstname']) || empty(trim($_POST['billfirstname']))){
     $errors['billfirstname'] = $trans['control_placeorder_error1'];
 }else{
-    $billfirstname = $_POST['billfirstname'];
+    $billfirstname = htmlspecialchars(trim($_POST['billfirstname']), ENT_QUOTES, 'UTF-8');
 }
 
-if(!isset($_POST['billmiddlename']) || empty($_POST['billmiddlename'])){
+if(!isset($_POST['billmiddlename']) || empty(trim($_POST['billmiddlename']))){
     $errors['billmiddlename'] = $trans['control_placeorder_error2'];
 }else{
-    $billmiddlename = $_POST['billmiddlename'];
+    $billmiddlename = htmlspecialchars(trim($_POST['billmiddlename']), ENT_QUOTES, 'UTF-8');
 }
 
-if(!isset($_POST['billlastname']) || empty($_POST['billlastname'])){
+if(!isset($_POST['billlastname']) || empty(trim($_POST['billlastname']))){
     $billlastname = NULL;
 }else{
-    $billlastname = $_POST['billlastname'];
+    $billlastname = htmlspecialchars(trim($_POST['billlastname']), ENT_QUOTES, 'UTF-8');
 }
 
-if(!isset($_POST['billcompany']) || empty($_POST['billcompany'])){
+if(!isset($_POST['billcompany']) || empty(trim($_POST['billcompany']))){
     $billcompany = NULL;
 }else{
-    $billcompany = $_POST['billcompany'];
+    $billcompany = htmlspecialchars(trim($_POST['billcompany']), ENT_QUOTES, 'UTF-8');
 }
-if(!isset($_POST['email']) || empty($_POST['email'])){
+
+if(!isset($_POST['email']) || empty(trim($_POST['email']))){
     $errors['email'] = $trans['control_placeorder_error3'];
 }else if(!emailValidation($_POST['email'])){
     $errors['email'] = $trans['control_placeorder_error4'];
 }else{
-    $email = strtolower($_POST['email']);
+    $email = filter_var(strtolower(trim($_POST['email'])), FILTER_SANITIZE_EMAIL);
 }
 
-if(!isset($_POST['billmobile']) || empty($_POST['billmobile'])){
+if(!isset($_POST['billmobile']) || empty(trim($_POST['billmobile']))){
     $errors['billmobile'] = $trans['control_placeorder_error5'];
 }else if(!phoneValidation($_POST['billmobile'])){
     $errors['billmobile'] = $trans['control_placeorder_error6'];
 }else{
-    $billmobile = $_POST['billmobile'];
+    $billmobile = htmlspecialchars(trim($_POST['billmobile']), ENT_QUOTES, 'UTF-8');
 }
 
-if(!isset($_POST['billcountry']) || empty($_POST['billcountry'])){
+if(!isset($_POST['billcountry']) || empty(trim($_POST['billcountry']))){
     $errors['billcountry'] = $trans['control_placeorder_error7'];
 }else{
-    $billcountry = $_POST['billcountry'];
+    $billcountry = htmlspecialchars(trim($_POST['billcountry']), ENT_QUOTES, 'UTF-8');
 }
 
-if(!isset($_POST['billdistrict']) || empty($_POST['billdistrict'])){
+if(!isset($_POST['billdistrict']) || empty(trim($_POST['billdistrict']))){
     $errors['billdistrict'] = $trans['control_placeorder_error8'];
 }else{
-    $billdistrict = $_POST['billdistrict'];
+    $billdistrict = htmlspecialchars(trim($_POST['billdistrict']), ENT_QUOTES, 'UTF-8');
 }
 
-if(!isset($_POST['billcity']) || empty($_POST['billcity'])){
+if(!isset($_POST['billcity']) || empty(trim($_POST['billcity']))){
     $errors['billcity'] = $trans['control_placeorder_error9'];
 }else{
-    $billcity = $_POST['billcity'];
+    $billcity = htmlspecialchars(trim($_POST['billcity']), ENT_QUOTES, 'UTF-8');
 }
-if(!isset($_POST['billpostalcode']) || empty($_POST['billpostalcode'])){
+
+if(!isset($_POST['billpostalcode']) || empty(trim($_POST['billpostalcode']))){
     $billpostalcode = NULL;
 }else{
-    $billpostalcode = $_POST['billpostalcode'];
+    $billpostalcode = htmlspecialchars(trim($_POST['billpostalcode']), ENT_QUOTES, 'UTF-8');
 }
 
-if(!isset($_POST['billaddress1']) || empty($_POST['billaddress1'])){
+if(!isset($_POST['billaddress1']) || empty(trim($_POST['billaddress1']))){
     $errors['billaddress1'] = $trans['control_placeorder_error10'];
 }else{
-    $street = $_POST['billaddress1'];
+    $street = htmlspecialchars(trim($_POST['billaddress1']), ENT_QUOTES, 'UTF-8');
 }
 
-if(!isset($_POST['billaddress2']) || empty($_POST['billaddress2'])){
+if(!isset($_POST['billaddress2']) || empty(trim($_POST['billaddress2']))){
     $street2 = NULL;
 }else{
-    $street2 = $_POST['billaddress2'];
+    $street2 = htmlspecialchars(trim($_POST['billaddress2']), ENT_QUOTES, 'UTF-8');
 }
 
-if(!isset($_POST['shipfirstname']) || empty($_POST['shipfirstname'])){
+// Dirección de envío
+if(!isset($_POST['shipfirstname']) || empty(trim($_POST['shipfirstname']))){
     $errors['shipfirstname'] = $trans['control_placeorder_error1'];
 }else{
-    $shipfirstname = $_POST['shipfirstname'];
+    $shipfirstname = htmlspecialchars(trim($_POST['shipfirstname']), ENT_QUOTES, 'UTF-8');
 }
 
-if(!isset($_POST['shipmiddlename']) || empty($_POST['shipmiddlename'])){
+if(!isset($_POST['shipmiddlename']) || empty(trim($_POST['shipmiddlename']))){
     $errors['shipmiddlename'] = $trans['control_placeorder_error2'];
 }else{
-    $shipmiddlename = $_POST['shipmiddlename'];
+    $shipmiddlename = htmlspecialchars(trim($_POST['shipmiddlename']), ENT_QUOTES, 'UTF-8');
 }
 
-if(!isset($_POST['shiplastname']) || empty($_POST['shiplastname'])){
+if(!isset($_POST['shiplastname']) || empty(trim($_POST['shiplastname']))){
     $shiplastname = NULL;
 }else{
-    $shiplastname = $_POST['shiplastname'];
+    $shiplastname = htmlspecialchars(trim($_POST['shiplastname']), ENT_QUOTES, 'UTF-8');
 }
 
-if(!isset($_POST['shipmobile']) || empty($_POST['shipmobile'])){
+if(!isset($_POST['shipmobile']) || empty(trim($_POST['shipmobile']))){
     $errors['shipmobile'] = $trans['control_placeorder_error5'];
 }else if(!phoneValidation($_POST['shipmobile'])){
     $errors['shipmobile'] = $trans['control_placeorder_error6'];
 }else{
-    $shipmobile = $_POST['shipmobile'];
+    $shipmobile = htmlspecialchars(trim($_POST['shipmobile']), ENT_QUOTES, 'UTF-8');
 }
 
-if(!isset($_POST['shipcountry']) || empty($_POST['shipcountry'])){
+if(!isset($_POST['shipcountry']) || empty(trim($_POST['shipcountry']))){
     $errors['shipcountry'] = $trans['control_placeorder_error7'];
 }else{
-    $shipcountry = $_POST['shipcountry'];
+    $shipcountry = htmlspecialchars(trim($_POST['shipcountry']), ENT_QUOTES, 'UTF-8');
 }
 
-if(!isset($_POST['shipdistrict']) || empty($_POST['shipdistrict'])){
+if(!isset($_POST['shipdistrict']) || empty(trim($_POST['shipdistrict']))){
     $errors['shipdistrict'] = $trans['control_placeorder_error8'];
 }else{
-    $shipdistrict = $_POST['shipdistrict'];
+    $shipdistrict = htmlspecialchars(trim($_POST['shipdistrict']), ENT_QUOTES, 'UTF-8');
 }
 
-if(!isset($_POST['shipcity']) || empty($_POST['shipcity'])){
+if(!isset($_POST['shipcity']) || empty(trim($_POST['shipcity']))){
     $errors['shipcity'] = $trans['control_placeorder_error9'];
 }else{
-    $shipcity = $_POST['shipcity'];
+    $shipcity = htmlspecialchars(trim($_POST['shipcity']), ENT_QUOTES, 'UTF-8');
 }
-if(!isset($_POST['shippostalcode']) || empty($_POST['shippostalcode'])){
+
+if(!isset($_POST['shippostalcode']) || empty(trim($_POST['shippostalcode']))){
     $shippostalcode = NULL;
 }else{
-    $shippostalcode = $_POST['shippostalcode'];
+    $shippostalcode = htmlspecialchars(trim($_POST['shippostalcode']), ENT_QUOTES, 'UTF-8');
 }
 
-if(!isset($_POST['shipaddress1']) || empty($_POST['shipaddress1'])){
+if(!isset($_POST['shipaddress1']) || empty(trim($_POST['shipaddress1']))){
     $errors['shipaddress1'] = $trans['control_placeorder_error10'];
 }else{
-    $streetship = $_POST['shipaddress1'];
+    $streetship = htmlspecialchars(trim($_POST['shipaddress1']), ENT_QUOTES, 'UTF-8');
 }
 
-if(!isset($_POST['shipaddress2']) || empty($_POST['shipaddress2'])){
+if(!isset($_POST['shipaddress2']) || empty(trim($_POST['shipaddress2']))){
     $street2ship = NULL;
 }else{
-    $street2ship = $_POST['shipaddress2'];
+    $street2ship = htmlspecialchars(trim($_POST['shipaddress2']), ENT_QUOTES, 'UTF-8');
 }
 
-
-if(!isset($_POST['notes']) || empty($_POST['notes'])){
+if(!isset($_POST['notes']) || empty(trim($_POST['notes']))){
     $ordernotes = NULL;
 }else{
-    $ordernotes = $_POST['notes'];
+    $ordernotes = htmlspecialchars(trim($_POST['notes']), ENT_QUOTES, 'UTF-8');
 }
 
 if(!isset($_POST['paymentmethod']) || empty($_POST['paymentmethod'])){
     $errors['payment'] = $trans['control_placeorder_error16'];
 }else{
-    $payment = $_POST['paymentmethod'];
+    $payment = htmlspecialchars($_POST['paymentmethod'], ENT_QUOTES, 'UTF-8');
 }
 
 if(!isset($_POST['options']) || empty($_POST['options'])){
@@ -250,7 +280,7 @@ if(!isset($_POST['options']) || empty($_POST['options'])){
 }else{
     switch($_POST['options']){
         case 'option1':
-            $shippingtype = 'glseco';
+            $shippingtype = 'eco';
             break;
         case 'option2':
             $shippingtype = 'gls24';
@@ -270,22 +300,23 @@ if(!isset($_POST['options']) || empty($_POST['options'])){
 if(!isset($_POST['shipmentprice']) || empty($_POST['shipmentprice'])){
     $errors['shipmentprice'] = $trans['control_placeorder_error16'];
 }else{
-    $shipping = $_POST['shipmentprice'];
+    $shipping = floatval($_POST['shipmentprice']);
 }
 
+// Validación de creación de cuenta
 $createaccount = false;
 if(isset($_POST['accountCheck'])){
     if(!isset($_POST['password1']) || empty($_POST['password1'])){
         $errors['account'] = $trans['control_placeorder_error11']; 
     }else if(!isset($_POST['password2']) || empty($_POST['password2'])){
         $errors['account'] = $trans['control_placeorder_error12']; 
-    }else if($_POST['password1'] <> $_POST['password2']){
+    }else if($_POST['password1'] !== $_POST['password2']){
         $errors['account'] = $trans['control_placeorder_error13'];   
     }else if(!isset($email)){
         $errors['account'] = $trans['control_placeorder_error14'];
     }else{
         $query = "SELECT id FROM user WHERE email = ? AND isdeleted = 0";
-        $res=$db->prepare($query, array($email));
+        $res = $db->prepare($query, array($email));
         if($db->numRows($res) > 0){
             $errors['account'] = $trans['control_placeorder_error15'];
         }else{
@@ -294,7 +325,7 @@ if(isset($_POST['accountCheck'])){
         }
     }
 }else{
-    $pass=NULL;
+    $pass = NULL;
 }
 
 if(isset($_SESSION['usercode'])){
@@ -305,23 +336,26 @@ if(isset($_SESSION['usercode'])){
 
 $idpromo = NULL;
 
-    if (!empty($errors)) {
-		$data['success'] = false;
-        $data['errors']  = $errors;
-        $data['message'] = $trans['control_placeorder_errormessage'];
-	} else {
+// Respuesta
+if (!empty($errors)) {
+    $data['success'] = false;
+    $data['errors'] = $errors;
+    $data['message'] = $trans['control_placeorder_errormessage'];
+} else {
+    try {
         $sessionId = session_id();
         $token = sha1($sessionId);
         $status = 0;
         $itemDiscount = 0;
         $descuento = 0;
+        
         if(!empty($promocode)){
             $query = "SELECT id FROM promo WHERE guidpromo = ?";
-            $res = $db->prepare($query,array($guidpromo));
+            $res = $db->prepare($query, array($guidpromo));
             $row = mysqli_fetch_array($res);
             $idpromo = $row['id'];
-            if($subtotal+$taxes >= $min){
-                $descuento = ($subtotal+$taxes)*$discount;
+            if($subtotal + $taxes >= $min){
+                $descuento = ($subtotal + $taxes) * $discount;
                 if($descuento > $max){
                     $descuento = $max;
                 }
@@ -329,40 +363,76 @@ $idpromo = NULL;
         }else{
             $promocode = NULL;
         }
+        
         $total = $subtotal + $taxes + $shipping;
         $grandtotal = $total - $descuento;
-        $line = $street.($street2==NULL? '' : ', '.$street2);
-        $lineship = $streetship.($street2ship==NULL? '' : ', '.$street2ship);
+        $line = $street . ($street2 == NULL ? '' : ', ' . $street2);
+        $lineship = $streetship . ($street2ship == NULL ? '' : ', ' . $street2ship);
  
-        if($createaccount){           
+        // Crear cuenta si es necesario
+        if($createaccount){
+            $hashedPassword = sha1($pass);
             $query = "INSERT INTO `user` (`firstName`, `middleName`, `lastName`, `mobile`, `email`, `password`, `image`, `admin`, `vendor`, `registeredAt`, `lastLogin`, `intro`, `isdeleted`, `isvalid`, `billfirstName`, `billmiddleName`, `billlastName`, `billmobile`, `billline1`, `billpostalcode`, `billcity`, `billprovince`, `billcountry`, `shipfirstName`, `shipmiddleName`, `shiplastName`, `shipmobile`, `shipline`, `shippostalcode`, `shipcity`, `shipprovince`, `shipcountry`, `guiduser`) VALUES 
             (?, ?, ?, ?, ?, ?, 'user1.jpg', 0, 0, NOW(), NOW(), '', 0, 1, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, UUID());";
-            $args = array($billfirstname,$billmiddlename,$billlastname,$billmobile,$email,sha1($pass),$billfirstname,$billmiddlename,$billlastname,$billmobile,$line,$billpostalcode,$billcity,$billdistrict,$billcountry,$shipfirstname,$shipmiddlename,$shiplastname,$shipmobile,$lineship,$shippostalcode,$shipcity,$shipdistrict,$shipcountry);
-            $db->prepare($query,$args);
-            $userId = $db->lastId();
+            $args = array($billfirstname, $billmiddlename, $billlastname, $billmobile, $email, $hashedPassword, $billfirstname, $billmiddlename, $billlastname, $billmobile, $line, $billpostalcode, $billcity, $billdistrict, $billcountry, $shipfirstname, $shipmiddlename, $shiplastname, $shipmobile, $lineship, $shippostalcode, $shipcity, $shipdistrict, $shipcountry);
+            $db->prepare($query, $args);
+            $userId = $db->lastID();
         }
-        $args = array($userId,$sessionId,$token,$status,$subtotal,$itemDiscount,$taxes,$shipping,$shippingtype,$weight,$total,$idpromo,$descuento,$grandtotal,$email,$billfirstname,$billmiddlename,$billlastname,$billmobile,$line,$billpostalcode,$billcity,$billdistrict,$billcountry,$shipfirstname,$shipmiddlename,$shiplastname,$shipmobile,$lineship,$shippostalcode,$shipcity,$shipdistrict,$shipcountry,$ordernotes);
+        
+        // Crear orden
+        $args = array($userId, $sessionId, $token, $status, $subtotal, $itemDiscount, $taxes, $shipping, $shippingtype, $weight, $total, $idpromo, $descuento, $grandtotal, $email, $billfirstname, $billmiddlename, $billlastname, $billmobile, $line, $billpostalcode, $billcity, $billdistrict, $billcountry, $shipfirstname, $shipmiddlename, $shiplastname, $shipmobile, $lineship, $shippostalcode, $shipcity, $shipdistrict, $shipcountry, $ordernotes);
+        
         $query = "INSERT INTO `order` (userId, sessionId, token, status, subTotal, itemDiscount, tax, shipping, shippingtype, weight, total, promoId, discount, grandTotal, email, billfirstName, billmiddleName, billlastName, billmobile, billline1, billpostalcode, billcity, billprovince, billcountry, shipfirstName, shipmiddleName, shiplastName, shipmobile, shipline, shippostalcode, shipcity, shipprovince, shipcountry, createdAt, updatedAt, content, isdeleted, guidorder) VALUES 
-         (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW(), ?, 0, UUID())";
-        $db->prepare($query,$args);
-        $lastId = $db->lastId();
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW(), ?, 0, UUID())";
+        
+        $db->prepare($query, $args);
+        $lastId = $db->lastID();
+        
+        // VOLVER A OBTENER EL CARRITO
+        $products = $db->getCart($lang);
+        
+        // Insertar items del pedido - USAR EL NOMBRE CORRECTO DE LA PROPIEDAD
         $query = "INSERT INTO `order_item` (`productId`, `orderId`, `sku`, `price`, `discount`, `quantity`, `createdAt`, `updatedAt`, `content`, `isdeleted`, `guidorderitem`) VALUES 
-        (?, ?, ?, ?, ?, ?, NOW(), NOW(), ?, 0, UUID());";
+        (?, ?, ?, ?, ?, ?, NOW(), NOW(), ?, 0, UUID())";
+
+        $itemsInserted = 0;
+
         foreach($products as $product){
-            $productid = $product->productid;
-            $sku = $product->sku;
-            $price = $product->pricenotax;
+            // USAR LOS NOMBRES EXACTOS QUE MUESTRA EL LOG
+            $productid = $product->productid;  // NO $product->id
+            $sku = $product->sku;              // NO $product->SKU  
+            $price = $product->pricenotax;     // Precio sin IVA
             $discount = $product->discount;
             $quantity = $product->count;
-            $content = $product->summary;
-            $args = array($productid,$lastId,$sku,$price,$discount,$quantity,$content);
-            $db->prepare($query,$args);
+            $content = $product->title;
+            
+            error_log("Insertando: ProductID=$productid, OrderID=$lastId, SKU=$sku, Price=$price, Qty=$quantity, Content=$content, Discount=$discount");
+            
+            // CORRECCIÓN: Solo 7 valores porque NOW() y UUID() se generan en SQL
+            $args = array($productid, $lastId, $sku, $price, $discount, $quantity, $content);
+            $db->prepare($query, $args);
+            
+            
         }
+        
+        error_log("Total items insertados: $itemsInserted");
+
+        
+        
         $data['success'] = true;
-        $data['errors']  = $errors;
         $data['message'] = $trans['control_placeorder_successmessage'];
         $orderarray = array("orderid" => $lastId, "paymethod" => $payment);
-        $_SESSION['orderdata']=$orderarray; 
+        $_SESSION['orderdata'] = $orderarray;
+        
+    } catch (Exception $e) {
+        $data['success'] = false;
+        $data['message'] = 'Error al procesar el pedido. Por favor, inténtelo de nuevo.';
+        $data['error_detail'] = $e->getMessage();
+        error_log('ERROR CRÍTICO: ' . $e->getMessage());
     }
+}
 
- echo json_encode($data);
+// Enviar respuesta JSON
+echo json_encode($data);
+ob_end_flush();
+exit;

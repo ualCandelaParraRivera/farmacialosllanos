@@ -749,7 +749,6 @@ function sectionjs(){
 
     <!-- Main Activation JS -->
     <script src="js/main.js"></script>
-    <script src="js/productquantity.js"></script>
 ';
     sectioncookies($trans);
 }
